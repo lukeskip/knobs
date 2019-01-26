@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat|Staatliches');
+
+::after, ::before{
+  box-sizing:content-box;
+}
+
+body.fixed{
+  margin-top: 45px;
+}
+
+textarea{
+  background: black;
+  color:#eee;
+  width: 100%;
+  border: 0;
+  padding: 10px;
+}
+
+textarea:focus {outline:0;}
+
+
+h1,h2,h3,h4{
+  font-family: 'Staatliches', cursive;
+}
+
+h2.author{
+  font-family: 'Caveat', cursive;
+}
+
+button:focus {outline:0;}
+input::placeholder { color: #eeeeee}
+.loader{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  margin-top: -42px;
+  margin-left: -42px;
+  z-index: 999;
+  display: none;
+}
+
+.rock{
+  max-width: 400px;
+
+}
+
+body{
+  color:white;
+}
+
+.owl-carousel .owl-item img{
+  width: auto;
+  display: inline;
+}
+
+.owl-carousel .owl-item{
+  min-height: 500px;
+  padding-top: 50px;
+}
+
+.owl-carousel-inner .owl-item{
+  padding-top: 10px;
+  min-height: auto;
+} 
+
+.owl-carousel-inner .owl-item img{
+  width: 200px;
+}
+
+.owl-carousel .owl-nav button span{
+  font-size: 4em;
+}
+
+.owl-carousel-inner .playlist{
+  border:5px solid white;
+  cursor: pointer;
+}
+
+.owl-carousel-inner .playlist.active{
+  border:5px solid black;
+}
+
+.owl-carousel-inner .playlist.active:after{
+  content:"+ Seguir";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+}
+
+
+.spotify{
+  background: #2FAB31;
+  border:0;
+}
+
+.spotify:hover{
+  background: #2FAB31;
+}
+
+.btn.top{
+  position: absolute;
+  top: 50px;
+  right:50px;
+}
+
+.owl-carousel .owl-item img.logo{
+  position: absolute;
+  top: 50px;
+  left:50px;
+  width: 150px;
+}
+
+.text{
+  padding-top: 90px;
+}
+
+.step{
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  border: 6px solid white;
+  text-align: center;
+  color:white;
+  padding-top: 18px;
+  margin: auto;
+  margin-bottom: 15px;
+
+
+}
+
+.step .description{
+  font-size: 1.3em;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1em;
+}
+
+.step .number{
+  font-size: 2.5em;
+  font-weight: 700;
+  line-height: 1em;
+}
+
+form label{
+  font-size: 1.5em;
+}
+
+form .text-muted{
+  color:black!important;
+}
+
+.rey_user_img{
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  border:solid 2px white;
+  margin-bottom:20px;
+}
+
+.list-group-item{
+  padding: 5px;
+}
+
+/*menu*/
+#cssmenu{
+  z-index: 999;
+  background: black;
+}
+
+/*REVIEWS*/
+
+.console {}
+
+.comments{
+  min-height: 300px;
+  background: #131313;
+  padding: 40px 0;
+}
+
+.song_profile{
+  min-height: 150px;
+  padding: 40px 0;
+  background:url('../img/back.jpg'); 
+}
+
+.song_profile .button_box{
+  margin-top: 40px;
+}
+.knobs{
+  background:url('../img/back_2.jpg');
+  padding: 40px 0;
+}
+.knob_item {
+  text-align: center;
+}
+
+.slider-wrapper{
+  width: 160px;
+  margin:auto;
+  position: relative;
+  height: 160px;
+  margin-top: 50px;
+  margin-bottom: -10px;
+
+}
+
+.slider-wrapper .rs-control{
+  z-index: 1;
+}
+
+.knob_item .title{
+  color:black;
+  text-align: center;
+  font-size: 1.5em;
+  z-index: 3;
+  background: #D1C699;
+  font-family: 'Caveat', cursive;
+  line-height: 40px;
+  position: relative;
+  padding: 5px 10px;
+  display: inline;
+  margin-top: 10px;
+}
+
+.knob_item .title:before{
+  content: '';
+  display:block;
+  background: url('../img/tape-start.png');
+  background-size: cover;
+  height: 42px;
+  width: 20px;
+  position: absolute;
+  top:-2px;
+  left: -20px;
+
+}
+
+.knob_item .title:after{
+  content: '';
+  display:block;
+  background: url('../img/tape-end.png');
+  height: 40px;
+  width: 20px;
+  position: absolute;
+  top:0;
+  right: -20px;
+}
+
+.slider-wrapper .rs-handle{
+  background: #005100;
+}
+
+
+
+.slider-wrapper .rs-range-color{
+  background:#2FAB31;
+}
+
+.slider-wrapper .rs-path-color{
+  background: #131313;
+}
+
+.slider-wrapper .rs-handle{
+  z-index: 2;
+  position: absolute;
+}
+
+.slider-wrapper .rs-border{
+  border:none;
+}
+
+.slider-wrapper .rs-tooltip-text{
+  color:white;
+  font-family: 'Francois One', sans-serif;
+  font-size: 3em;
+}
+
+.slider-wrapper .rs-inner{
+  background: url('../img/knob_base.png');
+  background-size: cover
+}
+
+.slider-wrapper .rs-overlay{
+  background: #eee;
+  display: none;
+}
+
+.knob{
+  background: url('../img/knob.png');
+  background-size: cover;
+  position: absolute;
+  top:50%;
+  left:50%;
+  width: 100px;
+  height: 100px;
+  margin-left:-50px;
+  margin-top: -50px;
+  z-index: 10;
+}
+
+.slider-wrapper .score{
+  color:#999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height:30px;
+  margin-left: -15px;
+  margin-top: -15px;
+  z-index: 11;
+  text-align: center;
+  line-height: 30px;
+  background: black;
+  font-size: 1.2em;
+  border-radius: 100%;
+}
+
+
+
+
