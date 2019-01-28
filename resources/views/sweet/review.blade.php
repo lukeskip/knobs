@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main',['body_class' => 'review'])
 
 @section('content')
 
@@ -99,6 +99,28 @@
 							<div id="slider_master" class="slider"></div>	
 						</div>
 						<div class="title">Masterización</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="knob_item">
+						<div class="slider-wrapper big">
+							<div class="knob"></div>
+							<div class="score"></div>
+							<div id="slider_master" class="slider big"></div>	
+						</div>
+						<div class="title">Potencial Comercial</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="knob_item">
+						<div class="slider-wrapper big">
+							<div class="knob"></div>
+							<div class="score"></div>
+							<div id="slider_master" class="slider big"></div>	
+						</div>
+						<div class="title">Potencial Artístico</div>
 					</div>
 				</div>
 			</div>

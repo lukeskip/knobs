@@ -4,6 +4,11 @@
   box-sizing:content-box;
 }
 
+body{
+  color:white;
+  background: url('../img/back.jpg');
+}
+
 body.fixed{
   margin-top: 45px;
 }
@@ -44,9 +49,7 @@ input::placeholder { color: #eeeeee}
 
 }
 
-body{
-  color:white;
-}
+
 
 .owl-carousel .owl-item img{
   width: auto;
@@ -173,24 +176,25 @@ form .text-muted{
 
 /*REVIEWS*/
 
-.console {}
 
-.comments{
+
+.review .comments{
   min-height: 300px;
   background: #131313;
   padding: 40px 0;
 }
 
-.song_profile{
+.review .song_profile{
   min-height: 150px;
   padding: 40px 0;
   background:url('../img/back.jpg'); 
 }
 
-.song_profile .button_box{
+.review .song_profile .button_box{
   margin-top: 40px;
 }
-.knobs{
+
+.review .knobs{
   background:url('../img/back_2.jpg');
   padding: 40px 0;
 }
@@ -198,7 +202,7 @@ form .text-muted{
   text-align: center;
 }
 
-.slider-wrapper{
+.knobs .slider-wrapper{
   width: 160px;
   margin:auto;
   position: relative;
@@ -208,11 +212,23 @@ form .text-muted{
 
 }
 
-.slider-wrapper .rs-control{
+.knobs .slider-wrapper.big{
+  width: 200px;
+  height: 200px;
+}
+
+.knobs .slider-wrapper.small{
+  width: 60px;
+  height: 60px;
+  margin:0;
+  margin-left: 10px;
+}
+
+.knobs .slider-wrapper .rs-control{
   z-index: 1;
 }
 
-.knob_item .title{
+.knobs .knob_item .title{
   color:black;
   text-align: center;
   font-size: 1.5em;
@@ -226,7 +242,7 @@ form .text-muted{
   margin-top: 10px;
 }
 
-.knob_item .title:before{
+.knobs .knob_item .title:before{
   content: '';
   display:block;
   background: url('../img/tape-start.png');
@@ -239,7 +255,7 @@ form .text-muted{
 
 }
 
-.knob_item .title:after{
+.knobs .knob_item .title:after{
   content: '';
   display:block;
   background: url('../img/tape-end.png');
@@ -250,46 +266,45 @@ form .text-muted{
   right: -20px;
 }
 
-.slider-wrapper .rs-handle{
+.knobs .slider-wrapper .rs-handle{
   background: #005100;
 }
 
 
-
-.slider-wrapper .rs-range-color{
+.knobs .slider-wrapper .rs-range-color{
   background:#2FAB31;
 }
 
-.slider-wrapper .rs-path-color{
+.knobs .slider-wrapper .rs-path-color{
   background: #131313;
 }
 
-.slider-wrapper .rs-handle{
+.knobs .slider-wrapper .rs-handle{
   z-index: 2;
   position: absolute;
 }
 
-.slider-wrapper .rs-border{
+.knobs .slider-wrapper .rs-border{
   border:none;
 }
 
-.slider-wrapper .rs-tooltip-text{
+.knobs .slider-wrapper .rs-tooltip-text{
   color:white;
   font-family: 'Francois One', sans-serif;
   font-size: 3em;
 }
 
-.slider-wrapper .rs-inner{
+.knobs .slider-wrapper .rs-inner{
   background: url('../img/knob_base.png');
   background-size: cover
 }
 
-.slider-wrapper .rs-overlay{
+.knobs .slider-wrapper .rs-overlay{
   background: #eee;
   display: none;
 }
 
-.knob{
+.knobs .slider-wrapper .knob{
   background: url('../img/knob.png');
   background-size: cover;
   position: absolute;
@@ -302,7 +317,25 @@ form .text-muted{
   z-index: 10;
 }
 
-.slider-wrapper .score{
+.knobs .slider-wrapper.big .knob{
+  top:50%;
+  left:50%;
+  width: 120px;
+  height: 120px;
+  margin-left:-60px;
+  margin-top: -60px;
+}
+
+.knobs .slider-wrapper.small .knob{
+  top:50%;
+  left:50%;
+  width: 40px;
+  height: 40px;
+  margin-left:-20px;
+  margin-top: -20px;
+}
+
+.knobs .slider-wrapper .score{
   color:#999;
   position: absolute;
   top: 50%;
@@ -317,6 +350,12 @@ form .text-muted{
   background: black;
   font-size: 1.2em;
   border-radius: 100%;
+}
+
+.list-group .list-group-item{
+  background: none;
+  /*height: 80px;
+  line-height: 70px;*/
 }
 
 

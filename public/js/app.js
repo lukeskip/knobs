@@ -28,14 +28,67 @@ $(document).ready(function (){
         circleShape: "pie",
         editableTooltip:false,
         startAngle: 315,
-        width:20,
+        width:25,
         create: function (event) {
         	console.log($(this));
     		this.control.parent().find('.knob').addClass("rs-transition").eq(0).rsRotate(this._handle1.angle);
     		changeColor(this.control,event);
     	}
     };
+
+    slider_options_big = {
+        value: 0,
+        sliderType: "min-range",
+        radius:100,
+        step:1,
+        min:0,
+        max:10,
+        circleShape: "pie",
+        editableTooltip:false,
+        startAngle: 315,
+        width:25,
+        create: function (event) {
+        	console.log($(this));
+    		this.control.parent().find('.knob').addClass("rs-transition").eq(0).rsRotate(this._handle1.angle);
+    		changeColor(this.control,event);
+    	}
+    };
+
+    slider_options_small = {
+        value: 4,
+        sliderType: "min-range",
+        radius:30,
+        step:1,
+        min:0,
+        max:10,
+        circleShape: "pie",
+        editableTooltip:false,
+        startAngle: 315,
+        width:5,
+        create: function (event) {
+        	console.log("event.value");
+    		this.control.parent().find('.knob').addClass("rs-transition").eq(0).rsRotate(event.handle.angle);
+    		changeColor(this.control,event);
+    	}
+    };
+
 	$(".slider").roundSlider(slider_options).on("change drag", function (event) {
+			$(this).parent().find('.knob').rsRotate(event.handle.angle);
+			changeColor($(this),event);
+			$(this).parent().find('.score').html(event.value);
+			console.log($(this));
+
+	});
+
+	$(".slider.big").roundSlider(slider_options_big).on("change drag", function (event) {
+			$(this).parent().find('.knob').rsRotate(event.handle.angle);
+			changeColor($(this),event);
+			$(this).parent().find('.score').html(event.value);
+			console.log($(this));
+
+	});
+
+	$(".slider.small").roundSlider(slider_options_small).on("change drag", function (event) {
 			$(this).parent().find('.knob').rsRotate(event.handle.angle);
 			changeColor($(this),event);
 			$(this).parent().find('.score').html(event.value);
