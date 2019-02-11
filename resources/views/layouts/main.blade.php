@@ -39,6 +39,7 @@
 			   	<li><a href='/dashboard'>Dashboard</a></li>
 			   @endif
 			   <li><a href='/songs'>Canciones registradas</a></li>
+			   <li><a href='/logout'>Salir</a></li>
 			   <!-- <li><a href='#'>Administradores</a></li>
 			   <li><a href='#'>Estadísticas</a></li> -->
 			</ul>
