@@ -17,8 +17,12 @@ class CreateSongsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('link');
+            $table->string('genre');
             $table->string('author');
-            $table->longText('intentions');
+            $table->longText('description');
+            $table->boolean('english');
+            $table->integer('user_id');
+            $table->enum('status', ['paid', 'pending','cancel','critized']);
             $table->timestamps();
         });
     }

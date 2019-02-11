@@ -13,6 +13,11 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  
+}
+
+#cssmenu{
+  /*border-bottom: solid #A1961D 1px;*/
 }
 #cssmenu:after,
 #cssmenu > ul:after {
@@ -59,7 +64,7 @@
   font-size: 17px;
   letter-spacing: 1px;
   text-decoration: none;
-  color: #dddddd;
+  color: #A1961D;
   font-weight: 700;
   text-transform: uppercase;
 }

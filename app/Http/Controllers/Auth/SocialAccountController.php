@@ -1,10 +1,17 @@
 <?php
+namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth as Auth;
+// use App\SocialAccountService    
     /**
      * Redirect the user to the GitHub authentication page.
      *
      * @return Response
      */
+class SocialAccountController extends Controller
+{
     public function redirectToProvider($provider)
     {
         return \Socialite::driver($provider)->redirect();

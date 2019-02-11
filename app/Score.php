@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Score extends Model
 {
+
+    protected $fillable = [
+        'score'
+    ];
+
 	public function reviews()
     {
         return $this->belongsTo('App\Review');
@@ -15,4 +20,10 @@ class Score extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function categories()
+    {
+        return $this->belongsTo('App\Category','category_id');
+    }
+    
 }

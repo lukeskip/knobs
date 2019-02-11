@@ -15,12 +15,9 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mix_score');
-            $table->integer('execution_score');
-            $table->integer('lyrics_score');
-            $table->integer('arrangements_score');
-            $table->longText('description');
-            $table->longText('tips');
+            $table->enum('status', ['publish', 'revision', 'rejected','draft']);
+            $table->integer('song_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

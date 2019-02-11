@@ -43,7 +43,7 @@
 						<div class="slider-wrapper">
 							<div class="knob"></div>
 							<div class="score"></div>
-							<div id="slider_master" class="slider"></div>	
+							<div id="slider_master" data-score="3" class="slider"></div>	
 						</div>
 						<div class="title">Creatividad</div>
 					</div>
@@ -53,7 +53,7 @@
 						<div class="slider-wrapper">
 							<div class="knob"></div>
 							<div class="score"></div>
-							<div id="slider_master" class="slider"></div>	
+							<div id="slider_master" data-score="5" class="slider"></div>	
 						</div>
 						<div class="title">Letra</div>
 					</div>
@@ -63,7 +63,7 @@
 						<div class="slider-wrapper">
 							<div class="knob"></div>
 							<div class="score"></div>
-							<div id="slider_master" class="slider"></div>	
+							<div id="slider_master" data-score="7" class="slider"></div>	
 						</div>
 						<div class="title">Arreglos</div>
 					</div>
@@ -76,7 +76,7 @@
 						<div class="slider-wrapper">
 							<div class="knob"></div>
 							<div class="score"></div>
-							<div id="slider_master" class="slider"></div>	
+							<div id="slider_master" data-score="8" class="slider"></div>	
 						</div>
 						<div class="title">Grabación</div>
 					</div>
@@ -86,7 +86,7 @@
 						<div class="slider-wrapper">
 							<div class="knob"></div>
 							<div class="score"></div>
-							<div id="slider_master" class="slider"></div>	
+							<div id="slider_master"  class="slider"></div>	
 						</div>
 						<div class="title">Mezcla</div>
 					</div>
@@ -96,7 +96,7 @@
 						<div class="slider-wrapper">
 							<div class="knob"></div>
 							<div class="score"></div>
-							<div id="slider_master" class="slider"></div>	
+							<div id="slider_master" data-score="5" class="slider"></div>	
 						</div>
 						<div class="title">Masterización</div>
 					</div>
@@ -108,7 +108,7 @@
 						<div class="slider-wrapper big">
 							<div class="knob"></div>
 							<div class="score"></div>
-							<div id="slider_master" class="slider big"></div>	
+							<div id="slider_master" data-score="6" class="slider big"></div>	
 						</div>
 						<div class="title">Potencial Comercial</div>
 					</div>
@@ -118,7 +118,7 @@
 						<div class="slider-wrapper big">
 							<div class="knob"></div>
 							<div class="score"></div>
-							<div id="slider_master" class="slider big"></div>	
+							<div id="slider_master" data-score="7" class="slider big"></div>	
 						</div>
 						<div class="title">Potencial Artístico</div>
 					</div>
@@ -150,13 +150,32 @@
 				</label>
 				<textarea name="" id="" cols="30" rows="10"></textarea>
 			</div>
-		</div>
-		<form action="">
 			
-		</form>
-		<div class="text-center">
-			<br>
-			<button class="btn btn-success btn-lg">Enviar Crítica</button>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<br>
+				<h2 class="text-center">Aconseja...</h2>
+				<h3 class="text-center">¿Qué hacer ahora?</h3>
+				<label for="" class="text-center">
+					Diles cómo pueden mejorar, esta es una parte básica y es lo que la banda está esperando de ti, comparte tu experiencia
+				</label>
+				<textarea name="" id="" cols="30" rows="10"></textarea>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-centered">
+				<div class="status-group">
+					<select name="" id="" class="form-control group-item">
+						<option value="">Selecciona...</option>
+						<option value="publish">En revisión</option>
+						<option value="draft">Borrador</option>
+					</select>
+					<button class="btn btn-success group-item">Guardar Crítica</button>
+				</div>
+			</div>
+			
 		</div>
 		
 
@@ -172,7 +191,15 @@
 
 
 	
+@section('variables')
+<script>
+	mode = 'create';
+</script>
+@endsection
 
+@section('knobs')
+<script src="{{asset('/js/knobs.js')}}"></script>
+@endsection
 	
 		
 

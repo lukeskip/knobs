@@ -3,7 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
-	<title>Que dice un experto de tu música</title>
+	<title>Promociona tu música</title>
 	<link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('/plugins/owl-carousel/assets/owl.carousel.min.css')}}">
 	<link rel="stylesheet" href="{{asset('/plugins/swal/sweetalert2.min.css')}}">
@@ -25,36 +25,24 @@
 <body class="fixed {{ !empty($body_class) ? $body_class : '' }}">
 	@yield('logo')
 	<div class="loader">
-		<div class="loader_icon">
-			<img src="{{asset('img/loader.svg')}}" alt="">
-		</div>
+		<img src="{{asset('img/loader.svg')}}" alt="">
 	</div>	
-	@if(!Auth::guest())
-	<header>
-		<div id='cssmenu' >
-			<ul>
-			   <li><a href='/'><i class="fas fa-bell"></i>(2)</a></li>
-			   <li><a href='/'><i class="fas fa-user"></i> Perfil</a></li>
-			   @if(Auth::user()->roles->first()->name != 'musician')
-			   	<li><a href='/dashboard'>Dashboard</a></li>
-			   @endif
-			   <li><a href='/songs'>Canciones registradas</a></li>
-			   <!-- <li><a href='#'>Administradores</a></li>
-			   <li><a href='#'>Estadísticas</a></li> -->
-			</ul>
-		</div>
-		<div class="addition"></div>
-	</header>
-	@endif
+	
 	
 		
 	@yield('content')
 		
 	
 	
+	@if(!Auth::guest())
+	<script>
+		var provider_token =  "{{Auth::user()->accounts()->where('provider_name','spotify')->first()->provider_token}}";
+	</script>
+	@endif
+	
+	
 
 	<script src="{{asset('/js/jquery-3.3.1.min.js')}}"></script>
-	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 	<script src="{{asset('/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
 	<script src="{{asset('/plugins/spotify-web-api-js-master/src/spotify-web-api.js')}}"></script>
@@ -62,7 +50,7 @@
 	<script src="{{asset('/plugins/jquery_ui/jquery-ui.min.js')}}"></script>
 	<script src="{{asset('/plugins/round_slider/roundslider.min.js')}}"></script>
 
-	@yield('variables')
+
 	<!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script> -->
 	@if(!Auth::guest())
 	<script type="text/javascript">
@@ -77,12 +65,15 @@
 	</script>
 	<script src="{{asset('/plugins/menu/menu.js')}}"></script>
 	<script src="{{asset('/js/app.js')}}"></script>
-	@yield('knobs')
-	@yield('scripts')
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132667323-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
 
-	
+	  gtag('config', 'UA-132667323-1');
+	</script>
 
 </body>
 </html>

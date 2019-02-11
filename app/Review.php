@@ -8,17 +8,17 @@ class Review extends Model
 {
     public function users()
 	{
-		return $this->belongsTo('App\User');
+		return $this->belongsTo('App\User','user_id');
 	}
 
     public function songs()
 	{
-		return $this->belongsTo('App\Song');
+		return $this->belongsTo('App\Song','song_id');
 	}
 
-    public function score()
+    public function scores()
 	{
-		return $this->hasOne('App\Score');
+		return $this->hasMany('App\Score');
 	}
 
 	public function comments()

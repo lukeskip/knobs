@@ -17,11 +17,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/critica', function () {
-    return view('sweet.review');
+
+Route::get('/pago', function () {
+    return view('sweet.payment');
 });
 
-// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/login', function () {
+//     return view('sweet.login');
+// });
+
+Route::resource('/songs', 'SongController');
+Route::resource('/reviews', 'ReviewController');
+
+Route::get('/reviews/create/{song}', 'ReviewController@create');
+
+
+
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('login/{provider}',          'Auth\SocialAccountController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
