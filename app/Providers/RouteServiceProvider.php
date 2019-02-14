@@ -7,6 +7,10 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 
 class RouteServiceProvider extends ServiceProvider
 {
+
+     protected $except = [
+        '/confirmed_oxxo',
+    ];
     /**
      * This namespace is applied to your controller routes.
      *
