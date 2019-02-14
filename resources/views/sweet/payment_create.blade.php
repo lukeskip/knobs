@@ -51,6 +51,18 @@
 					
 							
 							<input type="hidden" name="song_id" value="{{$song->id}}">
+
+							
+							<button type="submit" class="oxxo_button btn btn-success btn-lg btn-block oxxo">Pagar en Oxxo</button>
+						</form>
+
+						<form id="oxxo-form" action="/confirmed_oxxo" method="POST">
+							{{ csrf_field() }}
+					
+							
+							<input type="hidden" name="song_id" value="{{$song->id}}">
+
+							<input type="hidden" name="order_id" value="ord_2k8XWoJa6L3TLoZJA">
 							
 							<button type="submit" class="oxxo_button btn btn-success btn-lg btn-block oxxo">Pagar en Oxxo</button>
 						</form>
