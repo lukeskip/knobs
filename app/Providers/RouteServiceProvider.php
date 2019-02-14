@@ -8,9 +8,6 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 class RouteServiceProvider extends ServiceProvider
 {
 
-     protected $except = [
-        'conekta/*',
-    ];
     /**
      * This namespace is applied to your controller routes.
      *

@@ -32,7 +32,7 @@ Route::get('/reviews/create/{song}', 'ReviewController@create');
 Route::get('/payments/create/{song}', 'PaymentController@create');
 
 Route::post('/oxxo', 'PaymentController@CreatePayOxxo');
-Route::post('/confirmed_oxxo','PaymentController@confirmation');
+Route::post('/confirmed_oxxo','PaymentController@confirmation')->name('conekta_webhook');
 
 
 

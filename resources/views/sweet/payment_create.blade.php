@@ -55,16 +55,6 @@
 							
 							<button type="submit" class="oxxo_button btn btn-success btn-lg btn-block oxxo">Pagar en Oxxo</button>
 						</form>
-
-						<form id="oxxo-form" action="/confirmed_oxxo" method="POST">
-		
-							
-							<input type="hidden" name="song_id" value="{{$song->id}}">
-
-							<input type="hidden" name="order_id" value="ord_2k8XWoJa6L3TLoZJA">
-							
-							<button type="submit" class="oxxo_button btn btn-success btn-lg btn-block oxxo">Prueba</button>
-						</form>
 						
 					</div>
 					<div class="col-md-6">
