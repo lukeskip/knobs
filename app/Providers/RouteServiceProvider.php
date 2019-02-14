@@ -9,7 +9,7 @@ class RouteServiceProvider extends ServiceProvider
 {
 
      protected $except = [
-        'https://knobs.reydecibel.com.mx/confirmed_oxxo',
+        'webhook/*',
     ];
     /**
      * This namespace is applied to your controller routes.
