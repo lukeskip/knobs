@@ -9,7 +9,7 @@ class RouteServiceProvider extends ServiceProvider
 {
 
      protected $except = [
-        '/confirmed_oxxo',
+        'https://knobs.reydecibel.com.mx/confirmed_oxxo',
     ];
     /**
      * This namespace is applied to your controller routes.
