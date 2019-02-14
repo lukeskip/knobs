@@ -33,6 +33,7 @@ Route::get('/payments/create/{song}', 'PaymentController@create');
 
 Route::post('/oxxo', 'PaymentController@CreatePayOxxo');
 Route::post('/confirmed_oxxo','PaymentController@confirmation')->name('conekta_webhook');
+Route::post('/confirmed_paypal','PaymentController@confirmation_paypal')->name('paypal_webhook');
 
 
 

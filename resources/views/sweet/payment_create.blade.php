@@ -63,8 +63,9 @@
 							<input type="hidden" name="hosted_button_id" value="GKX42794HJEC6">
 							<!-- <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea."> -->
 							<button type="submit" class="btn btn-lg btn-block paypal">Pagar con Paypal</button>
+
 							<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-							<input name="notify_url" value="mypage.php" type="hidden">
+							<input name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal" type="hidden">
 						</form>
 					</div>
 				</div>

@@ -143,21 +143,30 @@ class PaymentController extends Controller
 
                 $payment->status = $status;
                 $payment->save();
-                
-                // Enviamos un correo a la compañía con la información de todas las reservaciones
-                // Mail::send('reyapp.mails.confirmation_com', ['room_name'=>$room_name,'reservations'=>$reservations,'company'=>$company,'instructions'=>$instructions], function ($message)use($company_email,$room_name){
-
-                // $message->from('no_replay@ensayopro.com.mx', 'EnsayoPro')->subject('Tienes una reservación en '.$room_name);
-                // $message->to($company_email);
-
-                // });
-
-                // });
 
 
             }       
             
-        }
+    }
+
+    public function confirmation_paypal(Request $request){
+
+             echo $request->'payment_status';
+             echo $request->'invoice';
+    
+            // if ($data->type == 'charge.paid'){
+                
+            //     $order_id   =  $data->data->object->order_id;
+            //     $status     =  $data->data->object->status;
+            //     $payment    =  Payment::where('order_id',$order_id)->first();
+
+            //     $payment->status = $status;
+            //     $payment->save();
+
+
+            // }       
+            
+    }
 
         
         //Manejo de respuestas
