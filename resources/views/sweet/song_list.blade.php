@@ -1,4 +1,4 @@
-@extends('layouts.main',['body_class' => 'song-list'])
+@extends('layouts.main',['body_class' => ''])
 
 @section('content')
 
@@ -29,7 +29,17 @@
 								</span>
 							</div>
 							<div class="col-sm-4 text-right">
+								
 								<div class="btn-group" role="group" aria-label="Basic example">
+									
+									@if($song->payments->status == 'paid')
+										<a href="/payments/{{$song->payments->id}}" class="btn btn-success hastooltip" title="pagado"><i class="fas fa-check-circle  paid" ></i></a>
+									@elseif($song->payments->status == 'pending')
+										<a href="/payments/{{$song->payments->id}}" class=" hastooltip btn btn-success" title="Pago pendiente"><i class="fas fa-clock  pending" ></i></a>
+									@elseif($song->payments->status == 'expired')
+										<a href="/payments/create/{{$song->id}}" class="btn btn-success hastooltip" title="Pago expirado, da click para generar una nueva forma de pago"><i class="fas fa-times-circle expired "  ></i></a>
+									@endif
+									
 									<a href="{{$song->knob}}" class="btn btn-secondary hastooltip" title="Ver Knob"><img src="{{asset('img/knob_icon.png')}}" alt=""></a>
 									@if(Auth::user()->roles->first()->name == 'musician' OR Auth::user()->roles->first()->name== 'admin')
 									<a href="/songs/{{$song->id}}/edit" class="btn btn-primary"><i class="fas fa-edit"></i></a>

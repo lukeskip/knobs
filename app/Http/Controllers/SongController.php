@@ -93,7 +93,7 @@ class SongController extends Controller
 
         $user->songs()->save($song);
 
-        return response()->json(['message'=>'La canción ha sido registrada con éxito','success'=>true,'redirect'=>'/songs'], 200);
+        return response()->json(['message'=>'La canción ha sido registrada con éxito','success'=>true,'redirect'=>'/payments/create/'.$song->id], 200);
     }
 
     /**

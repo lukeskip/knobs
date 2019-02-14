@@ -16,6 +16,11 @@ class Review extends Model
 		return $this->belongsTo('App\Song','song_id');
 	}
 
+	public function payments()
+	{
+		return $this->hasOne('App\Payment');
+	}
+
     public function scores()
 	{
 		return $this->hasMany('App\Score');

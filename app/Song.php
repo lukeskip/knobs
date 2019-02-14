@@ -15,4 +15,9 @@ class Song extends Model
 	{
 		return $this->belongsTo('App\User');
 	}
+
+	public function payments()
+	{
+		return $this->hasOne('App\Payment');
+	}
 }

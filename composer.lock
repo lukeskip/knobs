@@ -4,8 +4,56 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e833300b4a66244502e9d3c8a3183ac",
+    "content-hash": "b97e19a3ad4bf4650b4a6665f18b28a6",
     "packages": [
+        {
+            "name": "conekta/conekta-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/conekta/conekta-php.git",
+                "reference": "ab4bd953d4d750ab38e805a9412e86ee854a68d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/conekta/conekta-php/zipball/ab4bd953d4d750ab38e805a9412e86ee854a68d7",
+                "reference": "ab4bd953d4d750ab38e805a9412e86ee854a68d7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": "~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.1"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/Conekta/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Conekta  and contributors",
+                    "homepage": "https://github.com/conekta/conekta-php/contributors"
+                }
+            ],
+            "description": "Conekta PHP Library",
+            "homepage": "https://www.conekta.io/",
+            "keywords": [
+                "api",
+                "conekta",
+                "payment processing"
+            ],
+            "time": "2018-10-16T20:31:21+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -636,6 +684,71 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
+        },
+        {
+            "name": "jenssegers/date",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jenssegers/date.git",
+                "reference": "3f5f94f28bd5108fab011869434209101d4189ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jenssegers/date/zipball/3f5f94f28bd5108fab011869434209101d4189ae",
+                "reference": "3f5f94f28bd5108fab011869434209101d4189ae",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "^1.0",
+                "php": ">=5.6",
+                "symfony/translation": "^2.7|^3.0|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0|^6.0|^7.0",
+                "satooshi/php-coveralls": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Jenssegers\\Date\\DateServiceProvider"
+                    ],
+                    "aliases": {
+                        "Date": "Jenssegers\\Date\\Date"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jenssegers\\Date\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jens Segers",
+                    "homepage": "https://jenssegers.com"
+                }
+            ],
+            "description": "A date library to help you work with dates in different languages",
+            "homepage": "https://github.com/jenssegers/date",
+            "keywords": [
+                "carbon",
+                "date",
+                "datetime",
+                "i18n",
+                "laravel",
+                "time",
+                "translation"
+            ],
+            "time": "2018-05-16T11:53:55+00:00"
         },
         {
             "name": "laravel/framework",
@@ -5058,7 +5171,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "conekta/conekta-php": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

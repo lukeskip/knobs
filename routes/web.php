@@ -12,15 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('sweet.song_list');
+    return view('sweet.home');
 });
 
 Auth::routes();
 
 
-Route::get('/pago', function () {
-    return view('sweet.payment');
-});
+
 
 // Route::get('/login', function () {
 //     return view('sweet.login');
@@ -28,11 +26,13 @@ Route::get('/pago', function () {
 
 Route::resource('/songs', 'SongController');
 Route::resource('/reviews', 'ReviewController');
+Route::resource('/payments', 'PaymentController');
 
 Route::get('/reviews/create/{song}', 'ReviewController@create');
+Route::get('/payments/create/{song}', 'PaymentController@create');
 
-
-
+Route::post('/oxxo', 'PaymentController@CreatePayOxxo');
+Route::post('/confirmed_oxxo','PaymentController@confirmation');
 
 
 

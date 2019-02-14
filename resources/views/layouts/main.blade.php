@@ -62,6 +62,8 @@
 	<script src="{{asset('/plugins/swal/sweetalert2.all.min.js')}}"></script>
 	<script src="{{asset('/plugins/jquery_ui/jquery-ui.min.js')}}"></script>
 	<script src="{{asset('/plugins/round_slider/roundslider.min.js')}}"></script>
+	<script async src="https://www.youtube.com/iframe_api"></script>
+	<script src="{{asset('plugins/videoback/src/jquery.youtubebackground.js')}}"></script>
 
 	@yield('variables')
 	<!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script> -->
