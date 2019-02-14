@@ -151,8 +151,8 @@ class PaymentController extends Controller
 
     public function confirmation_paypal(Request $request){
 
-             echo $request->'payment_status';
-             echo $request->'invoice';
+             echo $request->payment_status;
+             echo $request->invoice;
     
             // if ($data->type == 'charge.paid'){
                 
