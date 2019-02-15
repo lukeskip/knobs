@@ -187,7 +187,7 @@ class PaymentController extends Controller
 	    	fclose ($fp);  
 	    } 
 			$payment                    = new Payment;
-			$payment->order_id          = $pupilno;
+			$payment->order_id          = 'qweqwe';
 			$payment->amount            = '32';
 			$payment->total             = '23';
 			$payment->method            = '234234';
