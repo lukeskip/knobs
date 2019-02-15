@@ -168,6 +168,8 @@ class PaymentController extends Controller
 
 	    $fp = fsockopen ('www.sandbox.paypal.com', 80, $errno, $errstr, 30); 
 
+	    Log::info(print_r($fp,true));
+
 	    if (!$fp) {  
 	    	Log::info('hubo un error en la comunicación de regreso');  
 	    } else {  
@@ -176,12 +178,7 @@ class PaymentController extends Controller
 		    	$res = fgets ($fp, 1024);  
 			    if (strcmp ($res, "VERIFIED") == 0) {  
 
-				    // PAYMENT VALIDATED & VERIFIED!  
-				    $email = $_POST['payer_email']; 
-				    $gross = $_POST['mc_gross'];  
-				    $name = $_POST['address_name']; 
-				    $pupilname = $_POST['item_name']; 
-				    $pupilno = $_POST['item_number']; 
+				     
 
 				     
 
