@@ -187,6 +187,8 @@ class PaymentController extends Controller
 		    }  
 	    	fclose ($fp);  
 	    } 
+
+	    	$item_number = explode('-',$_POST['txn_id']);
 			$payment                    = new Payment;
 			$payment->order_id          = $_POST['txn_id'];
 			$payment->amount            = $_POST['mc_gross'];
@@ -196,8 +198,8 @@ class PaymentController extends Controller
 			$payment->reference         = $_POST['txn_id'];
 			$payment->expires_at        = 'no applies';
 			$payment->status            = 'paid';
-			$payment->song_id           = 1;
-			$payment->user_id           = 1;
+			$payment->song_id           = $item_number[0];
+			$payment->user_id           = $item_number[1];
 			$payment->save();     
 			
 	}
