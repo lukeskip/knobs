@@ -155,18 +155,19 @@ class PaymentController extends Controller
 	   
 	    // read the post from PayPal system and add 'cmd'  
 	    $req = 'cmd=_notify-validate';  
-	    foreach ($_POST as $key => $value) {  
+	    foreach ($email as $key => $value) {  
 	    	$value = urlencode(stripslashes($value));  
 	    	$req .= "&$key=$value";
 
-	    }  
+	    }
+	    Log::info(print_r($email),true);  
 	    // post back to PayPal system to validate  
 	    $header = "POST /cgi-bin/webscr HTTP/1.0\r\n";  
 	    $header .= "Content-Type: application/x-www-form-urlencoded\r\n";  
 	    $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";  
 
 	    $fp = fsockopen ('www.sandbox.paypal.com', 80, $errno, $errstr, 30); 
-	     
+
 	    if (!$fp) {  
 	    // HTTP ERROR  
 	    } else {  
@@ -188,35 +189,18 @@ class PaymentController extends Controller
 		    }  
 	    	fclose ($fp);  
 	    } 
-			// $payment                    = new Payment;
-			// $payment->order_id          = $_POST['invoice'];
-			// $payment->amount            = '32';
-			// $payment->total             = '23';
-			// $payment->method            = '234234';
-			// $payment->status            = '234234';
-			// $payment->reference         = '234234';
-			// $payment->expires_at        = '234234';
-			// $payment->status            = 'pending';
-			// $payment->song_id           = 1;
-			// $payment->user_id           = 1;
-			// $payment->save();
-
-			
-
-   
-	 
-	
-			// if ($data->type == 'charge.paid'){
-				
-			//     $order_id   =  $data->data->object->order_id;
-			//     $status     =  $data->data->object->status;
-			//     $payment    =  Payment::where('order_id',$order_id)->first();
-
-			//     $payment->status = $status;
-			//     $payment->save();
-
-
-			// }       
+			$payment                    = new Payment;
+			$payment->order_id          = $pupilno;
+			$payment->amount            = '32';
+			$payment->total             = '23';
+			$payment->method            = '234234';
+			$payment->status            = '234234';
+			$payment->reference         = '234234';
+			$payment->expires_at        = '234234';
+			$payment->status            = 'pending';
+			$payment->song_id           = 1;
+			$payment->user_id           = 1;
+			$payment->save();     
 			
 	}
 
