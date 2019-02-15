@@ -20,5 +20,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/confirmed_oxxo',
+        '/confirmed_paypal',
     ];
 }
