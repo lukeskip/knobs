@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Http\Request;
 use Jenssegers\Date\Date;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
@@ -149,12 +150,14 @@ class PaymentController extends Controller
 			
 	}
 
-	public function confirmation_paypal(){
+	public function confirmation_paypal(Request $request){
+			
+			
+			$body = @file_get_contents('php://input');
+			$data = json_decode($body);
 
-			// $body = @file_get_contents('php://input');
-			// $data = json_decode($body);
-			// http_response_code(200); // Return 200 OK 
-			error_log('si lo ejecuto');
+			http_response_code(200); // Return 200 OK 
+			Log::info(print_r($data, true));
 			// $payment                    = new Payment;
 			// $payment->order_id          = $_POST['invoice'];
 			// $payment->amount            = '32';
