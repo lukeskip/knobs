@@ -174,7 +174,7 @@ foreach ($myPost as $key => $value) {
 }
 
 // inspect IPN validation result and act accordingly
-if (strcmp ($res, "VERIFIED") == 0) {
+if (strcmp ($req, "VERIFIED") == 0) {
   // The IPN is verified, process it:
   // check whether the payment_status is Completed
   // check that txn_id has not been previously processed
