@@ -155,12 +155,12 @@ class PaymentController extends Controller
 	   
 	    // read the post from PayPal system and add 'cmd'  
 	    $req = 'cmd=_notify-validate';  
-	    foreach ($email as $key => $value) {  
+	    foreach ($_POST as $key => $value) {  
 	    	$value = urlencode(stripslashes($value));  
 	    	$req .= "&$key=$value";
 
 	    }
-	    Log::info(print_r($email),true);  
+	    Log::info(print_r($_POST,true));  
 	    // post back to PayPal system to validate  
 	    $header = "POST /cgi-bin/webscr HTTP/1.0\r\n";  
 	    $header .= "Content-Type: application/x-www-form-urlencoded\r\n";  
