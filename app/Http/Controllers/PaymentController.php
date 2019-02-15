@@ -151,20 +151,22 @@ class PaymentController extends Controller
 
 	public function confirmation_paypal(Request $request){
 
-			
-
-			$payment                    = new Payment;
-			$payment->order_id          = $_POST['invoice'];
-			$payment->amount            = '32';
-			$payment->total             = '23';
-			$payment->method            = '234234';
-			$payment->status            = '234234';
-			$payment->reference         = '234234';
-			$payment->expires_at        = '234234';
-			$payment->status            = 'pending';
-			$payment->song_id           = 1;
-			$payment->user_id           = 1;
-			$payment->save();
+			$body = @file_get_contents('php://input');
+			$data = json_decode($body);
+			http_response_code(200); // Return 200 OK 
+			error_log(print_r($data,true));
+			// $payment                    = new Payment;
+			// $payment->order_id          = $_POST['invoice'];
+			// $payment->amount            = '32';
+			// $payment->total             = '23';
+			// $payment->method            = '234234';
+			// $payment->status            = '234234';
+			// $payment->reference         = '234234';
+			// $payment->expires_at        = '234234';
+			// $payment->status            = 'pending';
+			// $payment->song_id           = 1;
+			// $payment->user_id           = 1;
+			// $payment->save();
 
 			
 
