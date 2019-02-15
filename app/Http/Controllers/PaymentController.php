@@ -149,11 +149,11 @@ class PaymentController extends Controller
 			
 	}
 
-	public function confirmation_paypal(Request $request){
+	public function confirmation_paypal(){
 
-			$body = @file_get_contents('php://input');
-			$data = json_decode($body);
-			http_response_code(200); // Return 200 OK 
+			// $body = @file_get_contents('php://input');
+			// $data = json_decode($body);
+			// http_response_code(200); // Return 200 OK 
 			error_log('si lo ejecuto');
 			// $payment                    = new Payment;
 			// $payment->order_id          = $_POST['invoice'];
