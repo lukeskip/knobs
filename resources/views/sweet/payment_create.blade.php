@@ -69,11 +69,14 @@
 							<input type='hidden' name='cmd' value='_xclick'>
 
 
-							<input type='hidden' name='item_name' value='Hot Sauce-12 oz. Bottle'>
+							<input type='hidden' name='item_name' value='Knobs: Knob de un experto en música'>
 							<input type='hidden' name='amount' value='5.95'>
 							<input type='hidden' name='currency_code' value='MXN'>
-							<input name="notify_url" value="https://knobs.reydecibel.com.mx" type="hidden">
 
+							<input type='hidden' name='song_id' value='12'>
+
+							<input type='hidden' name='user_id' value='335'>
+							
 							<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx">
 							<input type="hidden" name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal">
 

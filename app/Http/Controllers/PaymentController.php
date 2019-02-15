@@ -171,9 +171,10 @@ class PaymentController extends Controller
 	    Log::info(print_r($fp,true));
 
 	    if (!$fp) {  
-	    	Log::info('hubo un error en la comunicación de regreso');  
+	    	  
 	    } else {  
-		    fputs ($fp, $header . $req);  
+		    fputs ($fp, $header . $req); 
+
 		    while (!feof($fp)) {  
 		    	$res = fgets ($fp, 1024);  
 			    if (strcmp ($res, "VERIFIED") == 0) {  
@@ -187,14 +188,14 @@ class PaymentController extends Controller
 	    	fclose ($fp);  
 	    } 
 			$payment                    = new Payment;
-			$payment->order_id          = 'qweqwe';
-			$payment->amount            = '32';
-			$payment->total             = '23';
-			$payment->method            = '234234';
-			$payment->status            = '234234';
-			$payment->reference         = '234234';
-			$payment->expires_at        = '234234';
-			$payment->status            = 'pending';
+			$payment->order_id          = $_POST['txn_id'];
+			$payment->amount            = $_POST['mc_gross'];
+			$payment->total             = $_POST['mc_gross'];;
+			$payment->method            = 'paypal';
+			$payment->status            = $_POST['payment_status'];
+			$payment->reference         = $_POST['txn_id'];
+			$payment->expires_at        = 'no applies';
+			$payment->status            = 'paid';
 			$payment->song_id           = 1;
 			$payment->user_id           = 1;
 			$payment->save();     
