@@ -195,9 +195,9 @@ if (strcmp ($req, "VERIFIED") == 0) {
   foreach($_POST as $key => $value) {
     echo $key . " = " . $value . "<br>";
   }
-} else if (strcmp ($res, "INVALID") == 0) {
+} else if (strcmp ($req, "INVALID") == 0) {
   // IPN invalid, log for manual investigation
-  echo "The response from IPN was: <b>" .$res ."</b>";
+  echo "The response from IPN was: <b>" .$req ."</b>";
 }
 
 // Step 2: POST IPN data back to PayPal to validate
@@ -214,7 +214,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Connection: Close'));
 // please download 'cacert.pem' from "https://curl.haxx.se/docs/caextract.html" and set
 // the directory path of the certificate as shown below:
 // curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/cacert.pem');
-if ( !($res = curl_exec($ch)) ) {
+if ( !($req = curl_exec($ch)) ) {
   // error_log("Got " . curl_error($ch) . " when processing IPN data");
   curl_close($ch);
   exit;
