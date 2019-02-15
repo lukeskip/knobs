@@ -169,7 +169,7 @@ class PaymentController extends Controller
 	    $fp = fsockopen ('www.sandbox.paypal.com', 80, $errno, $errstr, 30); 
 
 	    if (!$fp) {  
-	    // HTTP ERROR  
+	    	Log::info('hubo un error en la comunicación de regreso');  
 	    } else {  
 		    fputs ($fp, $header . $req);  
 		    while (!feof($fp)) {  
