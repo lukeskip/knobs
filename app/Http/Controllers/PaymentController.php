@@ -154,7 +154,7 @@ class PaymentController extends Controller
 			$body = @file_get_contents('php://input');
 			$data = json_decode($body);
 			http_response_code(200); // Return 200 OK 
-			error_log(print_r($data,true));
+			error_log('si lo ejecuto');
 			// $payment                    = new Payment;
 			// $payment->order_id          = $_POST['invoice'];
 			// $payment->amount            = '32';
