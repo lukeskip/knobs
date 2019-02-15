@@ -188,7 +188,7 @@ class PaymentController extends Controller
 	    	fclose ($fp);  
 	    } 
 
-	    	$item_number = explode('-',$_POST['txn_id']);
+	    	$item_number = explode('-',$_POST['item_number']);
 			$payment                    = new Payment;
 			$payment->order_id          = $_POST['txn_id'];
 			$payment->amount            = $_POST['mc_gross'];
