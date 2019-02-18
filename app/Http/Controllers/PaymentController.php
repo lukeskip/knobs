@@ -24,7 +24,7 @@ class PaymentController extends Controller
 	{         
 		$options     = Option::all(); 
 		$song_id     = $request->song_id;
-		$price_knob  = 200;
+		$price_knob  = $options->where('slug','price')->first()->value;
 		$now         = Date::now()->add('12 day');
 		$expire      = strtotime($now);
 		$user_id     = Auth::user()->id;   
@@ -170,37 +170,56 @@ class PaymentController extends Controller
 
 	    Log::info(print_r($fp,true));
 
-	    if (!$fp) {  
+	    // if (!$fp) {  
 	    	  
-	    } else {  
-		    fputs ($fp, $header . $req); 
+	    // } else {  
+		   //  fputs ($fp, $header . $req); 
 
-		    while (!feof($fp)) {  
-		    	$res = fgets ($fp, 1024);  
-			    if (strcmp ($res, "VERIFIED") == 0) {  
-
-				     
+		   //  while (!feof($fp)) {  
+		   //  	$res = fgets ($fp, 1024);  
+			  //   if (strcmp ($res, "VERIFIED") == 0) {  
 
 				     
 
-			    }  
-		    }  
-	    	fclose ($fp);  
-	    } 
+				     
 
+			  //   }  
+		   //  }  
+	    // 	fclose ($fp);  
+	    // } 
+	    	$status 	= strtolower($_POST['payment_status']);
+	    	$order_id 	= $_POST['txn_id'];
 	    	$item_number = explode('-',$_POST['item_number']);
-			$payment                    = new Payment;
-			$payment->order_id          = $_POST['txn_id'];
-			$payment->amount            = $_POST['mc_gross'];
-			$payment->total             = $_POST['mc_gross'];;
-			$payment->method            = 'paypal';
-			$payment->status            = $_POST['payment_status'];
-			$payment->reference         = $_POST['txn_id'];
-			$payment->expires_at        = 'no applies';
-			$payment->status            = 'paid';
-			$payment->song_id           = $item_number[0];
-			$payment->user_id           = $item_number[1];
-			$payment->save();     
+
+	    	if($status == 'completed' || $status == 'pending'){
+	    		$payment = Payment::where('order_id',$order_id)->first();
+		    	if($payment){
+		    		$payment->update(['status' => $status]);
+		    		return response()->json(['success' => true,'message'=>'Pago fue actualizado exitosamente ']);
+		    	}else{
+		    		$payment                    = new Payment;
+					$payment->order_id          = $_POST['txn_id'];
+					$payment->amount            = $_POST['mc_gross'];
+					$payment->total             = $_POST['mc_gross'];;
+					$payment->method            = 'paypal';
+					$payment->reference         = $_POST['txn_id'];
+					$payment->expires_at        = 'not applies';
+					$payment->status            = $status;
+					$payment->song_id           = $item_number[0];
+					$payment->user_id           = $item_number[1];
+					$payment->save();
+
+					return response()->json(['success' => true,'message'=>'Pago fue creado exitosamente ']);
+		    	}
+	    	}else{
+	    		Log::info($status);
+	    		return response()->json(['success' => false,'message'=>'El cargo fue '.$status]);
+	    	}
+
+
+
+	    	
+			     
 			
 	}
 
@@ -230,8 +249,10 @@ class PaymentController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create(Song $song)
-	{
-		return view('sweet.payment_create')->with('song',$song);
+	{	
+		$user_id = Auth::user()->id;
+		$options = Option::all();
+		return view('sweet.payment_create')->with('song',$song)->with('user_id',$user_id)->with('options',$options);
 	}
 
 	/**

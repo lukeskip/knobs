@@ -27,6 +27,7 @@ Auth::routes();
 Route::resource('/songs', 'SongController');
 Route::resource('/reviews', 'ReviewController');
 Route::resource('/payments', 'PaymentController');
+Route::resource('/options', 'OptionController');
 
 Route::get('/reviews/create/{song}', 'ReviewController@create');
 Route::get('/payments/create/{song}', 'PaymentController@create');
@@ -36,8 +37,16 @@ Route::post('/confirmed_oxxo','PaymentController@confirmation')->name('conekta_w
 Route::post('/confirmed_paypal','PaymentController@confirmation_paypal')->name('paypal_webhook');
 
 
+Route::group(['middleware' => ['auth','admin'],'prefix'=>'admin'], function () {
+	Route::get('/users','AdminController@users' );
+	Route::post('/users/role','AdminController@users_role' );
+	Route::get('/songs/','AdminController@songs' );
+	
 
-Route::get('/home', 'HomeController@index')->name('home');
+});
+
+
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('login/{provider}',          'Auth\SocialAccountController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');

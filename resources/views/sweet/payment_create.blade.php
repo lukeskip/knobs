@@ -36,7 +36,7 @@
 							</div>
 							<div class="col-sm-4 text-center">
 								<span class="price">
-									$300 MXN
+									${{$options->where("slug","price")->first()->value}} MXN
 								</span> 
 							</div>
 						</div>
@@ -60,21 +60,20 @@
 					<div class="col-md-6">
 						
 
-						<form action='https://www.sandbox.paypal.com/cgi-bin/webscr' method='post'>
+						<form action='{{$options->where("slug","paypal_action")->first()->value}}' method='post'>
 
 
-							<input type='hidden' name='business' value='contacto-facilitator@chekogarcia.com.mx'>
+							<input type='hidden' name='business' value='{{$options->where("slug","paypal_mail")->first()->value}}'>
 
 
 							<input type='hidden' name='cmd' value='_xclick'>
 
 
 							<input type='hidden' name='item_name' value='Knobs: Knob de un experto en música'>
-							<input type='hidden' name='amount' value='10.50'>
+							<input type='hidden' name='amount' value='{{$options->where("slug","price")->first()->value}}'>
 							<input type='hidden' name='currency_code' value='MXN'>
 
-							<input type="hidden" name="item_number" value="77-1">
-
+							<input type="hidden" name="item_number" value="{{$song->id}}-{{$user_id}}">
 							
 							<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx">
 							<input type="hidden" name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal">

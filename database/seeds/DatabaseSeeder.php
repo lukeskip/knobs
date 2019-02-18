@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Song;
 use App\User;
 use App\Role;
+use App\Option;
 
 class DatabaseSeeder extends Seeder
 {
@@ -56,6 +57,34 @@ class DatabaseSeeder extends Seeder
         $song->user_id       = $user->id;
         $song->save();
         
+
+        // Creamos el option price
+		$option = new Option;
+		$option->type = 'number';
+		$option->label = 'Precio por Knob';
+		$option->slug = 'price';
+		$option->description = 'Es el precio por cada knob que se le cobra al usuario';
+		$option->value = '200';
+		$option->save();
+
+		// Creamos el option paypal_mail
+		$option = new Option;
+		$option->type = 'email';
+		$option->label = 'Cuenta de Paypal';
+		$option->slug = 'paypal_mail';
+		$option->description = 'Es la cuenta paypal a la que estarán relacionados los pagos';
+		$option->value = 'contacto-facilitator@chekogarcia.com.mx';
+		$option->save();
+
+		// Creamos el option paypal_action
+		$option = new Option;
+		$option->type = 'text';
+		$option->label = 'Form Action paypal';
+		$option->slug = 'paypal_action';
+		$option->description = 'Es la dirección de paypal a la que se hará el post del pago';
+		$option->value = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
+		$option->save();
+
 
         DB::table('categories')->insert([
 

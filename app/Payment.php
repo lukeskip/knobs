@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
+
+	protected $fillable = [
+        'status',
+    ];
+
     public function songs()
 	{
 		return $this->belongsTo('App\Song','song_id');

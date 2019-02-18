@@ -6,11 +6,25 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Canciones Registradas</h1>
-			@if(Auth::user()->roles->first()->name != 'critic')
+			@if(Auth::user()->roles->first()->name == 'musician')
 				<a href="/songs/create" class="btn btn-success submit">
 				<i class="fas fa-plus-circle"></i>
 			Registrar Canción</a>
 			@endif
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<form action="" method="GET">
+			<div class="status-group unbalanced">
+				
+					<input type="text" name="s" class="form-control group-item">
+					<button class="btn btn-success group-item submit">
+						Buscar
+					</button>
+				
+			</div>
+			</form>
 		</div>
 	</div>
 	<div class="row">

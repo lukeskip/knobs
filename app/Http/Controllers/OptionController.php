@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Option;
+use App\User;
 use Illuminate\Http\Request;
 
 class OptionController extends Controller
@@ -14,7 +15,14 @@ class OptionController extends Controller
      */
     public function index()
     {
-        //
+        $options = Option::all();
+        foreach ($options as $option) {
+            $option['labels'] = explode(',',$option->labels);
+            $option['options'] = explode(',',$option->options);
+
+        }
+
+        return view('sweet.options')->with('options',$options);
     }
 
     /**
@@ -35,7 +43,21 @@ class OptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Registramos las reglas de validación
+        
+        foreach ($request->all() as $key => $value) {
+            echo $value;
+            if($value != '' AND $key != '_token'){
+
+                $option = Option::where('slug',$key)->first();
+                $option->value = $value;
+                $option->save();
+
+            }
+            
+        }
+
+        return redirect('/options');
     }
 
     /**
