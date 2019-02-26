@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h1>Tus Knobs</h1>
+			<h1>{{$title}}</h1>
 			
 		</div>
 	</div>
@@ -25,10 +25,22 @@
 								</span>
 							</div>
 							<div class="col-sm-4 text-right">
+								
 								<div class="btn-group" role="group" aria-label="Basic example">
-									<a href="{{$review->knob}}" class="btn btn-secondary hastooltip" title="Ver Knob"><img src="{{asset('img/knob_icon.png')}}" alt=""></a>
-
-									<a href="{{$review->knob_edit}}" class="btn btn-primary hastooltip" title="Editar Knob"><i class="fas fa-edit"></i></a>
+									@if($review->status == 'publish')
+										<a href="#" class="btn btn-success hastooltip" title="Estatus Publicado"><i class="fas fa-check-circle  paid" ></i></a>
+									@elseif($review->status == 'revision')
+										<a href="#" class=" hastooltip btn btn-success" title="Estatus: En Revisión"><i class="fas fa-clock  pending" ></i></a>
+									@elseif($review->status == 'draft')
+										<a href="#" class=" hastooltip btn btn-success" title="Estatus en Borrador"><i class="fas fa-clock  pending" ></i></a>
+									@elseif($review->status == 'rejected')
+										<a href="#" class="btn btn-success hastooltip" title="Tu crítica fue rechazada"><i class="fas fa-times-circle expired "  ></i></a>
+									@endif
+									<a href="{{$review->knob}}" class="btn btn-success hastooltip" title="Ver Knob"><img src="{{asset('img/knob_icon.png')}}" alt=""></a>
+									
+									@if(get_role()== 'admin' || ($review->status == 'rejected' || $review->status == 'draft'))
+										<a href="{{$review->knob_edit}}" class="btn btn-success hastooltip" title="Editar Knob"><i class="fas fa-edit"></i></a>
+									@endif
 								</div>
 								
 					  		</div>
@@ -38,7 +50,7 @@
 				@else
 					<li class="list-group-item clearfix song-item">
 						<span class="title">
-							No hay canciones registradas
+							No hay críticas registradas
 						</span>
 					</li>
 				@endif

@@ -3,7 +3,7 @@
 @section('content')
 
 	<!-- <img src="{{asset('img/logo_rey.png')}}" alt="" class="logo d-lg-block" width="150"> -->
-	<div class="song_profile">
+	<div class="song-profile {{$song->genre}}">
 		<div class="container ">
 			<div class="row ">
 				<div class="col-md-8">

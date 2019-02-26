@@ -5,6 +5,7 @@ use App\Song;
 use App\User;
 use App\Role;
 use App\Option;
+use App\Payment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -57,6 +58,31 @@ class DatabaseSeeder extends Seeder
         $song->user_id       = $user->id;
         $song->save();
         
+        // Payment test
+		$payment = new Payment;
+		$payment->order_id = '29384129319';
+		$payment->amount = '200';
+		$payment->total = '200';
+		$payment->method = 'paypal';
+		$payment->review_id = '1';
+		$payment->user_id = '1';
+		$payment->song_id = '1';
+		$payment->status = 'paid';
+		$payment->save();
+
+		// Payment test
+		$payment = new Payment;
+		$payment->order_id = '29323349319';
+		$payment->amount = '300';
+		$payment->total = '300';
+		$payment->method = 'paypal';
+		$payment->review_id = '1';
+		$payment->user_id = '1';
+		$payment->song_id = '1';
+		$payment->status = 'paid';
+		$payment->save();
+
+
 
         // Creamos el option price
 		$option = new Option;
@@ -83,6 +109,18 @@ class DatabaseSeeder extends Seeder
 		$option->slug = 'paypal_action';
 		$option->description = 'Es la dirección de paypal a la que se hará el post del pago';
 		$option->value = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
+		$option->save();
+
+		// Creamos el option payment day
+		$option = new Option;
+		$option->type = 'select';
+		$option->label = 'Día de Pago';
+		$option->slug = 'payment_day';
+		$option->description = 'Es el día en el que se hace el corte de pagos a críticos';
+		$option->value = 'thursday';
+		$option->options = 'monday,tuesday,wednesday,thursday,friday,saturday,sunday';
+		$option->labels = 'Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo';
+
 		$option->save();
 
 

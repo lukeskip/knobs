@@ -13,16 +13,16 @@
 					@if($option->type == 'text' or $option->type== 'number')
 						<div class="col-md-6">
 							<label>{{$option->label}} <i class="fa fa-question-circle hastooltip" title="{{$option->description}}" aria-hidden="true"></i></label>
-							<input class="input-group-field" name="{{$option->slug}}" type="{{$option->type}}" value="{{$option->value}}">
+							<input class="input-group-field form-control" name="{{$option->slug}}" type="{{$option->type}}" value="{{$option->value}}">
 						</div>
 					@elseif ($option->type == 'select')
 					<div class="col-md-6">
 						<label>{{$option->label}} <i class="fa fa-question-circle hastooltip" title="{{$option->description}}" aria-hidden="true"></i></label>
-						<select name="{{$option->slug}}" id="">
+						<select class="form-control" name="{{$option->slug}}" id="">
 
 							@for ($i = 0; $i < count($option->labels); $i++)
-									<option @if($option->value == $setting->options[$i]) selected @endif value="{{$setting->options[$i]}}">
-										{{$setting->labels[$i]}}
+									<option @if($option->value == $option->options[$i]) selected @endif value="{{$option->options[$i]}}">
+										{{$option->labels[$i]}}
 									</option>
 								@endfor
 							</select>
@@ -30,6 +30,7 @@
 						@endif
 				@endforeach
 				<div class="col-md-12">
+					<br>
 					<button class="btn btn-lg btn-success" type="submit">
 						Guardar
 					</button>

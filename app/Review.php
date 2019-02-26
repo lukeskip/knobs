@@ -26,8 +26,18 @@ class Review extends Model
 		return $this->hasMany('App\Score');
 	}
 
+	public function ratings()
+	{
+		return $this->hasOne('App\Rating');
+	}
+
 	public function comments()
 	{
 		return $this->hasMany('App\Comment');
+	}
+
+	public function admin_comments()
+	{
+		return $this->hasMany('App\AdminComment');
 	}
 }

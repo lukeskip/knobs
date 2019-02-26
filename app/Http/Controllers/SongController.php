@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth as Auth;
+use Illuminate\Support\Str;
+
 
 class SongController extends Controller
 {
@@ -20,11 +22,11 @@ class SongController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user->roles->first()->name == 'musician'){
+        if(get_role() == 'musician'){
             $songs =  $user->songs;
-        }elseif($user->roles->first()->name == 'critic'){
-            $songs =  Song::where('status','paid')->get();
-        }elseif($user->roles->first()->name == 'admin'){
+        }elseif(get_role()  == 'critic'){
+            $songs =  Song::where('status','paid')->doesnthave('reviews')->get();
+        }elseif(get_role()  == 'admin'){
             $songs =  Song::all();
         }
 
@@ -46,7 +48,9 @@ class SongController extends Controller
      */
     public function create()
     {
-        return view('sweet.songs.register');
+        $token               = Str::random(10);
+        $song_file_name      = 'song_'.Auth::user()->id.'_'.$token;
+        return view('sweet.songs.songs_create')->with('song_file_name',$song_file_name);
     }
 
     /**
@@ -60,7 +64,8 @@ class SongController extends Controller
         $rules = array(
             'title'         => 'required|max:255',
             'genre'         => 'required',
-            'link'          => 'required', 
+            'link'          => 'required_without:song_file',
+            'song_file'     => 'required_without:link', 
             'author'        => 'required|max:255',
             'english'       => 'required|boolean', 
             'description'   => 'required'     
@@ -78,6 +83,7 @@ class SongController extends Controller
         $song->title        = $request->title;
         $song->genre        = $request->genre;
         $song->link         = $request->link;
+        $song->file         = $request->song_file;
         $song->author       = $request->author;
         $song->english      = $request->english;
         $song->description  = $request->description;
@@ -115,7 +121,8 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
-        return view('sweet.songs.update')->with('song',$song);
+        $song_file_name      = explode('.',$song->file);
+        return view('sweet.songs.songs_update')->with('song',$song)->with('song_file_name',$song_file_name[0]);
     }
 
     /**
@@ -130,7 +137,8 @@ class SongController extends Controller
         $rules = array(
             'title'         => 'required|max:255',
             'genre'         => 'required',
-            'link'          => 'required', 
+            'link'          => 'required_without:song_file',
+            'song_file'     => 'required_without:link', 
             'author'        => 'required|max:255',
             'english'       => 'required|boolean', 
             'description'   => 'required'     

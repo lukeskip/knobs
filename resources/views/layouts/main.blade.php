@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="{{asset('/plugins/round_slider/roundslider.min.css')}}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{asset('/plugins/menu/menu.css')}}">
+	@yield('styles')
 	<link rel="stylesheet" href="{{asset('/css/app.css')}}">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="shortcut icon" type="favicon/png" href="{{asset('img/favicon.png')}}"/>
@@ -28,17 +29,17 @@
 		<div class="loader_icon">
 			<img src="{{asset('img/loader.svg')}}" alt="">
 		</div>
-	</div>	
-	@if(!Auth::guest())
+	</div>
+
+	<!-- STARTS: MENU FOR ADMIN -->
+	@if(get_role() == 'admin')
 	<header>
 		<div id='cssmenu' >
 			<ul>
-			   <li><a href='/'><i class="fas fa-bell"></i>(2)</a></li>
-			   <li><a href='/'><i class="fas fa-user"></i> Perfil</a></li>
-			   @if(Auth::user()->roles->first()->name != 'musician')
-			   	<li><a href='/dashboard'>Dashboard</a></li>
-			   @endif
-			   <li><a href='/songs'>Canciones registradas</a></li>
+			   <li><a href='/'><i class="fas fa-user"></i> {{get_role(true)}}</a></li>
+			   <li><a href='/admin/dashboard'>Dashboard</a></li>
+			   <li><a href='/admin/songs'>Canciones registradas</a></li>
+			   <li><a href='/admin/payments'>Pagos</a></li>
 			   <li><a href='/logout'>Salir</a></li>
 			   <!-- <li><a href='#'>Administradores</a></li>
 			   <li><a href='#'>Estadísticas</a></li> -->
@@ -47,6 +48,45 @@
 		<div class="addition"></div>
 	</header>
 	@endif
+	<!-- ENDS: MENU FOR ADMIN -->
+
+	<!-- STARTS: MENU FOR CRITIC -->
+	@if(get_role() == 'critic')
+	<header>
+		<div id='cssmenu' >
+			<ul>
+				@if(Auth::user()->profiles)
+			   	<li>
+			   		<a href='/profiles/'{{Auth::user()->profiles->id}}>
+						Perfil
+			   		</a>
+			   	</li>
+			   	@endif
+			   <li><a href='/dashboard'>Dashboard</a></li>
+			   <li><a href='/songs'>Canciones</a></li>
+			   <li><a href='/reviews'>Mis Knobs</a></li>
+			   
+			</ul>
+		</div>
+		<div class="addition"></div>
+	</header>
+	@endif
+	<!-- ENDS: MENU FOR ADMIN -->
+
+	@if(get_role() == 'musician')
+	<header>
+		<div id='cssmenu' >
+			<ul>
+			   <li><a href='/profile'>Mi Perfil</li>
+			   	<li><a href='/profile'>Registrar Canción</li>
+			   <li><a href='/songs'>Mis canciones</li>
+			</ul>
+		</div>
+		<div class="addition"></div>
+	</header>
+	@endif
+	<!-- ENDS: MENU FOR ADMIN -->
+	
 	
 		
 	@yield('content')
@@ -66,16 +106,15 @@
 	<script src="{{asset('plugins/videoback/src/jquery.youtubebackground.js')}}"></script>
 
 	@yield('variables')
-	<!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script> -->
+	
 	@if(!Auth::guest())
 	<script type="text/javascript">
 		var user_id = "{{Auth::user()->id}}";
+		var role = "{{get_role()}}";
 	</script>
 	@endif
 	<script type="text/javascript">
-		var user_id = 1;
-	</script>
-	<script type="text/javascript">
+		
 		var APP_URL = {!! json_encode(url('/')) !!}
 	</script>
 	<script src="{{asset('/plugins/menu/menu.js')}}"></script>

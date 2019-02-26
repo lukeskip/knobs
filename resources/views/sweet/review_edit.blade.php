@@ -3,10 +3,20 @@
 @section('content')
 
 	<!-- <img src="{{asset('img/logo_rey.png')}}" alt="" class="logo d-lg-block" width="150"> -->
-	<div class="song_profile">
+	<div class="song-profile {{$review->songs->genre}}">
 		<div class="container ">
 			<div class="row ">
 				<div class="col-md-8">
+					@if($review->admin_comments)
+						@foreach($review->admin_comments as $comment)
+							<div class="alert alert-danger admin-comment" role="alert">
+							  {{$comment->description}}
+							  <div class="date">
+							  	{{$comment->date}}
+							  </div>
+							</div>
+						@endforeach
+					@endif
 					<h1>{{$review->songs->title}}</h1>
 					<h2 class="author">{{$review->songs->author}}</h2>
 					<p>{{$review->songs->description}}</p>
@@ -23,7 +33,7 @@
 
 		</div>
 	</div>
-	<form action="" class="dark">
+	<form id="review" action="" class="dark">
 		<div class="knobs">
 			<div class="container">
 				<div class="row">
@@ -82,10 +92,14 @@
 				<div class="row">
 					<div class="col-md-6 col-centered">
 						<div class="status-group">
-							<select name="status" required id="" class="form-control group-item">
+							<select name="status"  required id="" class="form-control group-item status">
 								<option value="">Selecciona...</option>
 								<option @if($review->status== "revision") selected @endif value="revision">En revisión</option>
 								<option @if($review->status== "draft") selected @endif  value="draft">Borrador</option>
+								@if(get_role() == 'admin')
+								<option @if($review->status== "rejected") selected @endif value="rejected">Rechazado</option>
+								<option @if($review->status== "hard_rejected") selected @endif value="hard_rejected">Rechazado Definitivo</option>
+								@endif
 							</select>
 							<button class="btn btn-success group-item submit">Guardar Crítica</button>
 						</div>
@@ -99,12 +113,30 @@
 	</form>
 	
 
+<!-- STARTS:ADMIN COMMENT -->
+<div class="modal fade" id="admin-comment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  	<form id="admin-comment-form" action="">
+    <div class="modal-content">
+      <div class="modal-body knobs">
+      	
+      		<label for="">Comentario de administrador</label>
+        	<textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
+      	
+      		<input type="hidden" name="review_id" value="{{$review->id}}">
+      	
+      	
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success publish">Enviar comentario y guardar</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+<!-- ENDS:ADMIN COMMENT -->
 @endsection
-
-
-
-
-
 
 	
 @section('variables')
@@ -141,19 +173,19 @@
 				show_message('error','¡Error!','Tienes que llenar todos los campos');
 			},
 			submitHandler: function(form) {
-				conection('PUT', $('form').serialize(),'/reviews/{{$review->id}}',true).then(function(data){
-					if(data.success == 1){
-						show_message('success','¡Listo!',data.message,data.redirect);
-					}else{
-						show_message('error','Error!',data.message);
-					}
+				console.log($(form).find('.status').val());
+				if($(form).find('.status').val() == 'rejected' || $(form).find('.status').val()=='hard_rejected'){
+					$('#admin-comment').modal('show');	
+				}else{
+					publish();	
+				}
 				
-				});
+				
 			}
 		});
 		$("body").on('click', '.submit', function(e) {
 			e.preventDefault();
-			$('input').each(function() {
+			$('form#review').find('input').each(function() {
   				console.log("se agregp");
 		        $(this).rules("add", 
 		            {
@@ -164,6 +196,32 @@
     		$('form').submit();
     		
 		});
+
+
+		$("body").on('click', '.publish', function(e) {
+			e.preventDefault();
+			conection('POST', $('form#admin-comment-form').serialize(),'/admin/admin_comments/',true).then(function(data){
+				if(data.success == 1){
+					publish();
+				}else{
+					show_message('error','Error!',data.message);
+				}
+		
+			});
+				
+		});
+
+
+		function publish(){
+			conection('PUT', $('form#review').serialize(),'/reviews/{{$review->id}}',true).then(function(data){
+				if(data.success == 1){
+					show_message('success','¡Listo!',data.message,data.redirect);
+				}else{
+					show_message('error','Error!',data.message);
+				}
+		
+			});
+		}
 		
 
 	});

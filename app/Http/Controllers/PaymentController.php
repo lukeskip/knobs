@@ -27,7 +27,8 @@ class PaymentController extends Controller
 		$price_knob  = $options->where('slug','price')->first()->value;
 		$now         = Date::now()->add('12 day');
 		$expire      = strtotime($now);
-		$user_id     = Auth::user()->id;   
+		$user 		 = Auth::user();
+		$user_id     = $user->id;   
 
 		$valid_order =
 			array(
@@ -56,10 +57,9 @@ class PaymentController extends Controller
 			),
 			'currency'      => 'MXN',
 			'customer_info' => array(
-					'name'  => "Sergio Garcia",
+					'name'  => $user->name,
 					'phone' => "5535555637",
-					// 'email' => $request->input('email')
-					'email' => 'contacto@chekogarcia.com.mx'
+					'email' => $user->email,
 			)
 		);
 
@@ -191,9 +191,9 @@ class PaymentController extends Controller
 	    	$order_id 	= $_POST['txn_id'];
 	    	$item_number = explode('-',$_POST['item_number']);
 
-	    	if($status == 'completed' || $status == 'pending'){
+	    	if($status == 'completed' || $status == 'pending' || $status == 'processed'){
 	    		$payment = Payment::where('order_id',$order_id)->first();
-		    	if($payment){
+		    	if($payment->count() > 0){
 		    		$payment->update(['status' => $status]);
 		    		return response()->json(['success' => true,'message'=>'Pago fue actualizado exitosamente ']);
 		    	}else{
@@ -240,7 +240,24 @@ class PaymentController extends Controller
 	 */
 	public function index()
 	{
-		//
+		$payments = Payment::orderBy('created_at','ASC');
+		
+		if(request()->has('s')){
+        	$payments->where('order_id', 'LIKE', '%' . request()->s . '%');
+        }
+		
+		foreach ($payments as $payment) {
+			if($payment->songs->reviews()->exists()){
+				$payment['partner'] = $payment->songs->reviews->user->email;	
+			}else{
+				$payment['partner'] = 'En espera de crítica';
+			}
+			
+		}
+
+		$payments = $payments->paginate();
+
+		return view('sweet.payment_list',compact(['payments']));
 	}
 
 	/**
@@ -272,9 +289,22 @@ class PaymentController extends Controller
 	 * @param  \App\Payment  $payment
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show(Payment $payment)
-	{
-		//
+	public function show(song $song)
+	{	
+		$payment = $song->payments;
+		$options = Option::all();
+		$user_id = Auth::user()->id;
+		$payment['finish'] = false;
+		if($payment->status == 'paid' || $payment->status == 'processed' || $payment->status == 'complete'){
+			$title = 'Tu pago fue recibido correctamente';
+			$payment['finish'] = true;
+		}elseif($payment->status == 'pending'){
+			$title = 'Tu pago está en espera';
+		}elseif($payment->status == 'failed' || $payment->status == 'declined'){
+			$title = 'Tu pago falló, intenta con otra forma de pago';
+		}
+
+		return view('sweet.receipt')->with('song',$song)->with('payment',$payment)->with('options', $options)->with('user_id',$user_id)->with('title',$title);
 	}
 
 	/**

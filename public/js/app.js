@@ -56,7 +56,7 @@ function conection (method,fields,link,handle = false){
 	  
 	}).fail(function(jqXHR, exception){
 		$('.loader').fadeOut();
-		// show_message('error','Error en el servidor!','');
+		show_message('error','Error en el servidor!','');
 	});
 
 }

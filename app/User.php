@@ -57,13 +57,18 @@ class User extends Authenticatable
         return $this->hasMany('App\Song');
     }
 
-    public function scores()
+    public function ratings()
     {
-        return $this->hasMany('App\Score');
+        return $this->hasMany('App\Rating');
     }
 
     public function payments()
     {
         return $this->hasMany('App\Payment');
+    }
+
+    public function admin_comments()
+    {
+        return $this->hasMany('App\AdminComment');
     }
 }

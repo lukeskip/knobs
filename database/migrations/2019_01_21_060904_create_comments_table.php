@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->integer('user_id');
             $table->integer('review_id');
             $table->enum('status', ['approved', 'rejected','pending']);
-            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

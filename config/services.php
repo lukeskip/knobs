@@ -45,5 +45,9 @@ return [
         'client_secret' => env('FACEBOOK_SECRET'),
         'redirect'      => env('FACEBOOK_URL'),
     ],
+    
+    'mandrill' => [
+        'secret' => env('MANDRILL_KEY'),
+    ],
 
 ];

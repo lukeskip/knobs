@@ -8,6 +8,7 @@ use App\Score;
 use App\Category;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Http\Request;
+use Jenssegers\Date\Date;
 
 class ReviewController extends Controller
 {
@@ -20,8 +21,10 @@ class ReviewController extends Controller
     {
         if(Auth::user()->roles->first()->name == 'critic'){
            $reviews = Review::where('user_id',Auth::user()->id)->paginate(); 
+           $title = "Tus Knobs";
         }else if(Auth::user()->roles->first()->name == 'admin'){
-            $reviews = Review::where('user_id',Auth::user()->id)->paginate();
+            $reviews = Review::paginate();
+            $title = "Knobs registrados";
         }else{
             return abort(404);
         }
@@ -31,7 +34,7 @@ class ReviewController extends Controller
             $review['knob_edit'] = '/reviews/'.$review->id.'/edit';
         }
 
-        return view('sweet.reviews_list')->with('reviews',$reviews);
+        return view('sweet.reviews_list', array('reviews' => $reviews,'title'=>$title));
         
     }
 
@@ -97,7 +100,7 @@ class ReviewController extends Controller
         $knobs = collect();
         $form_items = collect();
         foreach ($review->scores as $score) {
-            
+
             if($score->categories->type == 'knob'){
                 $knobs->push($score);
             }else if($score->categories->type == 'textarea'){
@@ -127,6 +130,9 @@ class ReviewController extends Controller
      */
     public function edit(Review $review)
     {
+        if(get_role() != 'admin' &&  ($review->status != 'draft' && $review->status != 'rejected')){
+            return redirect('/reviews');
+        }
         $knobs = collect();
         $form_items = collect();
         foreach ($review->scores as $score) {
@@ -136,6 +142,11 @@ class ReviewController extends Controller
             }else if($score->categories->type == 'textarea'){
                 $form_items->push($score);
             }
+
+        }
+
+        foreach ($review->admin_comments as $comment) {
+            $comment['date'] = Date::instance($comment->created_at)->diffForHumans();
 
         }
 
@@ -160,7 +171,6 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-
 
         $fields  = array_merge($request->all());
         

@@ -34,11 +34,7 @@
 		
 	
 	
-	@if(!Auth::guest())
-	<script>
-		var provider_token =  "{{Auth::user()->accounts()->where('provider_name','spotify')->first()->provider_token}}";
-	</script>
-	@endif
+	
 	
 	
 
@@ -49,6 +45,8 @@
 	<script src="{{asset('/plugins/swal/sweetalert2.all.min.js')}}"></script>
 	<script src="{{asset('/plugins/jquery_ui/jquery-ui.min.js')}}"></script>
 	<script src="{{asset('/plugins/round_slider/roundslider.min.js')}}"></script>
+	<script src="{{asset('/plugins/vertical-flex/jquery.flexverticalcenter.js')}}"></script>
+	
 
 
 	<!-- <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script> -->

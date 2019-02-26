@@ -17,7 +17,7 @@ class CreateOptionsTable extends Migration
             $table->increments('id');
             $table->string('label');
             $table->string('description');
-            $table->enum('type', ['boolean', 'number', 'date', 'text', 'select', 'textarea']);
+            $table->enum('type', ['email','boolean', 'number', 'date', 'text', 'select', 'textarea']);
             $table->string('slug')->unique()->index();
             $table->text('value');
             $table->string('options')->nullable();

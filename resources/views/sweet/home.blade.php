@@ -1,25 +1,24 @@
-@extends('layouts.main',['body_class' => 'landing'])
+@extends('layouts.no_menu',['body_class' => 'landing'])
 @section('content')
-<div id="background-video" class="background-video">
-		<img src="{{asset('img/placeholder.jpg')}}" alt="" class="placeholder-image">
+<div class="first_level">
+	<div class="content-centered">
+		<h1>Tu música puede ser mejor</h1>
+		<p>Todos los artistas tienen momentos en los que no saben si lo que hacen les gusta, necesitan un  guía, deja que Knobs te guía</p>
+		<a href="" class="btn btn-primary">
+			Registra tu primera canción
+		</a>
+	</div>
+	
 </div>
 @endsection
 @section('scripts')
-<script>
 
-// $('.background-video').YTPlayer({
-// 	fitToBackground: false,
-// 	videoId: 'V2fpgpanZAw',
-// 	pauseOnScroll: false,
-// 	playerVars: {
-// 		modestbranding: 0,
-// 		autoplay: 1,
-// 		controls: 0,
-// 		showinfo: 0,
-// 		branding: 0,
-// 		rel: 0,
-// 		autohide: 0
-// 	}
-// });
+@endsection
+
+@section('scripts')
+<script>
+	$(document).ready(function() {
+    	$('.content-centered').flexVerticalCenter();
+  	});
 </script>
 @endsection

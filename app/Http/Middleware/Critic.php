@@ -18,7 +18,7 @@ class Critic
     {
         $role = Auth::user()->roles->first()->name;
 
-        if($role == 'admin'){
+        if($role == 'critic' || $role == 'admin'){
             return $next($request);
         }else {
             return redirect('/');

@@ -1,5 +1,7 @@
 @extends('layouts.main',['body_class' => 'review'])
 
+
+<!-- STARTS:CONTENT -->
 @section('content')
 
 	<!-- <img src="{{asset('img/logo_rey.png')}}" alt="" class="logo d-lg-block" width="150"> -->
@@ -19,6 +21,8 @@
 				<div class="col-md-4 button_box">
 					<button class="btn btn-success btn-block">Reproducir</button>
 				</div>
+
+
 				
 			</div>
 
@@ -183,13 +187,8 @@
 	</div>
 	
 
-
-
-
-
-
-
-
+@endsection
+<!-- FINISH CONTENT -->
 	
 @section('variables')
 <script>
@@ -205,4 +204,3 @@
 
 
 
-@endsection
