@@ -13,7 +13,7 @@ class FileController extends Controller
         $image_orig  	= explode('.',$image->getClientOriginalName());
         $ext 			= $image_orig[1];
         $imageName 		= 'profile_'.Auth::user()->id.'.'.$image_orig[1];
-        $image->move('profile_images',$imageName);
+        $image->move('storage/profile_images',$imageName);
         return response()->json(['file'=>$imageName]);  
  	}
 
@@ -24,7 +24,7 @@ class FileController extends Controller
         $song_file_name = $request->song_file_name.'.'.$ext;
      
         
-    	$image->move(public_path('song_files'),$song_file_name);
+    	$image->move(public_path('storage/song_files'),$song_file_name);
 
     	return response()->json(['success' => true,'file'=>$song_file_name]); 
         
