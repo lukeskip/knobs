@@ -77,9 +77,9 @@
 	<header>
 		<div id='cssmenu' >
 			<ul>
-			   <li><a href='/profile'>Mi Perfil</li>
-			   	<li><a href='/profile'>Registrar Canción</li>
-			   <li><a href='/songs'>Mis canciones</li>
+			   <li><a href='/profile'>Mi Perfil</a></li>
+			   	<li><a href='/profile'>Registrar Canción</a></li>
+			   <li><a href='/songs'>Mis canciones</a></li>
 			</ul>
 		</div>
 		<div class="addition"></div>
