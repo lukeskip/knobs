@@ -11,10 +11,7 @@
 					<h2 class="author">{{$song->author}}</h2>
 					<p>{{$song->description}}</p>
 
-					<a href="{{$song->link}}" target="_blank" class="btn btn-success btn-lg btn-block">
-						<span class="icon"><i class="fab fa-soundcloud"></i></span>
-						Reproducir
-					</a>
+					<audio src="{{asset('/song_files/'.$song->file)}}" controls></audio>
 				</div>
 				<div class="col-md-4 button_box ">
 					

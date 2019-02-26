@@ -20,9 +20,9 @@ class CheckProfile
         $role = $user->roles->first()->name;
         if($role == 'critic'){
             if($user->profiles){
-               return $next($request); 
+                return $next($request); 
            }else{
-            return redirect('/profiles/create/');
+                return redirect('/profiles/create/');
            }
         }else{
             return $next($request);
