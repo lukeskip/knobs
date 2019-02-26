@@ -64,8 +64,7 @@ class SongController extends Controller
         $rules = array(
             'title'         => 'required|max:255',
             'genre'         => 'required',
-            'link'          => 'required_without:song_file',
-            'song_file'     => 'required_without:link', 
+            'song_file'     => 'required', 
             'author'        => 'required|max:255',
             'english'       => 'required|boolean', 
             'description'   => 'required'     
@@ -150,6 +149,8 @@ class SongController extends Controller
         if ($validator->fails()) {
             return response()->json(['success' => false,'message'=>'Hay campos con información inválida, recuerda que todos los campos son obligatorios']);
         }
+
+        $request->song_file;
 
         $song->title        = $request->title;
         $song->genre        = $request->genre;

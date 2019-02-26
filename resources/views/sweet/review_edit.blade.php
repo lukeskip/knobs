@@ -2,7 +2,6 @@
 
 @section('content')
 
-	<!-- <img src="{{asset('img/logo_rey.png')}}" alt="" class="logo d-lg-block" width="150"> -->
 	<div class="song-profile {{$review->songs->genre}}">
 		<div class="container ">
 			<div class="row ">
@@ -20,10 +19,8 @@
 					<h1>{{$review->songs->title}}</h1>
 					<h2 class="author">{{$review->songs->author}}</h2>
 					<p>{{$review->songs->description}}</p>
-					<a href="{{$review->songs->link}}" class="btn btn-success btn-lg" target="blank">
-						{!! html_entity_decode($review->icon) !!} 
-						Reproducir
-					</a>
+					
+					<audio src="{{asset('song_files/'.$review->songs->file)}}" controls></audio>
 				</div>
 				<div class="col-md-4 button_box">
 					

@@ -15,23 +15,6 @@
 		</div>
 	</div>
 
-	
-	<div class="row">
-		<div class="col-md-12 text-center">
-			<h3>Elige...</h3>
-		</div>
-	</div>	
-	<div class="switch_wrapper row">
-		<div class="col-md-6 side">
-			<label for="">Sube sólo el link de Spotify o Soundcload</label>
-			
-		</div>
-		<div class="col-md-6 side">
-			<label for="">Sube tu canción a esta plataforma en un MP3 de hasta 10mb</label>
-		</div>
-		<div class="switch active"></div>
-	</div>
-	
 	<div class="row">
 		<div class="col-md-12">
 			<form id="upload-files" class="dropzone box" class="dark">
@@ -48,17 +31,12 @@
 		</div>
 	</div>
 	<form id="fields" action="" class="dark">
-		<div class="row">
-			<div class="col-md-12">
-				<label class="title link hidden">Link de la canción <span class="hastooltip icon" title="Pega el link de spotify o soundcloud"><i class="fas fa-question-circle"></i></span>:</label>
-				<input name="link"  type="text" class="form-control link hidden required">
-				<input type="hidden" class="song-file" name="song_file">
-			</div>
-		</div>
+		
 		<div class="row">
 			<div class="col-md-8">
 				<label class="title">Nombre de la canción:</label>
 				<input name="title" required type="text" class="form-control">
+				<input type="hidden" name="song_file" class="song-file">
 			</div>
 			<div class="col-md-4">
 				<label class="title">Género:</label>
@@ -145,18 +123,16 @@
 				show_message('error','¡Error!','Tienes que llenar todos los campos');
 			},
 			submitHandler: function(form) {
-				if($('#upload-files').hasClass('hidden')){
-					register();
+				
+				var myDropzone = Dropzone.forElement(".dropzone");
+				if (myDropzone.getQueuedFiles().length === 0) {
+					show_message('error','¡Error!','Tienes que agregar un archivo');
 				}else{
-					var myDropzone = Dropzone.forElement(".dropzone");
-					if (myDropzone.getQueuedFiles().length === 0) {
-						show_message('error','¡Error!','Tienes que agregar un archivo');
-					}else{
-						$('.loader').css('display','block');
-    					myDropzone.processQueue();
-					}
-					
+					$('.loader').css('display','block');
+					myDropzone.processQueue();
 				}
+					
+				
 				
 			}
 		});
@@ -169,24 +145,14 @@
 
 		$("body").on('click', '.switch', function(e) {
 			e.preventDefault();
-			toggle_switch($(this));
-    		
-    		
 		});
-
-		function toggle_switch(obj){
-			obj.toggleClass('active');
-			$('#upload-files').toggleClass('hidden');
-			$('.link').toggleClass('hidden');
-
-		}
 
 		function register(){
 			conection('POST', $('#fields').serialize(),'/songs',true).then(function(data){
 				if(data.success == 1){
 					show_message('success','¡Listo!','Tu canción fue registrada',data.redirect);
 				}else{
-					show_message('error','Erroraaa!',data.message);
+					show_message('error','Error!',data.message);
 				}
 			});
 		}

@@ -6,6 +6,10 @@ html,body{
 	min-height: 100%;
 }
 
+audio{
+	width: 100%;
+}
+
 .btn{
 	color:white;
 }
@@ -62,6 +66,31 @@ ENDS:LANDING
 
 .review textarea.error,.error{
 	border:2px solid red;
+}
+
+.critic-profile{
+	padding: 80px 0;
+}
+
+.critic-profile .name{
+	font-family: 'Staatliches', cursive;
+	font-size: 2em;
+}
+
+.critic-profile .expertice{
+	font-family: 'Caveat', cursive;
+	text-transform: capitalize; 
+	font-size: 2em;
+}
+
+.critic-profile .picture{
+	margin-bottom: 10px;
+	margin-right: 20px;
+	float: left;
+}
+
+.critic-profile .picture img{
+	width: 150px;
 }
 
 label.error{
@@ -626,7 +655,7 @@ form.dark label.title{
 	background-size: cover
 }
 
-.knobs .slider-wrapper .rs-overlay{
+.slider-wrapper .rs-overlay{
 	background: #eee;
 	display: none;
 }

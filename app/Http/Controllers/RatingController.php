@@ -43,7 +43,7 @@ class RatingController extends Controller
 
 
         if($role == 'critic'){
-           return response()->json(['success' => false,'message'=>'No puedes calificar un knob']); 
+           return response()->json(['success' => false,'message'=>'No puedes calificar los Knobs porque eres un crítico']); 
         }
 
 

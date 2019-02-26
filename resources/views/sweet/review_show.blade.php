@@ -23,15 +23,7 @@
 					<h2 class="author">{{$review->songs->author}}</h2>
 					<p>{{$review->songs->description}}</p>
 					
-					<a href="{{$review->songs->link}}" class="btn btn-success btn-lg" target="blank">
-						{!! html_entity_decode($review->icon) !!} 
-						Reproducir
-					</a>
-
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ratingModal">
-					  Launch demo modal
-					</button>
+					<audio src="{{asset('song_files/'.$review->songs->file)}}" controls></audio>
 					
 				</div>
 				<div class="col-md-4 rating">
@@ -81,7 +73,7 @@
 				</div>
 				<div class="row">
 					@foreach($form_items as $item)
-						<div class="@if($item->categories->importance == 1) col-md-12 @elseif($item->categories->importance == 2) col-md-6 @else col-md-4 @endif">
+						<div class="col-md-12">
 							<div><h3 class="title">{{$item->categories->label}}</h3></div>
 							{{$item->score}}
 						</div>
@@ -90,6 +82,36 @@
 				
 
 			</div>
+	</div>
+	<div class="container critic-profile">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="picture"><img src="{{asset('profile_images/'.$review->users->profiles->picture)}}" alt=""></div>
+				<div class="name">
+					{{$review->users->name}}
+				</div>
+				<div class="expertice">
+					{{$review->users->profiles->expertice}}
+				</div>
+				<div class="summary">
+					{{$review->users->profiles->summary}}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h3 class="text-center">Califica este knob</h3>
+				<form id="rating" action="">
+					<div class="slider-wrapper ">
+						<div class="knob"></div>
+						<div class="score"></div>
+						<div id="rating" @if($review->ratings)data-score="{{$review->ratings->score}}"@endif class="slider"></div>	
+					</div>
+					<div class="text-center">
+						<br>
+						<button type="submit" class="btn btn-primary">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 	<div class="comments">
 		<div class="container">
@@ -123,40 +145,9 @@
 		</div>
 	</div>
 
-<!-- STARTS: MODAL -->
-<div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <form id="rating" action="">
-  		<input type="hidden" name="review_id" value="{{$review->id}}">
-	  <div class="modal-dialog" role="document">
-		<div class="modal-content">
-		  <div class="modal-body knobs">
-			
-			
-			<h3 class="text-center">Califica este knob</h3>
-			
-				<div class="slider-wrapper ">
-					<div class="knob"></div>
-					<div class="score"></div>
-					<div id="rating" @if($review->ratings)data-score="{{$review->ratings->score}}"@endif class="slider"></div>	
-				</div>
-			
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-			<button type="submit" class="btn btn-primary">Guardar</button>
-		  </div>
-		</div>
-	  </div>
-  </form>
-</div>
-<!-- ENDS: MODAL -->
 
 @endsection
 <!-- ENDS: CONTENT -->
-
-
-
-
 
 	
 @section('variables')
