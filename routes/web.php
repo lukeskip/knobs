@@ -18,12 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/song_files/*', function () {
-    if(Auth::user()) {
-        return 'unauthorized';
-    }
-})->where(['path' => '*']);
-
 // STARTS:ROUTE HOOK PAYMENTS CONFIRMATION
 Route::post('/confirmed_oxxo','PaymentController@confirmation')->name('conekta_webhook');
 Route::post('/confirmed_paypal','PaymentController@confirmation_paypal')->name('paypal_webhook');
