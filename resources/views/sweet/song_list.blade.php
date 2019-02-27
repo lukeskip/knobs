@@ -62,7 +62,7 @@
 									@if(get_role() == 'musician' OR get_role() == 'admin')
 									<a href="/songs/{{$song->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
 									@elseif (get_role() == 'critic')
-									<a href="/reviews/create/{{$song->id}}" class="btn btn-primary hastooltip" title="Hacer una crítica"><i class="fas fa-edit"></i></a>
+									<a href="/reviews/create/{{$song->id}}" class="btn btn-success hastooltip" title="Hacer una crítica"><i class="fas fa-edit"></i></a>
 									@endif
 								</div>
 								
