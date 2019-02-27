@@ -11,7 +11,7 @@
 					<h2 class="author">{{$song->author}}</h2>
 					<p>{{$song->description}}</p>
 
-					<audio src="{{asset('/song_files/'.$song->file)}}" controls></audio>
+					<audio src="{{asset('storage/song_files/'.$song->file)}}" controls></audio>
 				</div>
 				<div class="col-md-4 button_box ">
 					
