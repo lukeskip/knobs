@@ -73,7 +73,7 @@
 							<p for="" class="text-center">
 								{{$item->instructions}}
 							</p>
-							<textarea placeholder="Escribe..." required name="{{$item->slug}}" id="" cols="30" rows="10"></textarea>
+							<textarea placeholder="Escribe..." name="{{$item->slug}}" id="" cols="30" rows="10"></textarea>
 						</div>
 					@endforeach
 				</div>
@@ -81,7 +81,7 @@
 				<div class="row">
 					<div class="col-md-6 col-centered">
 						<div class="status-group">
-							<select name="status" required id="" class="form-control group-item">
+							<select name="status" id="" class="form-control group-item status">
 								<option value="">Selecciona...</option>
 								<option value="revision">En revisión</option>
 								<option value="draft">Borrador</option>
@@ -120,16 +120,36 @@
 <script>
 	$(document).ready(function(){
 
-		$.validator.setDefaults({ 
-    		ignore: [],
-		});
-
-		$.validator.messages.required = "";
-
-
+		
 		$('form').validate({
+			ignore: "",
+			rules: {
+				@foreach($knobs as $knob)
+					{{$knob->slug}}: {
+						required: function(element){
+							return $(".status").val()!= "draft";
+						},
+						min: function(element){
+							if ($(".status").val()!= "draft"){
+								return 1;
+							}else{
+								return 0;
+							}
+							
+						},
+					},
+				@endforeach
+				@foreach($form_items as $item)
+					{{$item->slug}}: {
+						required: function(element){
+							return $(".status").val()!= "draft";
+						}
+					},
+				@endforeach
+			},
 			highlight:function(element){
-				$(element).parent().parent().find('.error_light').addClass('error');
+				console.log($(element).parent().parent().find('.error_light'));
+				$(element).parent().parent().find('.error_light').addClass('active');
 				$(element).addClass('error');
 			},
 			unhighlight:function(element){
@@ -152,14 +172,6 @@
 		});
 		$("body").on('click', '.submit', function(e) {
 			e.preventDefault();
-			$('input').each(function() {
-  				console.log("se agregp");
-		        $(this).rules("add", 
-		            {
-		                required: true,
-		                min: 1,
-		            });
-		    });
     		$('form').submit();
     		
 		});

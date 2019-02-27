@@ -158,7 +158,8 @@ class ReviewController extends Controller
         }else if(strpos($review->songs->link, $spotify)){
             $review['icon'] = '<i class="fab fa-spotify"></i>';
         }
-
+        
+        
         return view('sweet.review_edit')->with('review',$review)->with('knobs',$knobs)->with('form_items',$form_items);
     }
 

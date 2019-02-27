@@ -53,7 +53,7 @@
 								<div class="error_light"></div>
 								<div class="knob"></div>
 								<div class="score"></div>
-								<div id="{{$knob->categories->slug}}" data-score="{{$knob->score}}" class="slider required @if($knob->categories->importance == 1) big @endif"></div>	
+								<div id="{{$knob->categories->slug}}" data-score="{{$knob->score}}" class="slider @if($knob->categories->importance == 1) big @endif"></div>	
 							</div>
 							<label class="title">{{$knob->categories->label}}</label>
 						</div>
@@ -81,7 +81,7 @@
 							<p for="" class="text-center">
 								{{$item->categories->instructions}}
 							</p>
-							<textarea placeholder="Escribe..." required name="{{$item->categories->slug}}" id="" cols="30" rows="10">{{$item->score}}</textarea>
+							<textarea placeholder="Escribe..." name="{{$item->categories->slug}}" id="" cols="30" rows="10">{{$item->score}}</textarea>
 						</div>
 					@endforeach
 				</div>
@@ -158,8 +158,32 @@
 
 
 		$('form').validate({
+			rules: {
+				@foreach($knobs as $knob)
+					{{$knob->categories->slug}}: {
+						required: function(element){
+							return $(".status").val()!= "draft";
+						},
+						min: function(element){
+							if ($(".status").val()!= "draft"){
+								return 1;
+							}else{
+								return 0;
+							}
+							
+						},
+					},
+				@endforeach
+				@foreach($form_items as $item)
+					{{$item->categories->slug}}: {
+						required: function(element){
+							return $(".status").val()!= "draft";
+						}
+					},
+				@endforeach
+			},
 			highlight:function(element){
-				$(element).parent().parent().find('.error_light').addClass('error');
+				$(element).parent().parent().find('.error_light').addClass('active');
 				$(element).addClass('error');
 			},
 			unhighlight:function(element){
@@ -182,16 +206,7 @@
 		});
 		$("body").on('click', '.submit', function(e) {
 			e.preventDefault();
-			$('form#review').find('input').each(function() {
-  				console.log("se agregp");
-		        $(this).rules("add", 
-		            {
-		                required: true,
-		                min: 1,
-		            });
-		    });
     		$('form').submit();
-    		
 		});
 
 

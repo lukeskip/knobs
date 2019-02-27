@@ -546,7 +546,7 @@ STARTS:ANALOG INTERFACE
 	background: url('../img/error_light.png') center left no-repeat;
 }
 
-.slider-wrapper .error_light.error,.rating .slider-wrapper .error_light.error{
+.slider-wrapper .error_light.active,.rating .slider-wrapper .error_light.active{
 	background-position: center right;
 	border:0;
 }
