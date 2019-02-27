@@ -20,7 +20,7 @@
 					<h2 class="author">{{$review->songs->author}}</h2>
 					<p>{{$review->songs->description}}</p>
 					
-					<audio src="{{asset('song_files/'.$review->songs->file)}}" controls></audio>
+					<audio src="{{asset('storage/song_files/'.$review->songs->file)}}" controls></audio>
 				</div>
 				<div class="col-md-4 button_box">
 					
