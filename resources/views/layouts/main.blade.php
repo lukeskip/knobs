@@ -43,7 +43,7 @@
 						<li><a href='/admin/dashboard'>Dashboard</a></li>
 						<li><a href='/admin/songs'>Canciones registradas</a></li>
 						<li><a href='/admin/payments'>Pagos</a></li>
-						<li><a href='/logout'>Salir</a></li>
+						
 						<!-- <li><a href='#'>Administradores</a></li>
 						<li><a href='#'>Estadísticas</a></li> -->
 					</ul>
@@ -84,6 +84,9 @@
 					<li><a href='#about'>Qué es Knobs</a></li>
 					<li><a href='#process'>Cómo funciona</a></li>
 
+				@endif
+				@if(!Auth::guest())
+					<li><a href='/logout'>Salir</a></li>
 				@endif
 			</ul>
 		</div>
