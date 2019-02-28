@@ -77,15 +77,9 @@
 				@endif
 				<!-- ENDS: MENU FOR ADMIN -->
 
-				<!-- STARTS: MENU FOR GUEST -->
-				@if(Auth::guest())
-				
-					<li><a href='/register'>Regístrate</a></li>
-					<li><a href='#about'>Qué es Knobs</a></li>
-					<li><a href='#process'>Cómo funciona</a></li>
+				@yield('menu-items')
 
-				@endif
-				@if(!Auth::guest())
+				@if(Auth::guest())
 					<li><a href='/logout'>Salir</a></li>
 				@endif
 			</ul>

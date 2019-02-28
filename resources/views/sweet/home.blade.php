@@ -1,4 +1,9 @@
 @extends('layouts.main',['body_class' => 'landing fixed'])
+@section('menu-items')
+<li><a href='/register'>Regístrate</a></li>
+<li><a href='#about'>Qué es Knobs</a></li>
+<li><a href='#process'>Cómo funciona</a></li>
+@endsection
 @section('content')
 <div id="first-level level" class="first-level knobs">
 	<div class="container">
