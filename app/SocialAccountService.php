@@ -30,6 +30,8 @@ class SocialAccountService
             'provider_name' => $provider,
         ]);
 
+        $user->roles()->attach(3);
+
         return $user;
 
         }
