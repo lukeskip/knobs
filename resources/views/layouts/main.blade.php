@@ -35,6 +35,8 @@
 	<header>
 		<div id='cssmenu' >
 			<ul>
+				@yield('menu-items-first')
+				
 				<!-- STARTS: MENU FOR ADMIN -->
 				@if(get_role() == 'admin')
 
@@ -77,9 +79,9 @@
 				@endif
 				<!-- ENDS: MENU FOR ADMIN -->
 
-				@yield('menu-items')
+				@yield('menu-items-last')
 
-				@if(Auth::guest())
+				@if(!Auth::guest())
 					<li><a href='/logout'>Salir</a></li>
 				@endif
 			</ul>

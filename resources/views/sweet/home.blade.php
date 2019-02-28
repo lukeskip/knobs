@@ -1,5 +1,5 @@
 @extends('layouts.main',['body_class' => 'landing fixed'])
-@section('menu-items')
+@section('menu-items-first')
 <li><a href='/register'>Regístrate</a></li>
 <li><a href='#about'>Qué es Knobs</a></li>
 <li><a href='#process'>Cómo funciona</a></li>
