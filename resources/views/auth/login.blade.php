@@ -63,7 +63,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6">
-                                <a href="/login/facebook" type="submit" class="btn btn-primary btn-lg btn-block facebook">
+                                <a href="/login/facebook" class="btn btn-primary btn-lg btn-block facebook">
                                     Entrar con facebook
                                 </a >
                             </div>
