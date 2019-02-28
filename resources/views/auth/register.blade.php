@@ -77,8 +77,6 @@
                                 </a >
                             </div>
                         </div>
-
-                        <input type="hidden" name="role" value="{{$role}}">
                     </form>
                 </div>
             </div>

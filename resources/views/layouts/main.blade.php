@@ -36,7 +36,7 @@
 		<div id='cssmenu' >
 			<ul>
 				@yield('menu-items-first')
-				
+
 				<!-- STARTS: MENU FOR ADMIN -->
 				@if(get_role() == 'admin')
 
@@ -72,7 +72,6 @@
 				<!-- STARTS: MENU FOR MUSICIAN -->
 				@if(get_role() == 'musician')
 						
-					<li><a href='/profile'>Mi Perfil</a></li>
 					<li><a href='/profile'>Registrar Canción</a></li>
 					<li><a href='/songs'>Mis canciones</a></li>
 					
