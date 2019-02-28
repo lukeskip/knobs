@@ -31,77 +31,64 @@
 		</div>
 	</div>
 
-	<!-- STARTS: MENU FOR ADMIN -->
-	@if(get_role() == 'admin')
+	<!-- STARTS: MENU  -->
 	<header>
 		<div id='cssmenu' >
 			<ul>
-			   <li><a href='/'><i class="fas fa-user"></i> {{get_role(true)}}</a></li>
-			   <li><a href='/admin/dashboard'>Dashboard</a></li>
-			   <li><a href='/admin/songs'>Canciones registradas</a></li>
-			   <li><a href='/admin/payments'>Pagos</a></li>
-			   <li><a href='/logout'>Salir</a></li>
-			   <!-- <li><a href='#'>Administradores</a></li>
-			   <li><a href='#'>Estadísticas</a></li> -->
-			</ul>
-		</div>
-		<div class="addition"></div>
-	</header>
-	@endif
-	<!-- ENDS: MENU FOR ADMIN -->
+				<!-- STARTS: MENU FOR ADMIN -->
+				@if(get_role() == 'admin')
 
-	<!-- STARTS: MENU FOR CRITIC -->
-	@if(get_role() == 'critic')
-	<header>
-		<div id='cssmenu' >
-			<ul>
-				@if(Auth::user()->profiles)
-			   	<li>
-			   		<a href='/profiles/'{{Auth::user()->profiles->id}}>
-						Perfil
-			   		</a>
-			   	</li>
-			   	@endif
-			   <li><a href='/dashboard'>Dashboard</a></li>
-			   <li><a href='/songs'>Canciones</a></li>
-			   <li><a href='/reviews'>Mis Knobs</a></li>
-			   
-			</ul>
-		</div>
-		<div class="addition"></div>
-	</header>
-	@endif
-	<!-- ENDS: MENU FOR ADMIN -->
-	
-	<!-- STARTS: MENU FOR MUSICIAN -->
-	@if(get_role() == 'musician')
-	<header>
-		<div id='cssmenu' >
-			<ul>
-			   <li><a href='/profile'>Mi Perfil</a></li>
-			   	<li><a href='/profile'>Registrar Canción</a></li>
-			   <li><a href='/songs'>Mis canciones</a></li>
-			</ul>
-		</div>
-		<div class="addition"></div>
-	</header>
-	@endif
-	<!-- ENDS: MENU FOR ADMIN -->
+					<ul>
+						<li><a href='/'><i class="fas fa-user"></i> {{get_role(true)}}</a></li>
+						<li><a href='/admin/dashboard'>Dashboard</a></li>
+						<li><a href='/admin/songs'>Canciones registradas</a></li>
+						<li><a href='/admin/payments'>Pagos</a></li>
+						<li><a href='/logout'>Salir</a></li>
+						<!-- <li><a href='#'>Administradores</a></li>
+						<li><a href='#'>Estadísticas</a></li> -->
+					</ul>
+				@endif
+				<!-- ENDS: MENU FOR ADMIN -->
 
-	<!-- STARTS: MENU FOR GUEST -->
-	@if(Auth::guest())
-	<header>
-		<div id='cssmenu' >
-			<ul>
-			   <li><a href='/register'>Regístrate</a></li>
-			   <li><a href='/songs'>Qué es Knobs</a></li>
-			   <li><a href='/profile'>Cómo funciona</a></li>
-			   
+				<!-- STARTS: MENU FOR CRITIC -->
+				@if(get_role() == 'critic')
+				
+					@if(Auth::user()->profiles)
+						<li>
+							<a href='/profiles/'{{Auth::user()->profiles->id}}>
+							Perfil
+							</a>
+						</li>
+					@endif
+					<li><a href='/dashboard'>Dashboard</a></li>
+					<li><a href='/songs'>Canciones</a></li>
+					<li><a href='/reviews'>Mis Knobs</a></li>
+						   
+				@endif
+				<!-- ENDS: MENU FOR ADMIN -->
+			
+				<!-- STARTS: MENU FOR MUSICIAN -->
+				@if(get_role() == 'musician')
+						
+					<li><a href='/profile'>Mi Perfil</a></li>
+					<li><a href='/profile'>Registrar Canción</a></li>
+					<li><a href='/songs'>Mis canciones</a></li>
+					
+				@endif
+				<!-- ENDS: MENU FOR ADMIN -->
+
+				<!-- STARTS: MENU FOR GUEST -->
+				@if(Auth::guest())
+				
+					<li><a href='/register'>Regístrate</a></li>
+					<li><a href='#about'>Qué es Knobs</a></li>
+					<li><a href='#process'>Cómo funciona</a></li>
+
+				@endif
 			</ul>
 		</div>
 		<div class="addition"></div>
 	</header>
-	@endif
 	<!-- ENDS: MENU FOR ADMIN -->
 	
 	

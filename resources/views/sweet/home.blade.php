@@ -18,7 +18,7 @@
 	
 	
 </div>
-<div class="fourth-level level">
+<div id="about" class="fourth-level level">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 columns-center">
@@ -97,13 +97,13 @@
 				<h2>Productores de todo el mundo</h2>
 				<p>Músicos de alto nivel podrán escuchar tus canciones y compartir toda la experiencia que han obtenido con los años en la industria nacional e internacional.</p>
 				<p>Podrás tener una opinión certera que te permita subir tu música a plataformas digitales con la confianza de estar ofreciendo un producto de calidad.</p>
-				<br><br><br>
+				<br>
 			</div>
 		</div>
 		
 	</div>
 </div>
-<div class="fifth-level level process">
+<div id="process" class="fifth-level level process">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 columns-center">

@@ -63,9 +63,9 @@
                                 @endif
                             </div>
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block facebook">
+                                <a href="/login/facebook" type="submit" class="btn btn-primary btn-lg btn-block facebook">
                                     Entrar con facebook
-                                </button>
+                                </a >
                             </div>
                         </div>
                     </form>
