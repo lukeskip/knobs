@@ -28,6 +28,10 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/upload/image', 'FileController@image');
 	Route::post('/upload/mp3', 'FileController@mp3');
 	Route::resource('/profiles', 'ProfileController');
+	Route::get('/logout', function () {
+    	Auth::logout();
+		return redirect('/');
+	});
 });
 
 
@@ -50,10 +54,7 @@ Route::group(['middleware' => ['auth','check_profile']], function () {
 	//Payment Oxxo Post
 	Route::post('/oxxo', 'PaymentController@CreatePayOxxo'); 
 
-	Route::get('/logout', function () {
-    	Auth::logout();
-		return redirect('/');
-	});
+	
 });
 // ENDS: ROUTES FOR LOGGED USERS
 
