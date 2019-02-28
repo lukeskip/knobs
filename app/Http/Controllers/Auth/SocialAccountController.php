@@ -22,7 +22,7 @@ class SocialAccountController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback(\App\SocialAccountsService $accountService, $provider)
+    public function handleProviderCallback(\App\SocialAccountService $accountService, $provider)
     {
 
         try {
