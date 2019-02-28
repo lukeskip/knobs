@@ -69,12 +69,14 @@ class ReviewController extends Controller
             }else if($key == 'song_id'){
                 $song = Song::find($field);
             }else{
-            
-                $category           = Category::where('slug',$key)->first();
-                $score              = new Score;
-                $score->score       = $field;
-                $category->scores()->save($score);
-                $scores_ids[]= $score->id;  
+                if($fields['status'] == 'draft' || ($fields['status']!= 'draft' && $field != '')){
+                    $category           = Category::where('slug',$key)->first();
+                    $score              = new Score;
+                    $score->score       = $field;
+                    $category->scores()->save($score);
+                    $scores_ids[]= $score->id;  
+                }
+                  
             }
             
         }

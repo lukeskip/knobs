@@ -148,12 +148,12 @@
 				@endforeach
 			},
 			highlight:function(element){
-				console.log($(element).parent().parent().find('.error_light'));
+				
 				$(element).parent().parent().find('.error_light').addClass('active');
 				$(element).addClass('error');
 			},
 			unhighlight:function(element){
-				$(element).parent().parent().find('.error_light').removeClass('error');
+				$(element).parent().parent().find('.error_light').removeClass('active');
 				$(element).removeClass('error');
 			},
 			invalidHandler: function(form, validator) {

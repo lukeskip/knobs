@@ -1,5 +1,11 @@
 $(document).ready(function (){
 
+	$("body").on('click', '.switch', function(e) {
+		e.preventDefault();
+		$(this).toggleClass('active');
+		$(this).parent().toggleClass('active');
+	});
+
 	// STARTS: TOOLTIPS
 		
 	$('.hastooltip').hover(function(){

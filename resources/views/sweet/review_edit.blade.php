@@ -183,11 +183,12 @@
 				@endforeach
 			},
 			highlight:function(element){
-				$(element).parent().parent().find('.error_light').addClass('active');
-				$(element).addClass('error');
+				// $(element).parent().parent().find('.error_light').addClass('active');
+				// $(element).addClass('error');
+				alert("hola");
 			},
 			unhighlight:function(element){
-				$(element).parent().parent().find('.error_light').removeClass('error');
+				$(element).parent().parent().find('.error_light').removeClass('active');
 				$(element).removeClass('error');
 			},
 			invalidHandler: function(form, validator) {
@@ -204,11 +205,7 @@
 				
 			}
 		});
-		$("body").on('click', '.submit', function(e) {
-			e.preventDefault();
-    		$('form').submit();
-		});
-
+		
 
 		$("body").on('click', '.publish', function(e) {
 			e.preventDefault();

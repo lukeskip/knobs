@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('sweet.home');
+	$price = App\Option::where('slug','price')->first()->value;
+    return view('sweet.home')->with('price',$price);
 });
 
 Auth::routes();

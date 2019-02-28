@@ -143,9 +143,6 @@
     		
 		});
 
-		$("body").on('click', '.switch', function(e) {
-			e.preventDefault();
-		});
 
 		function register(){
 			conection('POST', $('#fields').serialize(),'/songs',true).then(function(data){

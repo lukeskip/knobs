@@ -33,9 +33,9 @@ $(document).ready(function (){
 			$(this).parent().find('.score').html(event.value);
 			$(this).parent().find('input').val(event.value);
 			if(event.value > 0){
-				$(this).parent().find('.error_light').removeClass('error');	
+				$(this).parent().find('.error_light').removeClass('active');	
 			}else{
-				$(this).parent().find('.error_light').addClass('error');
+				$(this).parent().find('.error_light').addClass('active');
 			}
 			
 	});

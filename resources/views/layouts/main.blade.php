@@ -72,7 +72,8 @@
 	</header>
 	@endif
 	<!-- ENDS: MENU FOR ADMIN -->
-
+	
+	<!-- STARTS: MENU FOR MUSICIAN -->
 	@if(get_role() == 'musician')
 	<header>
 		<div id='cssmenu' >
@@ -86,13 +87,36 @@
 	</header>
 	@endif
 	<!-- ENDS: MENU FOR ADMIN -->
+
+	<!-- STARTS: MENU FOR GUEST -->
+	@if(Auth::guest())
+	<header>
+		<div id='cssmenu' >
+			<ul>
+			   <li><a href='/register'>Regístrate</a></li>
+			   <li><a href='/songs'>Qué es Knobs</a></li>
+			   <li><a href='/profile'>Cómo funciona</a></li>
+			   
+			</ul>
+		</div>
+		<div class="addition"></div>
+	</header>
+	@endif
+	<!-- ENDS: MENU FOR ADMIN -->
 	
 	
 		
 	@yield('content')
 		
 	
-	
+	<footer>
+		<div class="row">
+			<div class="col-md-12">
+				Todos los derechos reservados, 2018. Idea Creativa y Desarrollado por Malechor Lab.
+			</div>
+		</div>
+		
+	</footer>
 
 	<script src="{{asset('/js/jquery-3.3.1.min.js')}}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>

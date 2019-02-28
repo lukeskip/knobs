@@ -7,14 +7,20 @@
             <div class="card">
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h1>Regístrate</h1>
+                        </div>
+                    </div>
+                    <form method="POST" action="{{ route('register') }}" class="dark">
                         @csrf
 
                         <div class="form-group row">
                             
-                            <label for="name" class="col-md-12">Nombre</label>
+                            
 
                             <div class="col-md-12">
+                                <label for="name">Nombre</label>
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -23,12 +29,9 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-12">Email</label>
-
+                        
                             <div class="col-md-12">
+                                <label for="email">Email</label>
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -40,9 +43,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-12">Contraseña</label>
+                            
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                <label for="password">Contraseña</label>
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -51,12 +55,11 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                       
+                            
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-12">Confirmar contraseña</label>
-
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                <label for="password-confirm">Confirmar contraseña</label>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>

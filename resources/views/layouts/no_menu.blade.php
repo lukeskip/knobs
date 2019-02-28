@@ -22,7 +22,7 @@
 	<meta property="og:image" content="{{asset('img/facebook_ok.png')}}" />
 
 </head>
-<body class="fixed {{ !empty($body_class) ? $body_class : '' }}">
+<body class="{{ !empty($body_class) ? $body_class : '' }}">
 	@yield('logo')
 	<div class="loader">
 		<img src="{{asset('img/loader.svg')}}" alt="">

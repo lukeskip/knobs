@@ -1,9 +1,50 @@
 @import url('https://fonts.googleapis.com/css?family=Caveat|Staatliches');
+
+/******************************************
+STARTS:VALORES GENERALES
+COLOR PRINCIPAL: #A1961D;
+COLOR PRINCIPAL DARK: #736B15;
+COLOR SECUNDARIO: #0c0c0c;
+font-family: 'Staatliches', cursive;
+font-family: 'Caveat', cursive;
+ENDS:VALORES GENERALES
+******************************************/
+
+
 /******************************************
 STARTS:GENERALES
 ******************************************/
-html,body{
-	min-height: 100%;
+* { padding: 0; margin: 0; }
+html, body{
+	overflow-x: hidden;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: gray;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: none!important; 
+}
+html, body, .full {
+    min-height: 100% !important;
+    height: 100%;
+
+}
+
+body p{
+	font-size: 1.2em;
+}
+
+.columns-center{
+	margin: auto;
 }
 
 audio{
@@ -30,6 +71,10 @@ audio{
 	margin-top: 10px;
 }
 
+.box.no-border{
+	border:0;
+}
+
 .hidden{
 	display: none!important;
 }
@@ -42,6 +87,8 @@ audio{
 }
 
 
+::selection { background: transparent; } ::-moz-selection { background: transparent; }
+
 /******************************************
 ENDS:GENERALES
 ******************************************/
@@ -49,16 +96,90 @@ ENDS:GENERALES
 /******************************************
 STARTS:LANDING
 ******************************************/
-.landing .first_level{
-	min-height: 500px;
-	background: url(../img/landing_1.jpg)top center;
-	background-size:cover; 
+.landing .level{
+	min-height: 300px;
+}
+.landing .first-level{
+	/*background-image: url(https://cdnjs.cloudflare.com/ajax/libs/vegas/2.3.1/overlays/03.png);*/
+	background-image: url(../img/landing_back_2.jpg);
+	background-size: cover;
+	background-position: top center;
 	text-align: center;
+	position: relative;
+	background-attachment: fixed;
+	font-size: 2em;
+	padding: 40px;
+	min-height: 500px;
 }
 
-.landing .first_level h1{
-	color:white;
+.landing .first-level h1{
+	font-size: 2em;
+	color:#A1961D;
 }
+
+
+.landing .second-level{
+	/*background-image: url(https://cdnjs.cloudflare.com/ajax/libs/vegas/2.3.1/overlays/03.png);*/
+	background-image: url(../img/back_3.jpg);
+	background-size: cover;
+	background-position: top center;
+	box-shadow: 0px -9px 55px 2px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0px -9px 55px 2px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px -9px 55px 2px rgba(0,0,0,0.75);
+	padding: 50px 0;
+}
+
+@media only screen and (max-width: 768px) {
+	.landing .second-level{
+		background-image: url(../img/back_3_rot.jpg);
+	}
+}
+
+.landing .third-level{
+	background: url(../img/landing_back_1.jpg);
+	background-attachment: fixed;
+	padding: 40px 0;
+	
+}
+
+.landing .fourth-level{
+	background-color: #0c0c0c;
+	overflow: hidden;
+	
+}
+
+.landing .fourth-level .image{
+	
+	max-width: 600px;
+	min-width: 350px;
+	margin:auto;
+	margin-bottom: -150px;
+	
+}
+
+.landing .fourth-level .image img{
+	width: 100%;	
+}
+
+.landing .fourth-level{
+	background: #0c0c0c;
+	
+}
+
+.landing .process{
+	background:url('../img/back_prices.jpg');
+	background-position: bottom center;
+	padding: 40px 0;
+	
+}
+
+.landing .process-list{
+	font-size: 1.8em;
+	margin-left: 20px;
+
+}
+
+
 
 /******************************************
 ENDS:LANDING
@@ -159,6 +280,7 @@ label.error{
 
 .card{
 	border:0;
+	background: rgba(0,0,0,.8);
 }
 
 .card .card-body{
@@ -170,10 +292,20 @@ label.error{
 	margin: 10px;
 }
 
-.card form.dark .form-control{
+.card form.dark .form-control, .card form.dark input:-internal-autofill-selected{
 	margin-bottom: 5px;
-	background: #eee;
+	background: none!important;
+	background-color: none!important;
 }
+
+.card form.dark .form-check{
+	line-height: 10px;
+}
+
+.card form.dark label{
+	color:white;
+}
+
 
 .hastooltip{
 	cursor:pointer!important;
@@ -212,10 +344,6 @@ body.error_404{
 
 .login label{
 	color:black;
-}
-
-body p{
-	font-size: 1.1em;
 }
 
 body.song-create{
@@ -729,23 +857,38 @@ form.dark label.title{
 
 .switch_wrapper{
 	position: relative;
-	padding: 40px;
-	background: rgba(0,0,0,.6);
 }
 
-.switch_wrapper div{
+.switch_wrapper.full{
+	height: 100%;
+}
+
+.switch_wrapper div.side{
 	min-height: 50px;
+	background: rgba(0,0,0,.5);
 }
 
-.switch_wrapper div.side:first-child{
+.switch_wrapper div.side.right{
 	padding-right: 80px;
+	height: 100%;
+	
 }
 
-.switch_wrapper div.side:nth-child(2){
+.switch_wrapper.active div.side.right{
+	opacity: 0;
+}
+
+.switch_wrapper div.side.left{
 	padding-left: 80px;
+	height: 100%;
+	opacity: 0;
 }
 
-.switch_wrapper .switch{
+.switch_wrapper.active div.side.left{
+	opacity: 1
+}
+
+.switch_wrapper .switch,.switch.vertical-alig{
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -766,9 +909,11 @@ form.dark label.title{
 	z-index: -1;
 }
 
+
+
 @media only screen and (max-width: 768px) {
 	
-	.switch_wrapper .switch{
+	.switch{
 		background-image: url('../img/switch_mobile.png');
 		background-position: center top;
 		background-size:  116px auto ;
@@ -1022,6 +1167,21 @@ STARTS:ADMIN-COMMENT
 }
 /******************************************
 ENDS:ADMIN-COMMENT
+******************************************/
+
+
+/******************************************
+STARTS:FOOTER
+******************************************/
+footer{
+	background: #A1961D;
+	color: #0c0c0c;
+	padding: 10px;
+	text-align: center;
+	font-family: 'Staatliches', cursive;
+}
+/******************************************
+ENDS:FOOTER
 ******************************************/
 
 
