@@ -89,7 +89,13 @@ class ReviewController extends Controller
 			'review_id' => $review->id,
 		]);
 
-		return response()->json(['message'=>'hola','success'=>true,'redirect'=>'/reviews'], 200); 
+		if(get_role() == 'critic'){
+			$redirect = '/reviews';
+		}else{
+			$redirect = '/admin/dashboard';
+		}
+
+		return response()->json(['message'=>'hola','success'=>true,'redirect'=>$redirect], 200); 
 	}
 
 	/**
