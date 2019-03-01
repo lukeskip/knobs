@@ -93,7 +93,6 @@
 		<div class="row">
 			@if($review->users->profiles)
 			<div class="col-md-8">
-				<h2>Acerca de este crítico</h2>
 				<div class="picture" style="background-image: url({{asset('storage/profile_images/'.$review->users->profiles->picture)}})"></div>
 				<div class="name">
 					{{$review->users->profiles->name}}
