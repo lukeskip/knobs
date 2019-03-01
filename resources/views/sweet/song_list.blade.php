@@ -84,13 +84,15 @@
 				@else
 					@if(get_role() != 'musician' )
 						<li class="list-group-item clearfix song-item">
+							<span class="title">
 								No hay canciones registradas
+							</span>
 						</li>
 					@else
 						<li class="list-group-item clearfix song-item">
-							<span class="title">
-								<a href="/songs/create" class="btn btn-success btn-lg">Registra tu primera canción</a>
-							</span>
+							
+							<a href="/songs/create" class="btn btn-success btn-lg">Registra tu primera canción</a>
+							
 						</li>
 					@endif
 				@endif
