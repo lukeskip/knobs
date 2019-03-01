@@ -101,7 +101,7 @@ class ReviewController extends Controller
 	public function show(Review $review)
 	{
 		
-		if(!Auth::guest() || !isset($_GET['token'])){
+		if(!Auth::guest() || !isset($_GET['token']) || $review->status == 'draft'){
 			$user = Auth::user();
 			if(get_role() != 'admin' && ($user->id != $review->user_id && $user->id != $review->songs->users->id) && !isset($_GET['token'])){
 				return abort(403, 'Unauthorized action.');
