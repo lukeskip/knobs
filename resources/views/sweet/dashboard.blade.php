@@ -72,7 +72,7 @@
 									{{$review->songs->title}}
 								</span>
 								<span class="author">
-									${{$reviews->users->name}}
+									${{$review->users->name}}
 								</span>
 							</div>
 							<div class="col-sm-4 text-right">
