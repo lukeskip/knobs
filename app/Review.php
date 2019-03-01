@@ -40,4 +40,9 @@ class Review extends Model
 	{
 		return $this->hasMany('App\AdminComment');
 	}
+
+	public function guests()
+	{
+		return $this->hasOne('App\Guest');
+	}
 }

@@ -38,14 +38,30 @@ class DatabaseSeeder extends Seeder
 
 		]);
 
-		$role = Role::where('name','admin')->first();
+		$role_admin		= Role::where('name','admin')->first();
+		$role_critic 	= Role::where('name','critic')->first();
+		$role_musician 	= Role::where('name','musician')->first();
 
 		$user = new User;
 		$user->name = 'Sergio';
 		$user->email = 'contacto@chekogarcia.com.mx';
+		$user->password = bcrypt('Futurama84!');
+		$user->save();
+		$user->roles()->attach($role_admin->id);
+
+		$user = new User;
+		$user->name = 'Carlos';
+		$user->email = 'critico@correo.com';
 		$user->password = bcrypt('willy188');
 		$user->save();
-		$user->roles()->attach($role->id);
+		$user->roles()->attach($role_critic->id);
+
+		$user = new User;
+		$user->name = 'Perengano';
+		$user->email = 'musico@correo.com';
+		$user->password = bcrypt('willy188');
+		$user->save();
+		$user->roles()->attach($role_musician->id);
 
 		$song               = new Song;
         $song->title        = 'Entre Sueños';
@@ -90,7 +106,7 @@ class DatabaseSeeder extends Seeder
 		$option->label = 'Precio por Knob';
 		$option->slug = 'price';
 		$option->description = 'Es el precio por cada knob que se le cobra al usuario';
-		$option->value = '200';
+		$option->value = '220';
 		$option->save();
 
 		// Creamos el option paypal_mail
@@ -123,6 +139,15 @@ class DatabaseSeeder extends Seeder
 
 		$option->save();
 
+
+		// Creamos el option paypal_action
+		$option = new Option;
+		$option->type = 'text';
+		$option->label = 'Tiempo de caducidad Oxxo';
+		$option->slug = 'oxxo_expiration';
+		$option->description = 'Tiempo en el que expira el pago de conekta';
+		$option->value = '24';
+		$option->save();
 
         DB::table('categories')->insert([
 

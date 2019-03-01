@@ -177,7 +177,7 @@ input::placeholder { color: #eeeeee}
 }
 
 .content{
-	min-height: 700px;
+	min-height: 95%;
 }
 
 /******************************************
@@ -279,6 +279,7 @@ ENDS:LANDING
 .review textarea.error,.error{
 	border:2px solid red;
 }
+
 
 .critic-profile{
 	padding: 80px 0;
@@ -606,8 +607,9 @@ form.dark textarea.form-control{
 	font-size: 18px;
 }
 
-/*REVIEWS*/
-
+/******************************************
+STARTS:REVIEW
+******************************************/
 
 
 .review .form-items{
@@ -666,18 +668,45 @@ form.dark textarea.form-control{
 	margin-top: 40px;
 }
 
+
+a.share{
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	position: fixed;
+	top: 100px;
+	right:0;
+	border-radius: 5px 0 0 5px;
+	background: #A1961D;
+	text-align: center;
+	padding-right: 10px;
+	color:white;
+}
+
+#publicLink .link{
+	height: 50px;
+	line-height: 50px;
+	background: black;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+/******************************************
+ENDS:REVIEW
+******************************************/
+
 /******************************************
 STARTS:ANALOG INTERFACE
 ******************************************/
 
-.review .knobs{
+.knobs{
 	background:url('../img/back_3.jpg');
 	/*background: #0e0e0d;*/
 	/*background-attachment: fixed;*/
 	padding: 40px 0;
 }
 
-.review .knobs h2{
+.knobs h2{
 	color:white;
 }
 

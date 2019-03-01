@@ -104,7 +104,7 @@
 	<footer>
 		<div class="row">
 			<div class="col-md-12">
-				Todos los derechos reservados, 2018. Idea Creativa y Desarrollo por Malechor Lab.
+				Todos los derechos reservados, 2018. Idea Creativa, Diseño y Desarrollo por Malechor Lab.
 			</div>
 		</div>
 		
@@ -118,6 +118,7 @@
 	<script src="{{asset('/plugins/swal/sweetalert2.all.min.js')}}"></script>
 	<script src="{{asset('/plugins/jquery_ui/jquery-ui.min.js')}}"></script>
 	<script src="{{asset('/plugins/round_slider/roundslider.min.js')}}"></script>
+	<script src="{{asset('/plugins/copytoclipboard/clipboard.min.js')}}"></script>
 	<script async src="https://www.youtube.com/iframe_api"></script>
 	<script src="{{asset('plugins/videoback/src/jquery.youtubebackground.js')}}"></script>
 

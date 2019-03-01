@@ -42,11 +42,12 @@
 						</div>
 					</li>
 				</ul>
+
 				@if($payment->method == 'oxxo' && $payment->status == 'pending')
 				<div class="row">
 					
 					<div class="col-md-12">
-						
+						@if(!$expired)
 						<div class="alert alert-light" role="alert">
 							<h3>Tu código de OxxoPay es</h3>
 							<div class="order_id">
@@ -55,8 +56,21 @@
 							<div class="instructions">
 								Acude a tu tienda oxxo más cercana, pide un pago OxxoPay y proporciona este número.
 							</div>
+							<div class="clarification">
+								Esta orden de pago vence {{$expiration}}, si expira tendrás que generar otra.
+							</div>
 
 						</div>
+						@else
+						<div class="alert alert-light" role="alert">
+							<h3>Tu código de OxxoPay expiró</h3>
+							
+							<div class="instructions">
+								Genera una nueva dando click en "Pagar en Oxxo" o cambia la forma de pago a Paypal.
+							</div>
+							
+						</div>
+						@endif
 						
 					
 					</div>
@@ -91,7 +105,7 @@
 										<input type='hidden' name='amount' value='{{$options->where("slug","price")->first()->value}}'>
 										<input type='hidden' name='currency_code' value='MXN'>
 
-										<input type="hidden" name="order_id" value="{{$payment->order_id">
+										<input type="hidden" name="order_id" value="{{$payment->order_id}}">
 										
 										<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx/payments/{{$payment->order_id}}">
 										<input type="hidden" name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal?p={{$payment->order_id}}">

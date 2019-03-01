@@ -5,6 +5,11 @@
 
 	<!-- <img src="{{asset('img/logo_rey.png')}}" alt="" class="logo d-lg-block" width="150"> -->
 	<div class="song-profile {{$review->songs->genre}}">
+		@if(get_role() == 'musician')
+			<a href="#" data-toggle="modal" data-target="#publicLink" class="share hastooltip left" title="Compartir este Knob">
+				<i class="fas fa-share-alt"></i>
+			</a>
+		@endif
 		<div class="container ">
 			<div class="row ">
 				<div class="col-md-8">
@@ -83,8 +88,10 @@
 
 			</div>
 	</div>
+	@if($review->users)
 	<div class="container critic-profile">
 		<div class="row">
+			@if($review->users->profiles)
 			<div class="col-md-8">
 				<div class="picture" style="background-image: url({{asset('profile_images/'.$review->users->profiles->picture)}})"></div>
 				<div class="name">
@@ -97,6 +104,7 @@
 					{{$review->users->profiles->summary}}
 				</div>
 			</div>
+			@endif
 			<div class="col-md-4">
 				<h3 class="text-center">Califica este knob</h3>
 				<form id="rating" action="">
@@ -113,6 +121,7 @@
 			</div>
 		</div>
 	</div>
+	@endif
 	<div class="comments">
 		<div class="container">
 			<div class="row">
@@ -145,6 +154,28 @@
 		</div>
 	</div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="publicLink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     
+      <div class="modal-body">
+      	<form id="form_link" action="">
+      		<input type="hidden" name="review_id" value="{{$review->id}}">
+	      	<div id="link" class="link" data-clipboard-target="#link">
+	      		
+	      	</div>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button class="btn btn-success" type="submit">
+	        	Generar Link Público
+	        </button>
+        </form>
+      </div>
+    
+    </div>
+  </div>
+</div>
 
 @endsection
 <!-- ENDS: CONTENT -->
@@ -193,6 +224,29 @@
 		
 		});
 	});
+
+	$(document).on('submit','#form_link',function(e){
+		e.preventDefault();
+		conection('POST', $(this).serialize(),'/guests',true).then(function(data){
+			if(data.success == 1){
+				
+				$('#publicLink .link').html('{{url()->current()}}?token='+data.token);
+
+			}else{
+				show_message('error','Error!',data.message);
+			}
+		
+		});
+	});
+
+	var clipboard = new ClipboardJS('.link');
+	clipboard.on('success', function(e) {
+	    show_message('success','Listo!','El link ha sido copiado a tu portapapales, ahora compártelo con quien quieras',false);
+
+    	e.clearSelection();
+	});
+
+	
 	
 </script>
 @endsection

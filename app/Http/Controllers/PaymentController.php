@@ -26,7 +26,9 @@ class PaymentController extends Controller
 		$options     = Option::all(); 
 		$song_id     = $request->song_id;
 		$price_knob  = $options->where('slug','price')->first()->value;
-		$now         = Date::now()->add('12 day');
+		$oxxo_expiration  = $options->where('slug','oxxo_expiration')->first()->value;
+		$now         = Date::now()->add($oxxo_expiration.' hours');
+		
 		$expire      = strtotime($now);
 		$user 		 = Auth::user();
 		$user_id     = $user->id;   
@@ -103,7 +105,9 @@ class PaymentController extends Controller
 			$pE = $order->charges[0]->payment_method->expires_at;
 			// $rsp = array("id"=>$pI,"method"=>$pM,"reference"=>$pR,"status"=>$pS,'price'=>$price);
 
-			if(!isset($_GET['p'])){
+			$song = Song::find($song_id);
+		
+			if(!$song->payments){
 				$payment                    = new Payment;
 				$payment->order_id          = $pI;
 				$payment->amount            = $pA;
@@ -118,7 +122,7 @@ class PaymentController extends Controller
 				$payment->save();
 				
 			}else{
-				$payment                    = Payment::where('order_id',$_GET['p'])->first();
+				$payment                    = Payment::where('order_id',$song->payments->order_id)->first();
 				$payment->order_id          = $pI;
 				$payment->amount            = $pA;
 				$payment->total             = $pT;
@@ -202,9 +206,10 @@ class PaymentController extends Controller
 		$item_number = explode('-',$_POST['item_number']);
 
 		if($status == 'completed' || $status == 'pending' || $status == 'processed'){
-			$payment = Payment::where('order_id',$order_id)->first();
-			if($payment->count() > 0){
-				$payment->update(['status' => $status]);
+						
+			$song = Song::find($item_number[0]);
+			if($song->payments){
+				$payment->update(['status' => $status, 'order_id' => $_POST['txn_id']]);
 				return response()->json(['success' => true,'message'=>'Pago fue actualizado exitosamente ']);
 			}else{
 				$payment                    = new Payment;
@@ -226,21 +231,18 @@ class PaymentController extends Controller
 			return response()->json(['success' => false,'message'=>'El cargo fue '.$status]);
 		}
 
-
-
-	    	
-			     
+	     
 			
 	}
 
 		
-		//Manejo de respuestas
-		private function Response($success,$result)
-		{
-				if($success==0){ $result=$result->getMessage(); } 
-				$out = array("type"=>$success,"data"=>$result);
-				return view('sweet.testResponse')->with('response',$out); 
-		}
+	//Manejo de respuestas
+	private function Response($success,$result)
+	{
+			if($success==0){ $result=$result->getMessage(); } 
+			$out = array("type"=>$success,"data"=>$result);
+			return view('sweet.testResponse')->with('response',$out); 
+	}
 
 
 	/**
@@ -279,6 +281,10 @@ class PaymentController extends Controller
 	{	
 		$user_id = Auth::user()->id;
 		$options = Option::all();
+
+		if($song->payments){
+			return redirect('/payments/'.$song->payments->order_id);
+		}
 		return view('sweet.payment_create')->with('song',$song)->with('user_id',$user_id)->with('options',$options);
 	}
 
@@ -303,14 +309,26 @@ class PaymentController extends Controller
 	{	
 		$payment = Payment::where('order_id',$order_id)->first();
 		$user = Auth::user();
-  //       if(get_role() != 'admin' && $user->id != $payment->user_id){
-  //           return abort(403, 'Unauthorized action.');
-  //       }
+        if(get_role() != 'admin' && $user->id != $payment->user_id){
+            return abort(403, 'Unauthorized action.');
+        }
 	
 
 		$options = Option::all();
 		$user_id = $user->id;
 		$payment['finish'] = false;
+		$expiration = Date::createFromTimestamp($payment->expires_at);
+		$expired    =  false;
+
+		
+		$now 		= Date::now();
+
+		if($expiration < $now){
+			$expired    =  true;
+		}
+
+		$expiration = $expiration->diffForHumans();
+		
 
 		if($payment->status == 'paid' || $payment->status == 'processed' || $payment->status == 'complete'){
 			$title = 'Tu pago fue recibido correctamente';
@@ -321,7 +339,7 @@ class PaymentController extends Controller
 			$title = 'Tu pago falló, intenta con otra forma de pago';
 		}
 
-		return view('sweet.payment_show')->with('payment',$payment)->with('options', $options)->with('user_id',$user_id)->with('title',$title);
+		return view('sweet.payment_show',compact('payment','options','user_id','title','expiration','expired'));
 	}
 
 	/**

@@ -23,7 +23,12 @@ $(document).ready(function (){
 			$(this).attr('title', $(this).data('tipText'));
 			$('.tooltip').remove();
 	}).mousemove(function(e) {
-			var mousex = e.pageX + 20; //Get X coordinates
+			if($(this).hasClass('left')){
+				var mousex = e.pageX - 80; //Get X coordinates
+			}else{
+				var mousex = e.pageX + 20; //Get X coordinates
+			}
+			
 			var mousey = e.pageY + 10; //Get Y coordinates
 			$('.tooltip')
 			.css({ top: mousey, left: mousex })
@@ -34,6 +39,7 @@ $(document).ready(function (){
 
 	// $('.loader').fadeOut('fast');
 });
+
 
 // Pool de conexiones
 function conection (method,fields,link,handle = false){

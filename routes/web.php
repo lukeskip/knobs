@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('sweet.home')->with('price',$price);
 });
 
-
+Route::get('/reviews/{review}', 'ReviewController@show');
 
 // STARTS:ROUTE HOOK PAYMENTS CONFIRMATION
 Route::post('/confirmed_oxxo','PaymentController@confirmation')->name('conekta_webhook');
@@ -62,11 +62,8 @@ Route::group(['middleware' => ['auth','check_profile']], function () {
 	Route::resource('/payments', 'PaymentController')->except(['index']);
 	Route::resource('/comments', 'CommentController');
 	Route::resource('/ratings', 'RatingController');
+	Route::resource('/guests', 'GuestController');
 	
-
-	 
-
-	Route::get('/reviews/{review}', 'ReviewController@show');
 
 	//Payment Oxxo Post
 	Route::post('/oxxo', 'PaymentController@CreatePayOxxo'); 
