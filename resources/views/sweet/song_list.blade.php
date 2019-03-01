@@ -82,7 +82,7 @@
 					</li>
 				  @endforeach
 				@else
-					@if(get_role != 'musician' )
+					@if(get_role() != 'musician' )
 						<li class="list-group-item clearfix song-item">
 							<span class="title">
 								No hay canciones registradas
