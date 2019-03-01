@@ -30,7 +30,9 @@ class DashboardController extends Controller
 
         $songs = Song::whereBetween('created_at',[$last_week,$today])->where('status','paid')->doesnthave('reviews')->get();
 
-    	return view('sweet.dashboard',compact('payments','total','songs'));
+        $reviews = Review::where('status','revision')->get();
+
+    	return view('sweet.dashboard',compact('payments','total','songs','reviews'));
 
     }
 

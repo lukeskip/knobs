@@ -57,6 +57,46 @@
 
 	<div class="row">
 		<div class="col-md-12">
+			<h2>CCríticas esperando Autorización</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="list-group">
+				@if($reviews)
+					@foreach($reviews as $review)
+					<li class="list-group-item clearfix song-item">
+						<div class="row">
+							<div class="col-sm-8">
+								<span class="song-name title">
+									{{$review->songs->title}}
+								</span>
+								<span class="author">
+									${{$reviews->users->name}}
+								</span>
+							</div>
+							<div class="col-sm-4 text-right">
+								<a href="/reviews/{{$reviews->id}}" class="btn btn-success hastooltip" title="Revisar y editar">
+									<i class="fas fa-edit"></i>
+								</a>
+					  		</div>
+						</div>
+					</li>
+				  @endforeach
+				@else
+					<li class="list-group-item clearfix song-item text-center">
+						<span class="title">
+							No hay canciones registradas
+						</span>
+					</li>
+				@endif
+			  
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
 			<h2>Canciones Pagadas esperando crítica</h2>
 		</div>
 	</div>
