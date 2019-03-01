@@ -63,7 +63,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="list-group">
-				@if($reviews)
+				@if($reviews->count > 0)
 					@foreach($reviews as $review)
 					<li class="list-group-item clearfix song-item">
 						<div class="row">
@@ -86,7 +86,7 @@
 				@else
 					<li class="list-group-item clearfix song-item text-center">
 						<span class="title">
-							No hay canciones registradas
+							No hay críticas registradas
 						</span>
 					</li>
 				@endif
