@@ -50,6 +50,10 @@
 							<div class="col-sm-4 text-right">
 								{{$payment->created_at}}
 					  		</div>
+							<div class="col-md-12 text-right">
+								{{$payment->status}}
+							</div>
+							
 						</div>
 					</li>
 				  @endforeach

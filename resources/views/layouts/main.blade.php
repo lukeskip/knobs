@@ -46,9 +46,9 @@
 				<!-- STARTS: MENU FOR ADMIN -->
 				@if(get_role() == 'admin')
 
-					
-					<li><a href='#'><i class="fas fa-user"></i> {{get_role(true)}}</a></li>
 					<li><a href='/admin/dashboard'>Dashboard</a></li>
+					<li><a href='/admin/options'>Opciones</a></li>
+					<li><a href='/admin/users'>Usuarios</a></li>
 					<li><a href='/admin/songs'>Canciones registradas</a></li>
 					<li><a href='/admin/payments'>Pagos</a></li>
 					
@@ -94,9 +94,11 @@
 	</header>
 	<!-- ENDS: MENU FOR ADMIN -->
 	
-	
+	<div class="content">
 		
-	@yield('content')
+		@yield('content')
+
+	</div>
 		
 	
 	<footer>

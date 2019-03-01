@@ -11,12 +11,12 @@
 				@foreach($options as $option)
 
 					@if($option->type == 'text' or $option->type== 'number')
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<label>{{$option->label}} <i class="fa fa-question-circle hastooltip" title="{{$option->description}}" aria-hidden="true"></i></label>
 							<input class="input-group-field form-control" name="{{$option->slug}}" type="{{$option->type}}" value="{{$option->value}}">
 						</div>
 					@elseif ($option->type == 'select')
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<label>{{$option->label}} <i class="fa fa-question-circle hastooltip" title="{{$option->description}}" aria-hidden="true"></i></label>
 						<select class="form-control" name="{{$option->slug}}" id="">
 

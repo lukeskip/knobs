@@ -175,6 +175,10 @@ input::placeholder { color: #eeeeee}
 	border-radius: 10px;
 }
 
+.content{
+	min-height: 700px;
+}
+
 /******************************************
 ENDS:GENERALES
 ******************************************/

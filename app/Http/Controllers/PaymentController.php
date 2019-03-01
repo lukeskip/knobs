@@ -261,7 +261,7 @@ class PaymentController extends Controller
 	 */
 	public function index()
 	{
-		$payments = Payment::orderBy('created_at','ASC');
+		$payments = Payment::orderBy('status','ASC');
 		
 		if(request()->has('s')){
         	$payments->where('order_id', 'LIKE', '%' . request()->s . '%');
