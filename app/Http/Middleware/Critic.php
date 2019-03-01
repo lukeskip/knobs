@@ -21,7 +21,7 @@ class Critic
         if($role == 'critic' || $role == 'admin'){
             return $next($request);
         }else {
-            return redirect('/');
+            return redirect('/redirects');
         }
     }
 }

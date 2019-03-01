@@ -11,12 +11,14 @@
 |
 */
 
+Auth::routes();
+
+// LANDING PAGE
 Route::get('/', function () {
 	$price = App\Option::where('slug','price')->first()->value;
     return view('sweet.home')->with('price',$price);
 });
 
-Auth::routes();
 
 
 // STARTS:ROUTE HOOK PAYMENTS CONFIRMATION
@@ -28,19 +30,34 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/upload/image', 'FileController@image');
 	Route::post('/upload/mp3', 'FileController@mp3');
 	Route::resource('/profiles', 'ProfileController');
+	
+	Route::get('/dashboard', 'DashboardController@show_musician');
+	
+	// LOG OUT
 	Route::get('/logout', function () {
     	Auth::logout();
 		return redirect('/');
 	});
+
+	// REDIRECTS BY ROLES
+	Route::get('/redirects', function () {
+		if(get_role() == 'admin'){
+			return redirect('/admin/dashboard');
+		}elseif(get_role() == 'critic'){
+			return redirect('/critic/dashboard');
+		}elseif(get_role() == 'musician'){
+			return redirect('/songs');
+		}
+	});
 });
 
 
-// STARTS: ROUTES FOR LOGGED USERS
+// STARTS: ROUTES FOR LOGGED USERS AND CHECK FOR CRITICS FOR PROFILES
 Route::group(['middleware' => ['auth','check_profile']], function () {
 
-	Route::resource('/payments', 'PaymentController');
+	Route::resource('/payments', 'PaymentController')->except(['show','create']);
 	Route::get('/payments/create/{song}', 'PaymentController@create');
-	Route::get('/payments/receipt/{song}', 'PaymentController@show');
+	Route::get('/payments/{order_id}', 'PaymentController@show');
 	Route::resource('/songs', 'SongController');
 	Route::resource('/payments', 'PaymentController')->except(['index']);
 	Route::resource('/comments', 'CommentController');
@@ -82,7 +99,7 @@ Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'
 // STARTS: ROUTES JUST FOR CRITICS AND ADMIN
 Route::group(['middleware' => ['auth','critic','check_profile']],function () {
 	Route::resource('/reviews', 'ReviewController',['except' => ['show','create']]);
-	Route::get('/dashboard', 'DashboardController@show');
+	Route::get('/critic/dashboard', 'DashboardController@show_critic');
 	Route::get('/reviews/create/{song}', 'ReviewController@create');
 });
 // ENDS: ROUTES JUST FOR CRITICS AND ADMIN

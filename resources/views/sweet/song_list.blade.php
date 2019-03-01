@@ -6,13 +6,9 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Canciones Registradas</h1>
-			@if(get_role() == 'musician')
-				<a href="/songs/create" class="btn btn-success submit">
-				<i class="fas fa-plus-circle"></i>
-			Registrar Canción</a>
-			@endif
 		</div>
 	</div>
+	@if($songs->count() > 5)
 	<div class="row">
 		<div class="col-md-12">
 			<form action="" method="GET">
@@ -27,6 +23,19 @@
 			</form>
 		</div>
 	</div>
+	@endif
+	
+	@if(get_role() == 'musician')
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+	  			Una vez que el estatus de tus pagos esté completado, un productor revisará tu canción. Posteriormente un icono aparecerá a lado de tu canción para que puedas ver la opinión del productor, recuerda que el proceso puede llevar 48 hrs. Para mayor información revisa nuestros <a href="/terms">Términos y condiciones.</a>
+			</p>	
+		</div>
+	</div>
+		
+	@endif
+	
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="list-group">
@@ -46,23 +55,25 @@
 								
 								<div class="btn-group" role="group" aria-label="Basic example">
 								
-								@if($song->payments)
-									@if($song->payments->status == 'paid')
-										<a href="/payments/{{$song->payments->id}}" class="btn btn-success hastooltip" title="Estatus pagado"><i class="fas fa-check-circle  paid" ></i></a>
-									@elseif($song->payments->status == 'pending')
-										<a href="/payments/{{$song->payments->id}}" class=" hastooltip btn btn-success" title="Pago pendiente"><i class="fas fa-clock  pending" ></i></a>
-									@elseif($song->payments->status == 'expired')
-										<a href="/payments/create/{{$song->id}}" class="btn btn-success hastooltip" title="Pago expirado, da click para generar una nueva forma de pago"><i class="fas fa-times-circle expired "  ></i></a>
+									@if($song->payments)
+										@if($song->payments->status == 'paid')
+											<a href="/payments/{{$song->payments->order_id}}" class="btn btn-success hastooltip" title="Estatus pagado"><i class="fas fa-check-circle  paid" ></i></a>
+										@elseif($song->payments->status == 'pending')
+											<a href="/payments/{{$song->payments->order_id}}" class=" hastooltip btn btn-success" title="Pago pendiente"><i class="fas fa-clock  pending" ></i></a>
+										@elseif($song->payments->status == 'expired')
+											<a href="/payments/create/{{$song->id}}" class="btn btn-success hastooltip" title="Pago expirado, da click para generar una nueva forma de pago"><i class="fas fa-times-circle expired "  ></i></a>
+										@endif
+									@else
+										<a href="/payments/create/{{$song->id}}" class=" hastooltip btn btn-success" title="Pago pendiente"><i class="fas fa-clock  pending" ></i></a>
 									@endif
-								@endif
 									
 									@if(isset($song->knob))
-									<a href="{{$song->knob}}" class="btn btn-secondary hastooltip" title="Ver Knob"><img src="{{asset('img/knob_icon.png')}}" alt=""></a>
-									@endif
-									@if(get_role() == 'musician' OR get_role() == 'admin')
-									<a href="/songs/{{$song->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
-									@elseif (get_role() == 'critic')
-									<a href="/reviews/create/{{$song->id}}" class="btn btn-success hastooltip" title="Hacer una crítica"><i class="fas fa-edit"></i></a>
+										<a href="{{$song->knob}}" class="btn btn-secondary hastooltip" title="Ver Knob"><img src="{{asset('img/knob_icon.png')}}" alt=""></a>
+										@endif
+										@if(get_role() == 'musician' OR get_role() == 'admin')
+										<a href="/songs/{{$song->id}}/edit" class="btn btn-success hastooltip" title="Edita los datos de tu canción	"><i class="fas fa-edit"></i></a>
+										@elseif (get_role() == 'critic')
+										<a href="/reviews/create/{{$song->id}}" class="btn btn-success hastooltip" title="Hacer una crítica"><i class="fas fa-edit"></i></a>
 									@endif
 								</div>
 								
@@ -71,11 +82,19 @@
 					</li>
 				  @endforeach
 				@else
-					<li class="list-group-item clearfix song-item">
-						<span class="title">
-							No hay canciones registradas
-						</span>
-					</li>
+					@if(get_role != 'musician' )
+						<li class="list-group-item clearfix song-item">
+							<span class="title">
+								No hay canciones registradas
+							</span>
+						</li>
+					@else
+						<li class="list-group-item clearfix song-item">
+							<span class="title">
+								<a href="/songs/create" class="btn btn-success btn-lg">Registra tu primera canción</a>
+							</span>
+						</li>
+					@endif
 				@endif
 			  
 			</ul>

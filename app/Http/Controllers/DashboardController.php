@@ -33,4 +33,24 @@ class DashboardController extends Controller
     	return view('sweet.dashboard',compact('payments','total','songs'));
 
     }
+
+    public function show_critic(){
+        
+
+        $songs =  Song::whereHas('payments', function($query){
+              $query->where('status', 'paid')->orWhere('status', 'completed')->orWhere('status', 'processed');
+           })->doesnthave('reviews')->get();
+
+        return view('sweet.dashboard_critic',compact('songs'));
+
+    }
+
+    public function show_musician(){
+        
+        $user = Auth::user();
+        $songs =  $user->songs;
+
+        return view('sweet.dashboard_musician',compact('songs'));
+
+    }
 }

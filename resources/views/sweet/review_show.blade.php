@@ -86,9 +86,9 @@
 	<div class="container critic-profile">
 		<div class="row">
 			<div class="col-md-8">
-				<div class="picture"><img src="{{asset('profile_images/'.$review->users->profiles->picture)}}" alt=""></div>
+				<div class="picture" style="background-image: url({{asset('profile_images/'.$review->users->profiles->picture)}})"></div>
 				<div class="name">
-					{{$review->users->name}}
+					{{$review->users->profiles->name}}
 				</div>
 				<div class="expertice">
 					{{$review->users->profiles->expertice}}

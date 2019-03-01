@@ -64,7 +64,7 @@ class User extends Authenticatable
 
     public function payments()
     {
-        return $this->hasMany('App\Payment');
+        return $this->hasMany('App\Payment','user_id');
     }
 
     public function admin_comments()

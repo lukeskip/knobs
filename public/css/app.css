@@ -51,6 +51,16 @@ audio{
 	width: 100%;
 }
 
+
+a{
+	color: #A1961D;
+	
+}
+
+a:hover{
+	color: #736B15;
+}
+
 .btn{
 	color:white;
 }
@@ -88,6 +98,82 @@ audio{
 
 
 ::selection { background: transparent; } ::-moz-selection { background: transparent; }
+
+
+h1,h2,h3,h4{
+	font-family: 'Staatliches', cursive;
+	color:#A1961D;
+}
+
+
+h1{
+	margin: 40px 0;
+}
+
+h2.author{
+	font-family: 'Caveat', cursive;
+}
+
+.handwriting{
+	font-family: 'Caveat', cursive;
+}
+
+.special-font{
+	font-family: 'Staatliches', cursive;
+}
+
+.btn{
+	font-family: 'Staatliches', cursive;
+}
+
+.btn-primary{
+	background: #A1961D;
+	border-color: #A1961D
+}
+
+.btn-primary:hover{
+	background: #A1961D;
+	border-color: #A1961D
+}
+
+.btn-success{
+	background: #A1961D;
+	border-color: #A1961D;
+}
+
+.btn-success:hover{
+	background: #736B15;
+	border-color: #736B15;
+}
+
+
+.btn-success.focus, .btn-success:focus,.btn-primary.focus, .btn-primary:focus{
+	box-shadow: none;
+}
+
+button:focus {outline:0;}
+input::placeholder { color: #eeeeee}
+.loader{
+	background: rgba(0,0,0,.7);
+	width: 100%;
+	height: 100%;
+	position: fixed;;
+	top:0;
+	left: 0;
+	z-index: 9999;
+	display: none;
+}
+.loader_icon{
+	position: fixed;
+	top:50%;
+	left: 50%;
+	margin-top: -42px;
+	margin-left: -42px;
+	z-index: 999;
+	display: block;
+	background:#A1961D;
+	border-radius: 10px;
+}
 
 /******************************************
 ENDS:GENERALES
@@ -204,15 +290,23 @@ ENDS:LANDING
 	font-size: 2em;
 }
 
-.critic-profile .picture{
+.critic-profile .picture,.picture{
 	margin-bottom: 10px;
 	margin-right: 20px;
 	float: left;
+	width: 150px;
+	height: 150px;
+	background-position:center center;
+	background-size: cover;
+
+
 }
 
-.critic-profile .picture img{
-	width: 150px;
+.picture.inline{
+	display: inline-block;
+	float: none;
 }
+
 
 label.error{
 	display: none!important;
@@ -373,77 +467,6 @@ i{
 textarea:focus,input:focus,select:focus {outline:0;}
 
 
-h1,h2,h3,h4{
-	font-family: 'Staatliches', cursive;
-	color:#A1961D;
-}
-
-h1{
-	margin: 40px 0;
-}
-
-h2.author{
-	font-family: 'Caveat', cursive;
-}
-
-.handwriting{
-	font-family: 'Caveat', cursive;
-}
-
-.btn{
-	font-family: 'Staatliches', cursive;
-}
-
-.btn-primary{
-	background: #A1961D;
-	border-color: #A1961D
-}
-
-.btn-primary:hover{
-	background: #A1961D;
-	border-color: #A1961D
-}
-
-.btn-success{
-	background: #A1961D;
-	border-color: #A1961D;
-}
-
-.btn-success:hover{
-	background: #736B15;
-	border-color: #736B15;
-}
-
-
-.btn-success.focus, .btn-success:focus,.btn-primary.focus, .btn-primary:focus{
-	box-shadow: none;
-}
-
-button:focus {outline:0;}
-input::placeholder { color: #eeeeee}
-.loader{
-	background: rgba(0,0,0,.7);
-	width: 100%;
-	height: 100%;
-	position: fixed;;
-	top:0;
-	left: 0;
-	z-index: 9999;
-	display: none;
-}
-.loader_icon{
-	position: fixed;
-	top:50%;
-	left: 50%;
-	margin-top: -42px;
-	margin-left: -42px;
-	z-index: 999;
-	display: block;
-	background:#A1961D;
-	border-radius: 10px;
-}
-
-
 .owl-carousel .owl-item img{
 	width: auto;
 	display: inline;
@@ -541,7 +564,7 @@ form.dark input.error,form.dark textarea.error,form.dark select.error{
 }
 
 form.dark .form-control{
-	color:white;
+	/*color:white;*/
 	margin-bottom: 20px;
 }
 
@@ -549,6 +572,7 @@ form.dark .form-control:focus{
 	background: none;
 	border-color:#333;
 	box-shadow: none;
+	color:white;
 }
 
 form.dark textarea.form-control{
@@ -970,7 +994,7 @@ ENDS:ANALOG INTERFACE
 
 .list-group .list-group-item {
 	color:#666;
-	background: rgba(0,0,0,.10);
+	background: rgba(0,0,0,.5);
 }
 
 

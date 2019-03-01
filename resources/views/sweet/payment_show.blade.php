@@ -30,7 +30,7 @@
 						<div class="row">
 							<div class="col-sm-8">
 									<div class="detail">
-											1 Knob de un experto para {{$song->title}}
+											1 Knob de un experto para {{$payment->songs->title}}
 									</div>
 								 
 							</div>
@@ -66,7 +66,7 @@
 				@if(!$payment->finish)
 				<div class="row">
 					<div class="col-md-12 columns">
-						<div class="alert alert-primary" role="alert">
+						<div class="alert alert-light" role="alert">
   							Si deseas cambiar tu forma de pago u obtener un nuevo código para pago en oxxo da click en el botón correspondiente
 						</div>
 						
@@ -75,11 +75,11 @@
 				
 				<div class="row">	
 					<div class="col-md-6">
-						<form id="oxxo-form" action="/oxxo" method="POST">
+						<form id="oxxo-form" action="/oxxo?p={{$payment->order_id}}" method="POST">
 							{{ csrf_field() }}
 					
 							
-							<input type="hidden" name="song_id" value="{{$song->id}}">
+							<input type="hidden" name="song_id" value="{{$payment->songs->id}}">
 
 							
 							<button type="submit" class="oxxo_button btn btn-success btn-lg btn-block oxxo">Pagar en Oxxo</button>
@@ -102,10 +102,10 @@
 							<input type='hidden' name='amount' value='{{$options->where("slug","price")->first()->value}}'>
 							<input type='hidden' name='currency_code' value='MXN'>
 
-							<input type="hidden" name="item_number" value="{{$song->id}}-{{$user_id}}">
+							<input type="hidden" name="item_number" value="{{$payment->songs->id}}-{{$user_id}}">
 							
-							<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx">
-							<input type="hidden" name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal">
+							<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx/payments/{{$payment->order_id}}">
+							<input type="hidden" name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal?p={{$payment->order_id}}">
 
 							<button class="btn btn-success btn-lg btn-block paypal">Pagar con Paypal</button>
 

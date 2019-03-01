@@ -20,8 +20,9 @@ class PaymentController extends Controller
 	}
 
 	//Creando un pago mediante Oxxo.
-	public function CreatePayOxxo(Request $request)
+	public function CreatePayOxxo(Request $request )
 	{         
+
 		$options     = Option::all(); 
 		$song_id     = $request->song_id;
 		$price_knob  = $options->where('slug','price')->first()->value;
@@ -102,22 +103,42 @@ class PaymentController extends Controller
 			$pE = $order->charges[0]->payment_method->expires_at;
 			// $rsp = array("id"=>$pI,"method"=>$pM,"reference"=>$pR,"status"=>$pS,'price'=>$price);
 
-			$payment                    = new Payment;
-			$payment->order_id          = $pI;
-			$payment->amount            = $pA;
-			$payment->total             = $pT;
-			$payment->method            = $pM;
-			$payment->status            = $pS;
-			$payment->reference         = $pR;
-			$payment->expires_at        = $pE;
-			$payment->status            = 'pending';
-			$payment->song_id           = $song_id;
-			$payment->user_id           = $user_id;
-			$payment->save();
+			if(!isset($_GET['p'])){
+				$payment                    = new Payment;
+				$payment->order_id          = $pI;
+				$payment->amount            = $pA;
+				$payment->total             = $pT;
+				$payment->method            = $pM;
+				$payment->status            = $pS;
+				$payment->reference         = $pR;
+				$payment->expires_at        = $pE;
+				$payment->status            = 'pending';
+				$payment->song_id           = $song_id;
+				$payment->user_id           = $user_id;
+				$payment->save();
+				
+			}else{
+				$payment                    = Payment::where('order_id',$_GET['p'])->first();
+				$payment->order_id          = $pI;
+				$payment->amount            = $pA;
+				$payment->total             = $pT;
+				$payment->method            = $pM;
+				$payment->status            = $pS;
+				$payment->reference         = $pR;
+				$payment->expires_at        = $pE;
+				$payment->status            = 'pending';
+				$payment->song_id           = $song_id;
+				$payment->user_id           = $user_id;
+				$payment->save();
+				
+			}
+
+			return redirect('/payments/'.$payment->order_id);
+			
 
 
 			
-			return response()->json(['success' => true,'message'=>$pS,'code'=>$payment->order_id]);
+			
 
 		} catch (\Conekta\ProcessingError $e){ 
 			return $this->Response(0,$e);
@@ -289,12 +310,19 @@ class PaymentController extends Controller
 	 * @param  \App\Payment  $payment
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show(song $song)
+	public function show($order_id)
 	{	
-		$payment = $song->payments;
+		$payment = Payment::where('order_id',$order_id)->first();
+		$user = Auth::user();
+  //       if(get_role() != 'admin' && $user->id != $payment->user_id){
+  //           return abort(403, 'Unauthorized action.');
+  //       }
+	
+
 		$options = Option::all();
-		$user_id = Auth::user()->id;
+		$user_id = $user->id;
 		$payment['finish'] = false;
+
 		if($payment->status == 'paid' || $payment->status == 'processed' || $payment->status == 'complete'){
 			$title = 'Tu pago fue recibido correctamente';
 			$payment['finish'] = true;
@@ -304,7 +332,7 @@ class PaymentController extends Controller
 			$title = 'Tu pago falló, intenta con otra forma de pago';
 		}
 
-		return view('sweet.receipt')->with('song',$song)->with('payment',$payment)->with('options', $options)->with('user_id',$user_id)->with('title',$title);
+		return view('sweet.payment_show')->with('payment',$payment)->with('options', $options)->with('user_id',$user_id)->with('title',$title);
 	}
 
 	/**

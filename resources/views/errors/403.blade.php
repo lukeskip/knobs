@@ -5,11 +5,11 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1 class="text-center">
-				Has perdido tu camino
+				No estás autorizado aquí
 			</h1>
 			<h2 class="text-center">Sólo sigue buscando</h2>
 			<p class="text-center special-font" style="font-size: 5em;">
-				404
+				403
 			</p>
 		</div>
 	</div>

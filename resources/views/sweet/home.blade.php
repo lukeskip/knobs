@@ -1,6 +1,5 @@
 @extends('layouts.main',['body_class' => 'landing fixed'])
 @section('menu-items-first')
-<li><a href='/register'>Regístrate</a></li>
 <li><a href='#about'>Qué es Knobs</a></li>
 <li><a href='#process'>Cómo funciona</a></li>
 @endsection
@@ -116,7 +115,7 @@
 				<ol class="handwriting process-list">
 					<li>Te registras con un click</li>
 					<li>Registras tu canción</li>
-					<li>Cubres el costo de ${{$price}} MXN, en OXXO o Paypal </li>
+					<li>Cubres el costo de ${{$price}} MXN por canción registrada, en OXXO o Paypal </li>
 					<li>En menos de 48hrs. recibirás tu Knob</li>
 				</ol>
 				<br>

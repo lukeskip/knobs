@@ -122,6 +122,10 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
+        $user = Auth::user();
+        if(get_role() != 'admin' && $user->id != $song->user_id){
+            return abort(403, 'Unauthorized action.');
+        }
         $song_file_name      = explode('.',$song->file);
         return view('sweet.songs.songs_update')->with('song',$song)->with('song_file_name',$song_file_name[0]);
     }
@@ -135,6 +139,11 @@ class SongController extends Controller
      */
     public function update(Request $request, Song $song)
     {   
+        $user = Auth::user();
+        if(get_role() != 'admin' && $user->id != $song->user_id){
+            return abort(403, 'Unauthorized action.');
+        }
+        
         $rules = array(
             'title'         => 'required|max:255',
             'genre'         => 'required',

@@ -21,7 +21,7 @@ class Admin
         if($role == 'admin'){
             return $next($request);
         }else {
-            return redirect('/');
+            return redirect('/redirects');
         }
     }
 }

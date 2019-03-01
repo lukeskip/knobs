@@ -35,20 +35,26 @@
 	<header>
 		<div id='cssmenu' >
 			<ul>
+				<li><a href='/'>Knobs</a></li>
+				@if(Auth::guest())
+					<li><a href='/register'>Regístrate</a></li>
+					<li><a href='/login'>Entrar</a></li>
+				@endif
+				
 				@yield('menu-items-first')
 
 				<!-- STARTS: MENU FOR ADMIN -->
 				@if(get_role() == 'admin')
 
-					<ul>
-						<li><a href='/'><i class="fas fa-user"></i> {{get_role(true)}}</a></li>
-						<li><a href='/admin/dashboard'>Dashboard</a></li>
-						<li><a href='/admin/songs'>Canciones registradas</a></li>
-						<li><a href='/admin/payments'>Pagos</a></li>
-						
-						<!-- <li><a href='#'>Administradores</a></li>
-						<li><a href='#'>Estadísticas</a></li> -->
-					</ul>
+					
+					<li><a href='#'><i class="fas fa-user"></i> {{get_role(true)}}</a></li>
+					<li><a href='/admin/dashboard'>Dashboard</a></li>
+					<li><a href='/admin/songs'>Canciones registradas</a></li>
+					<li><a href='/admin/payments'>Pagos</a></li>
+					
+					<!-- <li><a href='#'>Administradores</a></li>
+					<li><a href='#'>Estadísticas</a></li> -->
+					
 				@endif
 				<!-- ENDS: MENU FOR ADMIN -->
 
@@ -57,13 +63,12 @@
 				
 					@if(Auth::user()->profiles)
 						<li>
-							<a href='/profiles/'{{Auth::user()->profiles->id}}>
+							<a href='/profiles/{{Auth::user()->profiles->id}}/edit'/>
 							Perfil
 							</a>
 						</li>
 					@endif
-					<li><a href='/dashboard'>Dashboard</a></li>
-					<li><a href='/songs'>Canciones</a></li>
+					<li><a href='/critic/dashboard'>Dashboard</a></li>
 					<li><a href='/reviews'>Mis Knobs</a></li>
 						   
 				@endif
@@ -72,7 +77,7 @@
 				<!-- STARTS: MENU FOR MUSICIAN -->
 				@if(get_role() == 'musician')
 						
-					<li><a href='/profile'>Registrar Canción</a></li>
+					<li><a href='/songs/create'>Registrar Canción</a></li>
 					<li><a href='/songs'>Mis canciones</a></li>
 					
 				@endif

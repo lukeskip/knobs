@@ -17,7 +17,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        sending_mails();
+        // sending_mails();
     }
 
     /**
@@ -27,7 +27,6 @@ class ProfileController extends Controller
      */
     public function create(User $user)
     {
-
         return view('sweet.profile_create',array('user' => $user));
     }
 
@@ -44,7 +43,8 @@ class ProfileController extends Controller
             'expertice'     => 'required',
             'picture'       => 'required',
             'summary'       => 'required',
-            'genre'         => 'required',      
+            'genre'         => 'required',
+            'name'          => 'required',      
         );
 
         // Validamos todos los campos
@@ -56,15 +56,17 @@ class ProfileController extends Controller
         }
 
         $profile            = new Profile;
+        $profile->name      = $request->name;
         $profile->expertice = $request->expertice;
         $profile->picture   = $request->picture;
         $profile->summary   = $request->summary;
         $profile->genre     = $request->genre;
         $profile->user_id   = $user->id;
-        $profile->phone = $request->phone;
+        $profile->phone     = $request->phone;
+        $profile->paypal    = $request->paypal;
         $profile->save();
 
-        return response()->json(['success' => true,'message'=>'Tu perfil ha sido guardado','redirect' => '/dashboard']);
+        return response()->json(['success' => true,'message'=>'Tu perfil ha sido guardado','redirect' => '/critic/dashboard']);
     }
 
     /**
@@ -85,8 +87,13 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Profile $profile)
-    {
-        //
+    {   
+        $user = Auth::user();
+        if(get_role() != 'admin' && $user->id != $profile->user_id){
+            return abort(403, 'Unauthorized action.');
+        }
+
+        return view('sweet.profile_edit',compact('profile'));
     }
 
     /**
@@ -98,7 +105,35 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        //
+        $user = Auth::user();
+        if(get_role() != 'admin' && $user->id != $profile->user_id){
+            return abort(403, 'Unauthorized action.');
+        }
+    
+        $rules = array(
+            'expertice'     => 'required',
+            'summary'       => 'required',
+            'genre'         => 'required', 
+            'name'          => 'required',      
+        );
+
+        // Validamos todos los campos
+        $validator = Validator::make($request->all(), $rules);
+
+        // Si la validación falla, nos detenemos y mandamos false
+        if ($validator->fails()) {
+            return response()->json(['success' => false,'message'=>'Hay campos con información inválida, recuerda que todos los campos son obligatorios']);
+        }
+
+        $profile->name      = $request->name;
+        $profile->expertice = $request->expertice;
+        $profile->summary   = $request->summary;
+        $profile->genre     = $request->genre;
+        $profile->phone     = $request->phone;
+        $profile->paypal    = $request->paypal;
+        $profile->save();
+
+        return response()->json(['success' => true,'message'=>'Tu perfil ha sido guardado','redirect' => '/critic/dashboard']);
     }
 
     /**

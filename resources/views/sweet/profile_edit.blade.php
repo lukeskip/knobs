@@ -8,21 +8,19 @@
 	
 <div class="form-items">
 	<div class="container ">
+		
 		<div class="row">
-			<div class="col-md-12">
-				<br>
-				<h2 class="text-center">
-					Para poder registrarte como crítico proporciona los siguientes datos.
-				</h2>
+			<div class="col-md-12 text-center">
+				<div class="picture inline" style="background-image:url({{asset('storage/profile_images/'.$profile->picture)}}) ">
+					
+				</div>
 			</div>
-		</div>
-		<div class="row">
 			<div class="col-md-12">
 				<form id="upload-files" class="dropzone" class="dark">
 					{{csrf_field()}}
 					<div class="dz-message">
 					<label for="">
-						Sube una foto de perfil arrastándola o dando click aquí
+						Si subes una nueva foto sustituirá a la anterior
 					</label>
 					</div>
 
@@ -33,43 +31,42 @@
 		<form id="fields" action="" class="dark" >
 			<input class="picture" type="hidden" name="picture" value="">
 			<div class="row">
-				<br>
 				<div class="col-md-12">
 					<label for="">Nombre o Apodo:</label>
-					<input type="text" name="name" class="form-control">
+					<input type="text" name="name" class="form-control" value="{{$profile->name}}">
 				</div>
 				<div class="col-md-4">
 					<label for="">Área de Expertice</label>
 					<select name="expertice" id="" class="form-control required">
 						<option value="">Selecciona...</option>
-						<option value="production">Productor</option>
-						<option value="engineering">Ingenieria en audio</option>
-						<option value="production">Músico de Estudio</option>
-						<option value="composition">Compositor</option>
+						<option @if($profile->expertice == 'production')selected @endif value="production">Productor</option>
+						<option @if($profile->expertice == 'engineering')selected @endif value="engineering">Ingenieria en audio</option>
+						<option @if($profile->expertice == 'musician')selected @endif value="musician">Músico de Estudio</option>
+						<option @if($profile->expertice == 'composition')selected @endif value="composition">Compositor</option>
 					</select>
 				</div>
 				<div class="col-md-4">
 					<label for="">Género preferido</label>
 					<select name="genre" id="" class="form-control required">
 						<option value="">Selecciona...</option>
-						<option value="rock">Rock</option>
-						<option value="pop">Pop</option>
-						<option value="metal">Metal</option>
-						<option value="latin">Ritmos Latinos</option>
-						<option value="blues">Blues</option>
-						<option value="soul">Soul</option>
-						<option value="jazz">Jazz</option>
+						<option @if($profile->genre == 'rock')selected @endif value="rock">Rock</option>
+						<option  @if($profile->genre == 'pop')selected @endif value="pop">Pop</option>
+						<option  @if($profile->genre == 'metal')selected @endif value="metal">Metal</option>
+						<option  @if($profile->genre == 'latin')selected @endif value="latin">Ritmos Latinos</option>
+						<option  @if($profile->genre == 'blues')selected @endif value="blues">Blues</option>
+						<option  @if($profile->genre == 'soul')selected @endif value="soul">Soul</option>
+						<option  @if($profile->genre == 'jazz')selected @endif value="jazz">Jazz</option>
 					</select>
 				</div>
 				<div class="col-md-4">
 					<label for="">Teléfono celular</label>
-					<input class="form-control" type="phone" name="phone">
+					<input class="form-control" type="phone" name="phone" value="{{$profile->phone}}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<label for="">Describe tu experiencia y logros de manera breve</label>
-					<textarea name="summary" class="form-control required"></textarea>
+					<textarea name="summary" class="form-control required">{{$profile->summary}}</textarea>
 				</div>
 			</div>
 			<div class="row">
@@ -80,7 +77,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<label for="">Cuenta de Paypal </label>
-					<input class="form-control" type="bank" name="paypal">
+					<input class="form-control" type="bank" name="paypal" value="{{$profile->paypal}}">
 				</div>
 
 
@@ -88,7 +85,7 @@
 		
 			<div class="row">
 				<div class="col-md-12 text-center">
-					
+					<input type="hidden" name='profile' value="{{$profile->id}}">
 					<button class="btn btn-success btn-lg" type="submit" id="submit">Guardar</button>
 					
 				</div>
@@ -121,14 +118,7 @@
 	        resizeMimeType:'image/jpeg',
 	        success: function(file, response){
                 $('.picture').val(response.file);
-                conection('POST', $('form').serialize(),'/profiles',true).then(function(data){
-					if(data.success == 1){
-						show_message('success','¡Listo!',data.message,data.redirect);
-					}else{
-						show_message('error','Error!',data.message);
-					}
-				
-				});
+                submit();
             },
 	        init: function () {
 	      	           
@@ -149,9 +139,6 @@
 
 		$('#fields').validate({
 			rules: {
-				name: {
-					required: true,
-				},
 				file: {
 					required: true,
 				},
@@ -178,17 +165,30 @@
 				show_message('error','¡Error!','Tienes que llenar todos los campos');
 			},
 			submitHandler: function(form) {
+
 				var myDropzone = Dropzone.forElement(".dropzone");
-				if (myDropzone.getQueuedFiles().length === 0) {
-					show_message('error','¡Error!','Tienes que agregar un archivo');
-				}else{
-					$('.loader').css('display','block');
-					myDropzone.processQueue();
-				}
+    			
+
+    			if(myDropzone.getQueuedFiles().length === 0){
+    				submit();
+    			}else{
+    				myDropzone.processQueue();
+    			}
 
 			}
 		});
 		
+
+		function submit(){
+			conection('PUT', $('#fields').serialize(),'/profiles/{{$profile->id}}',true).then(function(data){
+				if(data.success == 1){
+					show_message('success','¡Listo!',data.message,data.redirect);
+				}else{
+					show_message('error','Error!',data.message);
+				}
+				
+			});
+		}
 
 	});
 </script>
