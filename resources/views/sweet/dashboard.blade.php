@@ -63,7 +63,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="list-group">
-				@if($reviews->count > 0)
+				@if($reviews->count() > 0)
 					@foreach($reviews as $review)
 					<li class="list-group-item clearfix song-item">
 						<div class="row">
