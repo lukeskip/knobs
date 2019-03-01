@@ -67,7 +67,7 @@
 
 							<input type="hidden" name="item_number" value="{{$song->id}}-{{$user_id}}">
 							
-							<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx">
+							<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx/songs">
 							<input type="hidden" name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal">
 
 							<button class="btn btn-success btn-lg btn-block paypal">Pagar con Paypal</button>
