@@ -42,9 +42,9 @@
 						</div>
 					</li>
 				</ul>
-
+				@if($payment->method == 'oxxo' && $payment->status == 'pending')
 				<div class="row">
-					@if($payment->method == 'oxxo' && $payment->status == 'pending')
+					
 					<div class="col-md-12">
 						
 						<div class="alert alert-light" role="alert">
@@ -60,59 +60,54 @@
 						
 					
 					</div>
-				@endif
+				
 				</div>
+				@endif
 				
 				@if(!$payment->finish)
 				<div class="row">
 					<div class="col-md-12 columns">
 						<div class="alert alert-light" role="alert">
-  							Si deseas cambiar tu forma de pago u obtener un nuevo código para pago en oxxo da click en el botón correspondiente
+  							Si deseas cambiar tu forma de pago u obtener un nuevo código para pago en oxxo da click en el botón correspondiente.
+							<br><br>
+			  				<div class="row">	
+								<div class="col-md-6">
+									<button  class="oxxo_button btn btn-success btn-lg btn-block oxxo" data-toggle="modal" data-target="#oxxo-modal">Pagar en Oxxo</button>
+									
+								</div>
+								<div class="col-md-6">
+									
+
+									<form action='{{$options->where("slug","paypal_action")->first()->value}}' method='post'>
+
+
+										<input type='hidden' name='business' value='{{$options->where("slug","paypal_mail")->first()->value}}'>
+
+
+										<input type='hidden' name='cmd' value='_xclick'>
+
+
+										<input type='hidden' name='item_name' value='Knobs: Knob de un experto en música'>
+										<input type='hidden' name='amount' value='{{$options->where("slug","price")->first()->value}}'>
+										<input type='hidden' name='currency_code' value='MXN'>
+
+										<input type="hidden" name="order_id" value="{{$payment->order_id">
+										
+										<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx/payments/{{$payment->order_id}}">
+										<input type="hidden" name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal?p={{$payment->order_id}}">
+
+										<button class="btn btn-success btn-lg btn-block paypal">Pagar con Paypal</button>
+
+									</form>
+						
+								</div>
+							</div>
 						</div>
 						
 					</div>
 				</div>
 				
-				<div class="row">	
-					<div class="col-md-6">
-						<form id="oxxo-form" action="/oxxo?p={{$payment->order_id}}" method="POST">
-							{{ csrf_field() }}
-					
-							
-							<input type="hidden" name="song_id" value="{{$payment->songs->id}}">
-
-							
-							<button type="submit" class="oxxo_button btn btn-success btn-lg btn-block oxxo">Pagar en Oxxo</button>
-						</form>
-						
-					</div>
-					<div class="col-md-6">
-						
-
-						<form action='{{$options->where("slug","paypal_action")->first()->value}}' method='post'>
-
-
-							<input type='hidden' name='business' value='{{$options->where("slug","paypal_mail")->first()->value}}'>
-
-
-							<input type='hidden' name='cmd' value='_xclick'>
-
-
-							<input type='hidden' name='item_name' value='Knobs: Knob de un experto en música'>
-							<input type='hidden' name='amount' value='{{$options->where("slug","price")->first()->value}}'>
-							<input type='hidden' name='currency_code' value='MXN'>
-
-							<input type="hidden" name="item_number" value="{{$payment->songs->id}}-{{$user_id}}">
-							
-							<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx/payments/{{$payment->order_id}}">
-							<input type="hidden" name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal?p={{$payment->order_id}}">
-
-							<button class="btn btn-success btn-lg btn-block paypal">Pagar con Paypal</button>
-
-						</form>
-			
-					</div>
-				</div>
+				
 				@endif
 
 			</div>
@@ -124,14 +119,54 @@
 </div>
 
 
+<!-- Modal Phone Number -->
+<div class="modal fade" id="oxxo-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+<form id="oxxo-form" action="/oxxo?p={{$payment->order_id}}" method="POST">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        
+							{{ csrf_field() }}
+					
+			<label class="title">Número Telefónico</label>
+			<input type="text" name="phone" class="form-control ">
+			<input type="hidden" name="song_id" value="{{$payment->songs->id}}">
+			<br>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        	<button type="submit" class="oxxo_button btn btn-success oxxo">Generar Orden de Pago</button>
+			
+		
+      </div>
+     
+    </div>
+  </div>
+  </form>
+</div>
+<!-- Modal Phone Number -->
+
 @endsection
 
 @section('scripts')
 <script>
-	$('.oxxo-form').click(function(e){
-		e.preventDefault();
-		$('form').submit();
+	
+	$('#oxxo-form').validate({
+			rules:{
+				phone : {
+					required :true,
+					minlength:10
+				}
+			},
+			invalidHandler: function(form, validator) {
+				show_message('error','¡Error!','que escribir un numero telefonico a 10 digitos');
+			},
+			submitHandler: function(form) {
+				
+				form.submit();
+					
+			}
 	});
+
+	$('.oxxo-modal').modal('show');
 
 	$('.owl-carousel').owlCarousel({
     	loop:true,

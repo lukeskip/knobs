@@ -80,6 +80,7 @@ function show_message(type,title,message,link,color = '#28a745'){
 		confirmButtonColor: color 
 	}).then(function(result){
 		if(link){
+			$('.loader').css('display','block');
 			window.location.replace(link);	
 		}
 	});

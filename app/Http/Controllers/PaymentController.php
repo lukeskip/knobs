@@ -191,51 +191,40 @@ class PaymentController extends Controller
 
 	    Log::info(print_r($fp,true));
 
-	    // if (!$fp) {  
-	    	  
-	    // } else {  
-		   //  fputs ($fp, $header . $req); 
+	  
+		$status 	= strtolower($_POST['payment_status']);
+		if(isset($_POST['order_id'])){
+			$order_id 	= $_POST['order_id'];
+		}else{
+			$order_id 	= $_POST['txn_id'];
+		}
+		
+		$item_number = explode('-',$_POST['item_number']);
 
-		   //  while (!feof($fp)) {  
-		   //  	$res = fgets ($fp, 1024);  
-			  //   if (strcmp ($res, "VERIFIED") == 0) {  
+		if($status == 'completed' || $status == 'pending' || $status == 'processed'){
+			$payment = Payment::where('order_id',$order_id)->first();
+			if($payment->count() > 0){
+				$payment->update(['status' => $status]);
+				return response()->json(['success' => true,'message'=>'Pago fue actualizado exitosamente ']);
+			}else{
+				$payment                    = new Payment;
+				$payment->order_id          = $_POST['txn_id'];
+				$payment->amount            = $_POST['mc_gross'];
+				$payment->total             = $_POST['mc_gross'];;
+				$payment->method            = 'paypal';
+				$payment->reference         = $_POST['txn_id'];
+				$payment->expires_at        = 'not applies';
+				$payment->status            = $status;
+				$payment->song_id           = $item_number[0];
+				$payment->user_id           = $item_number[1];
+				$payment->save();
 
-				     
-
-				     
-
-			  //   }  
-		   //  }  
-	    // 	fclose ($fp);  
-	    // } 
-	    	$status 	= strtolower($_POST['payment_status']);
-	    	$order_id 	= $_POST['txn_id'];
-	    	$item_number = explode('-',$_POST['item_number']);
-
-	    	if($status == 'completed' || $status == 'pending' || $status == 'processed'){
-	    		$payment = Payment::where('order_id',$order_id)->first();
-		    	if($payment->count() > 0){
-		    		$payment->update(['status' => $status]);
-		    		return response()->json(['success' => true,'message'=>'Pago fue actualizado exitosamente ']);
-		    	}else{
-		    		$payment                    = new Payment;
-					$payment->order_id          = $_POST['txn_id'];
-					$payment->amount            = $_POST['mc_gross'];
-					$payment->total             = $_POST['mc_gross'];;
-					$payment->method            = 'paypal';
-					$payment->reference         = $_POST['txn_id'];
-					$payment->expires_at        = 'not applies';
-					$payment->status            = $status;
-					$payment->song_id           = $item_number[0];
-					$payment->user_id           = $item_number[1];
-					$payment->save();
-
-					return response()->json(['success' => true,'message'=>'Pago fue creado exitosamente ']);
-		    	}
-	    	}else{
-	    		Log::info($status);
-	    		return response()->json(['success' => false,'message'=>'El cargo fue '.$status]);
-	    	}
+				return response()->json(['success' => true,'message'=>'Pago fue creado exitosamente ']);
+			}
+		}else{
+			Log::info($status);
+			return response()->json(['success' => false,'message'=>'El cargo fue '.$status]);
+		}
 
 
 

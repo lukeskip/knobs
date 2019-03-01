@@ -32,6 +32,7 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
   transition: background-color 5000s ease-in-out 0s;
   background-color: none!important; 
+  border:0;
 }
 html, body, .full {
     min-height: 100% !important;
@@ -1111,6 +1112,18 @@ ENDS:COMMENTS
 /******************************************
 STARTS:MODAL
 ******************************************/
+.modal-body,.modal-header{
+	background: #0c0c0c;
+}
+
+.modal-body{
+	background: url('../img/back_3.jpg');
+}
+
+.modal-body .title{
+	margin-left: 20px;
+}
+
 .modal-footer{
 	background: #0c0c0c;
 	border-top:0; 
@@ -1118,10 +1131,6 @@ STARTS:MODAL
 
 .modal-body.knobs{
 	padding: 10px;
-}
-
-.modal-body .form-control:focus{
-	background: black;
 }
 
 
