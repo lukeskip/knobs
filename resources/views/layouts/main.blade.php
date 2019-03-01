@@ -102,7 +102,7 @@
 	<footer>
 		<div class="row">
 			<div class="col-md-12">
-				Todos los derechos reservados, 2018. Idea Creativa y Desarrollado por Malechor Lab.
+				Todos los derechos reservados, 2018. Idea Creativa y Desarrollo por Malechor Lab.
 			</div>
 		</div>
 		
