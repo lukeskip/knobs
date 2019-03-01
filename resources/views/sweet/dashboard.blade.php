@@ -72,11 +72,11 @@
 									{{$review->songs->title}}
 								</span>
 								<span class="author">
-									${{$review->users->name}}
+									{{$review->users->name}}
 								</span>
 							</div>
 							<div class="col-sm-4 text-right">
-								<a href="/reviews/{{$reviews->id}}" class="btn btn-success hastooltip" title="Revisar y editar">
+								<a href="/reviews/{{$review->id}}" class="btn btn-success hastooltip" title="Revisar y editar">
 									<i class="fas fa-edit"></i>
 								</a>
 					  		</div>
