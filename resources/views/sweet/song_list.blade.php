@@ -54,9 +54,9 @@
 							<div class="col-sm-4 text-right">
 								
 								<div class="btn-group" role="group" aria-label="Basic example">
-								
+									
 									@if($song->payments)
-										@if($song->payments->status == 'paid')
+										@if($song->payments->status == 'paid' || $song->payments->status == 'completed' || $song->payments->status == 'processed')
 											<a href="/payments/{{$song->payments->order_id}}" class="btn btn-success hastooltip" title="Estatus pagado"><i class="fas fa-check-circle  paid" ></i></a>
 										@elseif($song->payments->status == 'pending')
 											<a href="/payments/{{$song->payments->order_id}}" class=" hastooltip btn btn-success" title="Pago pendiente"><i class="fas fa-clock  pending" ></i></a>
