@@ -91,6 +91,7 @@
 						<div class="status-group">
 							<select name="status"  required id="" class="form-control group-item status">
 								<option value="">Selecciona...</option>
+								<option @if($review->status== "publish") selected @endif value="publish">Publicado</option>
 								<option @if($review->status== "revision") selected @endif value="revision">En revisión</option>
 								<option @if($review->status== "draft") selected @endif  value="draft">Borrador</option>
 								@if(get_role() == 'admin')
