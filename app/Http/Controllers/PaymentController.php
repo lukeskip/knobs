@@ -140,10 +140,6 @@ class PaymentController extends Controller
 			return redirect('/payments/'.$payment->order_id);
 			
 
-
-			
-			
-
 		} catch (\Conekta\ProcessingError $e){ 
 			return $this->Response(0,$e);
 		} catch (\Conekta\ParameterValidationError $e){
