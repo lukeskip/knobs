@@ -69,10 +69,10 @@
 									
 									@if(isset($song->knob))
 										<a href="{{$song->knob}}" class="btn btn-secondary hastooltip" title="Ver Knob"><img src="{{asset('img/knob_icon.png')}}" alt=""></a>
-										@endif
-										@if(get_role() == 'musician' OR get_role() == 'admin')
+									@endif
+									@if(get_role() == 'musician' OR get_role() == 'admin')
 										<a href="/songs/{{$song->id}}/edit" class="btn btn-success hastooltip" title="Edita los datos de tu canción	"><i class="fas fa-edit"></i></a>
-										@elseif (get_role() == 'critic')
+									@elseif (get_role() == 'critic')
 										<a href="/reviews/create/{{$song->id}}" class="btn btn-success hastooltip" title="Hacer una crítica"><i class="fas fa-edit"></i></a>
 									@endif
 								</div>

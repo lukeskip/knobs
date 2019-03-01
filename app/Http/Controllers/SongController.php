@@ -34,7 +34,12 @@ class SongController extends Controller
 
         foreach ($songs as $song) {
             if($song->reviews){
-                $song['knob'] = '/reviews/'.$song->reviews->id;
+                if(get_role() == 'musician' && $song->reviews->status == 'publish'){
+                    $song['knob'] = '/reviews/'.$song->reviews->id;
+                }elseif(get_role() != 'musician'){
+                    $song['knob'] = '/reviews/'.$song->reviews->id;
+                }
+                
             }
         }
         
