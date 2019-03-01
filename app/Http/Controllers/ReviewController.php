@@ -105,7 +105,7 @@ class ReviewController extends Controller
 			$user = Auth::user();
 			if(get_role() != 'admin' && ($user->id != $review->user_id && $user->id != $review->songs->users->id) && !isset($_GET['token']) ){
 				return abort(403, 'Unauthorized action.');
-			}elseif(get_role() == 'musician' && $review->status == 'draft'){
+			}elseif(get_role() == 'musician' && $review->status != 'publish'){
 				return abort(403, 'Unauthorized action.');
 			}
 		}elseif(Auth::guest() && isset($_GET['token']) && $review->guests){
