@@ -7,6 +7,7 @@ use App\Payment as Payment;
 use App\User as User;
 use App\Option as Option;
 use App\Song as Song;
+use App\Review as Review;
 use Illuminate\Support\Facades\Auth as Auth;
 use Jenssegers\Date\Date;
 
