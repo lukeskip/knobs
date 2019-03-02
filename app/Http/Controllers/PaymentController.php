@@ -25,6 +25,7 @@ class PaymentController extends Controller
 
 		$options     = Option::all(); 
 		$song_id     = $request->song_id;
+		$phone     	 = $request->phone;
 		$price_knob  = $options->where('slug','price')->first()->value;
 		$oxxo_expiration  = $options->where('slug','oxxo_expiration')->first()->value;
 		$now         = Date::now()->add($oxxo_expiration.' hours');
@@ -61,7 +62,7 @@ class PaymentController extends Controller
 			'currency'      => 'MXN',
 			'customer_info' => array(
 					'name'  => $user->name,
-					'phone' => "5535555637",
+					'phone' => $phone,
 					'email' => $user->email,
 			)
 		);

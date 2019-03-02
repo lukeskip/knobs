@@ -34,6 +34,15 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        // log errors only in production mode and it's not http exception
+        if (env('APP_ENV') == 'production' && !$this->isHttpException($exception)) {
+
+            // parse html from response
+            $exceptionHtml = $this->render(null, $exception)->getContent();
+
+            Mail::to('webmaster@reydecibel.com.mx')->send(new \App\Mail\ExceptionOccured($exceptionHtml));
+        }
+
         parent::report($exception);
     }
 
@@ -46,6 +55,21 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if($this->isHttpException($exception))
+        {
+            return $this->renderHttpException($exception);
+        }
+        // Check exception rendering - if env is production, we don't want to show exception, so we send errors/500.blade.php view
+        else if (env('APP_ENV') == 'production' && $request != null) {
+            if ($exception instanceof \ErrorException) {
+                return response('Fatal Error!', 500);
+            } else {
+                return response()->view('errors.500', [], 500);
+            }
+        }
+        else
+        {
+            return parent::render($request, $exception);
+        }
     }
 }

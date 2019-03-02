@@ -98,12 +98,15 @@
         
 							{{ csrf_field() }}
 					
-			<label class="title">Número Telefónico</label>
+			<label class="handwriting">Número Telefónico</label>
 			<input type="text" name="phone" class="form-control ">
 			<input type="hidden" name="song_id" value="{{$song->id}}">
 			<br>
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        	<button type="submit" class="oxxo_button btn btn-success oxxo">Generar Orden de Pago</button>
+			<div class="text-right">
+				<button type="button" class="btn btn-secondary btn" data-dismiss="modal">Cancelar</button>
+	        	<button type="submit" class="oxxo_button btn btn-success oxxo">Generar Orden de Pago</button>
+			</div>
+			
 			
 		
       </div>
@@ -123,11 +126,12 @@
 			rules:{
 				phone : {
 					required :true,
-					minlength:10
+					rangelength: [10, 10],
+					digits: true
 				}
 			},
 			invalidHandler: function(form, validator) {
-				show_message('error','¡Error!','que escribir un numero telefonico a 10 digitos');
+				show_message('error','¡Error!','Tienes que escribir un número telefónico a 10 digitos');
 			},
 			submitHandler: function(form) {
 				

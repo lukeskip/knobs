@@ -101,7 +101,7 @@ class ReviewController extends Controller
 				$query->where('name','admin');
 			})->get();
 			foreach ($admins as $admin) {
-				sending_mails($admin->email, $subject = 'Hay una crítica esperando aprobación',array('title' => 'hay una crítica esperando aprobación','message_str' => 'Recuerda que la velicidad y calidad son importante para la experiencia de usuario','link' => 'admin/dashboard','link_label'=>'Ir a dashboard'), $template = 'default');
+				sending_mails($admin->email, $subject = 'Hay una crítica esperando aprobación',array('title' => 'hay una crítica esperando aprobación','message_str' => 'Recuerda que la velocidad y calidad son importante para la experiencia de usuario','link' => 'admin/dashboard','link_label'=>'Ir a dashboard'), $template = 'default');
 			}
 			
 		}
@@ -234,7 +234,7 @@ class ReviewController extends Controller
 				$query->where('name','admin');
 			})->get();
 			foreach ($admins as $admin) {
-				sending_mails($admin->email, $subject = 'Hay una crítica esperando aprobación',array('title' => 'hay una crítica esperando aprobación','message_str' => 'Recuerda que la velicidad y calidad son importante para la experiencia de usuario','link' => 'admin/dashboard','link_label'=>'Ir a dashboard'), $template = 'default');
+				sending_mails($admin->email, $subject = 'Hay una crítica esperando aprobación',array('title' => 'hay una crítica esperando aprobación','message_str' => 'Recuerda que la velocidad y calidad son importante para la experiencia de usuario','link' => 'admin/dashboard','link_label'=>'Ir a dashboard'), $template = 'default');
 			}
 			
 		}

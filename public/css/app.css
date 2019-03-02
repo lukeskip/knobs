@@ -64,6 +64,7 @@ a:hover{
 
 .btn{
 	color:white;
+	border:0;
 }
 
 ::after, ::before{
@@ -1145,12 +1146,42 @@ ENDS:COMMENTS
 /******************************************
 STARTS:MODAL
 ******************************************/
+.modal{
+	border-radius: 8px;
+}
+
+.modal-content{
+	background: none;
+}
+
 .modal-body,.modal-header{
 	background: #0c0c0c;
 }
 
 .modal-body{
-	background: url('../img/back_3.jpg');
+	background: #eee;
+	color:#0c0c0c;
+	border-radius: 8px;
+}
+
+.modal-body label{
+	color:#0c0c0c;
+}
+
+.modal-body .title{
+	opacity: 1;
+}
+
+.modal-body .error{
+	border-color:#ced4da;
+}
+
+.modal-body .btn-success{
+	background:#28a745; 
+}
+
+.modal-body .btn-success:hover{
+	background:#28a745; 
 }
 
 .modal-body .title{
