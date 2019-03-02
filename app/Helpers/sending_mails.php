@@ -1,5 +1,4 @@
 <?php
-// use Mail as Mail;
 // En esta función controlamos todos los envios de correo de la aplicación
 function sending_mails($email = 'contacto@chekogarcia.com.mx', $subject = 'Knobs',$data = array(),$template = 'default'){
 	

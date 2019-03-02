@@ -34,15 +34,15 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        
+        parent::report($exception);
         // log errors only in production mode and it's not http exception
         if (env('APP_ENV') == 'production') {
 
-            Mail::send('sweet.mails.errorlog', ['e' => $exception], function($message){
-                $message->to('webmaster@reydecibel.com.mx')->subject('Knobs error!');
-            });
+            sending_mails($email = 'webmaster@reydecibel.com.mx', $subject = 'Knobs Error',['e' => $exception],$template = 'errorlog');
         }
 
-        parent::report($exception);
+        
     }
 
     /**
