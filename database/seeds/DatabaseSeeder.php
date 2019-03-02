@@ -52,27 +52,27 @@ class DatabaseSeeder extends Seeder
 		$user = new User;
 		$user->name = 'Carlos';
 		$user->email = 'critico@correo.com';
-		$user->password = bcrypt('willy188');
+		$user->password = bcrypt('secret');
 		$user->save();
 		$user->roles()->attach($role_critic->id);
 
 		$user = new User;
 		$user->name = 'Perengano';
 		$user->email = 'musico@correo.com';
-		$user->password = bcrypt('willy188');
+		$user->password = bcrypt('secret');
 		$user->save();
 		$user->roles()->attach($role_musician->id);
 
-		$song               = new Song;
-        $song->title        = 'Entre Sueños';
-        $song->genre        = 'pop';
-        $song->link         = 'https://esteesellink.com.mx';
-        $song->author       = 'Noche de quiz';
-        $song->english      = 1;
-        $song->description  = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tortor leo, congue non sagittis sed, sagittis eu sapien. Ut feugiat dapibus suscipit. Ut semper, elit sed ultrices cursus, lorem tellus ultricies dui, ut porta ligula enim a ipsum. Etiam in leo hendrerit, dignissim velit sagittis, vulputate felis.';
-        $song->status       = 'paid';
-        $song->user_id       = $user->id;
-        $song->save();
+		// $song               = new Song;
+  //       $song->title        = 'Entre Sueños';
+  //       $song->genre        = 'pop';
+  //       $song->link         = 'https://esteesellink.com.mx';
+  //       $song->author       = 'Noche de quiz';
+  //       $song->english      = 1;
+  //       $song->description  = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tortor leo, congue non sagittis sed, sagittis eu sapien. Ut feugiat dapibus suscipit. Ut semper, elit sed ultrices cursus, lorem tellus ultricies dui, ut porta ligula enim a ipsum. Etiam in leo hendrerit, dignissim velit sagittis, vulputate felis.';
+  //       $song->status       = 'paid';
+  //       $song->user_id       = $user->id;
+  //       $song->save();
         
         // Payment test
 		$payment = new Payment;
