@@ -267,7 +267,7 @@ class PaymentController extends Controller
             })->get();
 
             foreach ($critics as $critic) {
-            	sending_mails($critic->email, $subject = 'Hay una canción esperando crítica, corre antes que te la ganen',$data('title' => 'hay una canción esperando crítica','message' => 'Recuerda que cualquier crítico registrado puede tomarla, así que corre a tu dashboard a hacer la crítica','link' => 'dashboard','link_label'=>'Ir a dashboard'), $template = 'default');
+            	sending_mails($critic->email, $subject = 'Hay una canción esperando crítica, corre antes que te la ganen',['title' => 'hay una canción esperando crítica','message' => 'Recuerda que cualquier crítico registrado puede tomarla, así que corre a tu dashboard a hacer la crítica','link' => 'dashboard','link_label'=>'Ir a dashboard'], $template = 'default');
             }
 
 			
