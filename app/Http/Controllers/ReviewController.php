@@ -7,6 +7,7 @@ use App\Song;
 use App\Score;
 use App\Category;
 use App\Guest;
+use App\User;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Http\Request;
 use Jenssegers\Date\Date;
