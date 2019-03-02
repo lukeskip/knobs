@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rating;
 use App\Review;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth as Auth;
@@ -17,7 +18,7 @@ class RatingController extends Controller
      */
     public function index()
     {
-        //
+    
     }
 
     /**
@@ -137,4 +138,5 @@ class RatingController extends Controller
     {
         //
     }
+
 }

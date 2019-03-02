@@ -95,6 +95,16 @@ class ReviewController extends Controller
 			$redirect = '/admin/dashboard';
 		}
 
+		if($review->status == 'revision'){
+			$admins = User::whereHas('roles',function($query){
+				$query->where('name','admin');
+			})->get();
+			foreach ($admins as $admin) {
+				sending_mails($admin->email, $subject = 'Hay una crítica esperando aprobación',array('title' => 'hay una crítica esperando aprobación','message_str' => 'Recuerda que la velicidad y calidad son importante para la experiencia de usuario','link' => 'admin/dashboard','link_label'=>'Ir a dashboard'), $template = 'default');
+			}
+			
+		}
+
 		return response()->json(['message'=>'hola','success'=>true,'redirect'=>$redirect], 200); 
 	}
 
@@ -217,6 +227,16 @@ class ReviewController extends Controller
 		}
 
 		$review->save();
+
+		if($review->status == 'revision'){
+			$admins = User::whereHas('roles',function($query){
+				$query->where('name','admin');
+			})->get();
+			foreach ($admins as $admin) {
+				sending_mails($admin->email, $subject = 'Hay una crítica esperando aprobación',array('title' => 'hay una crítica esperando aprobación','message_str' => 'Recuerda que la velicidad y calidad son importante para la experiencia de usuario','link' => 'admin/dashboard','link_label'=>'Ir a dashboard'), $template = 'default');
+			}
+			
+		}
 		
 
 		return response()->json(['message'=>'Tu knob se guardó correctamente','success'=>true,'redirect'=>'/reviews'], 200);

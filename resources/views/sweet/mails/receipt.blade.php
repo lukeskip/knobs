@@ -11,15 +11,15 @@
 	@endif
 	<br><br>
 	
-	@if(isset($message))
-		<p>{{$message}}</p>
+	@if(isset($message_str))
+		<p>{{$message_str}}</p>
 	@endif
 	<br>
 	<br>
 	<p>
 		
 		@if(isset($link))
-		<a href="{{url('/').$link}}" style="background: #2FAB31;color:white;padding: 15px; text-align: center; border-radius: 10px; text-decoration: none;font-size: 20px;">
+		<a href="{{url('/').'/'.$link}}" style=" background: #2FAB31;color:white;padding: 15px; text-align: center; border-radius: 10px; text-decoration: none;font-size: 20px;">
 				Para ver tu recibo haz click aquí
 		</a>
 		@endif
