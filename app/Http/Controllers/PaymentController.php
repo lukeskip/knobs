@@ -167,6 +167,9 @@ class PaymentController extends Controller
 				$payment->save();
 
 
+				$user_email = $payment->users->email;
+				$this->email_notification($user_email,$_POST['txn_id']);
+		
 			}       
 			
 	}
@@ -200,10 +203,12 @@ class PaymentController extends Controller
 		}
 		
 		$item_number = explode('-',$_POST['item_number']);
+		$song_id = $item_number[0];
+		$user_id = $item_number[1];
 
 		if($status == 'completed' || $status == 'pending' || $status == 'processed'){
 						
-			$song = Song::find($item_number[0]);
+			$song = Song::find($song_id);
 			if($song->payments){
 				$payment = Payment::find($song->payments->id);
 				$payment->update(['status' => $status, 'order_id' => $_POST['txn_id'],'method' => 'paypal']);
@@ -228,6 +233,14 @@ class PaymentController extends Controller
 			return response()->json(['success' => false,'message'=>'El cargo fue '.$status]);
 		}
 
+
+		if($status == 'completed' ||  $status == 'processed'){
+			$user = User::find($user_id);
+			$this->email_notification($user->email,$_POST['txn_id']);
+		}
+
+		
+
 	     
 			
 	}
@@ -239,6 +252,26 @@ class PaymentController extends Controller
 			if($success==0){ $result=$result->getMessage(); } 
 			$out = array("type"=>$success,"data"=>$result);
 			return view('sweet.testResponse')->with('response',$out); 
+	}
+
+
+	//Manejo de notificaciones
+	private function email_notification($email)
+	{
+			// Enviamos recibo de pago
+			sending_mails($email, $subject = 'Tu recibo de pago Knobs',$data['title' => 'Tu recibo de pago','link' => $link,'message' = 'Tu pago se llevó a cabo correctamente puedes revisarlo en cualquier momento desde tu dashboard o dando click en el siguiente enlace'], $template = 'receipt');
+
+			// Enviamos notificación a los críticos
+
+			$critics =  User::whereHas('roles', function($query){
+                  $query->where('name', 'critic');
+            })->get();
+
+            foreach ($critics as $critic) {
+            	sending_mails($critic->email, $subject = 'Hay una canción esperando crítica, corre antes que te la ganen',$data['title' => 'hay una canción esperando crítica','message' => 'Recuerda que cualquier crítico registrado puede tomarla, así que corre a tu dashboard a hacer la crítica','link' => 'dashboard','link_label'=>'Ir a dashboard'], $template = 'default');
+            }
+
+			
 	}
 
 

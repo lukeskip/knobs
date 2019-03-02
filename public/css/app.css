@@ -185,12 +185,12 @@ ENDS:GENERALES
 ******************************************/
 
 /******************************************
-STARTS:LANDING
+STARTS:LEVELS
 ******************************************/
-.landing .level{
+.level{
 	min-height: 300px;
 }
-.landing .first-level{
+.first-level{
 	/*background-image: url(https://cdnjs.cloudflare.com/ajax/libs/vegas/2.3.1/overlays/03.png);*/
 	background-image: url(../img/landing_back_2.jpg);
 	background-size: cover;
@@ -203,13 +203,13 @@ STARTS:LANDING
 	min-height: 500px;
 }
 
-.landing .first-level h1{
+.first-level h1{
 	font-size: 2em;
 	color:#A1961D;
 }
 
 
-.landing .second-level{
+.second-level{
 	/*background-image: url(https://cdnjs.cloudflare.com/ajax/libs/vegas/2.3.1/overlays/03.png);*/
 	background-image: url(../img/back_3.jpg);
 	background-size: cover;
@@ -221,25 +221,25 @@ STARTS:LANDING
 }
 
 @media only screen and (max-width: 768px) {
-	.landing .second-level{
+	.second-level{
 		background-image: url(../img/back_3_rot.jpg);
 	}
 }
 
-.landing .third-level{
+.third-level{
 	background: url(../img/landing_back_1.jpg);
 	background-attachment: fixed;
 	padding: 40px 0;
 	
 }
 
-.landing .fourth-level{
+.fourth-level{
 	background-color: #0c0c0c;
 	overflow: hidden;
 	
 }
 
-.landing .fourth-level .image{
+.fourth-level .image{
 	
 	max-width: 600px;
 	min-width: 350px;
@@ -248,32 +248,36 @@ STARTS:LANDING
 	
 }
 
-.landing .fourth-level .image img{
+.fourth-level .image img{
 	width: 100%;	
 }
 
-.landing .fourth-level{
+.fourth-level{
 	background: #0c0c0c;
 	
 }
 
-.landing .process{
+.process{
 	background:url('../img/back_prices.jpg');
 	background-position: bottom center;
 	padding: 40px 0;
 	
 }
 
-.landing .process-list{
+.process-list{
 	font-size: 1.8em;
 	margin-left: 20px;
 
 }
 
+.dashboard .first-level{
+	font-size: 1em;
+}
+
 
 
 /******************************************
-ENDS:LANDING
+ENDS:LEVELS
 ******************************************/
 
 .review textarea.error,.error{

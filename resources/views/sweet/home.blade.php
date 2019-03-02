@@ -4,7 +4,7 @@
 <li><a href='#process'>Cómo funciona</a></li>
 @endsection
 @section('content')
-<div id="first-level level" class="first-level knobs">
+<div id="level" class="image-level level image_1 first-level">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
