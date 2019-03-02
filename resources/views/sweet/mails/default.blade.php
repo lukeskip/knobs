@@ -6,22 +6,22 @@
 
 @section('content')
 	
-	@if(isset($data['title']))
-	<h1>{{$data['title']}}</h1>
+	@if(isset($title))
+	<h1>{{$title}}</h1>
 	@endif
 	<br><br>
 
-	@if(isset($data['message']))
-	<p>{{$data['message']}}</p>
+	@if(isset($message))
+	<p>{{$message}}</p>
 	@endif
 	<br>
 	<br>
 	<p>
 		
 		@if(isset($link))
-		<a href="{{url('/').$data['link']}}" style="background: #2FAB31;color:white;padding: 15px; text-align: center; border-radius: 10px; text-decoration: none;font-size: 20px;">
-				@if(isset($data['link_label']))
-					{{$data['messlink_labelage']}}	
+		<a href="{{url('/').$link}}" style="background: #2FAB31;color:white;padding: 15px; text-align: center; border-radius: 10px; text-decoration: none;font-size: 20px;">
+				@if(isset(link_label))
+					{{$link_label}}	
 				@endif
 		</a>
 		@endif

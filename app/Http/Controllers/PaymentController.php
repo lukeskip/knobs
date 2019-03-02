@@ -259,7 +259,7 @@ class PaymentController extends Controller
 	private function email_notification($email)
 	{
 			// Enviamos recibo de pago a usuario
-			sending_mails($email, $subject = 'Tu recibo de pago Knobs',$data('title' => 'Tu recibo de pago','link' => $link,'message' = 'Tu pago se llevó a cabo correctamente puedes revisarlo en cualquier momento desde tu dashboard o dando click en el siguiente enlace'), $template = 'receipt');
+			sending_mails($email, $subject = 'Tu recibo de pago Knobs',['title' => 'Tu recibo de pago','link' => $link,'message' = 'Tu pago se llevó a cabo correctamente puedes revisarlo en cualquier momento desde tu dashboard o dando click en el siguiente enlace'], $template = 'receipt');
 
 			// Enviamos notificación a los críticos
 			$critics =  User::whereHas('roles', function($query){
