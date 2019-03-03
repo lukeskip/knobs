@@ -35,6 +35,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\HttpsProtocol::class
         ],
 
         'api' => [
@@ -65,6 +66,7 @@ class Kernel extends HttpKernel
         'critic' => \App\Http\Middleware\Critic::class,
         'check_profile' => \App\Http\Middleware\CheckProfile::class,
         'check_ownership' => \App\Http\Middleware\CheckOwnership::class
+
     ];
 
     /**
