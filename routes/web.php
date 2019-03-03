@@ -21,6 +21,10 @@ Route::get('/', function () {
 
 Route::get('/reviews/{review}', 'ReviewController@show');
 
+Route::get('/_notice_privacy/', function(){
+	return view('sweet.notice_privacy');
+});
+
 // STARTS:ROUTE HOOK PAYMENTS CONFIRMATION
 Route::post('/confirmed_oxxo','PaymentController@confirmation')->name('conekta_webhook');
 Route::post('/confirmed_paypal','PaymentController@confirmation_paypal')->name('paypal_webhook');
@@ -102,7 +106,9 @@ Route::group(['middleware' => ['auth','critic','check_profile']],function () {
 // ENDS: ROUTES JUST FOR CRITICS AND ADMIN
 
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', funtion(){
+	return redirect('/');
+})->name('home');
 
 Route::get('login/{provider}',          'Auth\SocialAccountController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
