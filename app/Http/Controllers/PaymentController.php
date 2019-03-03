@@ -163,9 +163,11 @@ class PaymentController extends Controller
 				$order_id   =  $data->data->object->order_id;
 				$status     =  $data->data->object->status;
 				$payment    =  Payment::where('order_id',$order_id)->first();
-
-				$payment->status = $status;
-				$payment->save();
+				if($payment){
+					$payment->status = $status;
+					$payment->save();
+				}
+				
 
 
 				$user_email = $payment->users->email;
