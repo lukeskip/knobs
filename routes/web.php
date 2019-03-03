@@ -106,9 +106,10 @@ Route::group(['middleware' => ['auth','critic','check_profile']],function () {
 // ENDS: ROUTES JUST FOR CRITICS AND ADMIN
 
 
-Route::get('/home', funtion(){
+// Home
+Route::get('/home', function () {
 	return redirect('/');
-})->name('home');
+});
 
 Route::get('login/{provider}',          'Auth\SocialAccountController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
