@@ -76,7 +76,7 @@
                                     Entrar con facebook
                                 </a >
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="color:white">
                                     <br>
                                     Al dar click en Registrar aceptas nuestros <a href="/terms" target="_blank">Términos y condiciones</a> y <a href="/notice_privacy" target="_blank">Aviso de Privacidad</a> 
                                 
