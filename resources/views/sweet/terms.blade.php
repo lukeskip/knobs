@@ -37,7 +37,8 @@
 			<h2>
 				Política de devoluciones
 			</h2>
-			<p>Knobs no ofrece devoluciones toda vez que los servicios que ofrecen comiezan desde el momento en que se ejecuta la compra, sin embargo, el usuario puede cambiar el archivo o los datos de la canción registrada para aprovechar el pago en una canción totalmente diferente.</p>
+			<p>Knobs no ofrece devoluciones toda vez que los servicios que ofrecen comiezan desde el momento en que se ejecuta la compra, sin embargo, el usuario puede cambiar el archivo o los datos de la canción registrada para aprovechar el pago en una canción totalmente diferente, en el centro de control de la propia plataforma.</p>
+			<p>En caso de tener cualquier duda  o comentario ponemos a tu disposición el correo clientes@reydecibel.com.mx</p>
 		</div>
 	</div>
 </div>
