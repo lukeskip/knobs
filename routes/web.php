@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('/reviews/{review}', 'ReviewController@show');
 
-Route::get('/_notice_privacy/', function(){
+Route::get('/notice_privacy/', function(){
 	return view('sweet.notice_privacy');
 });
 
