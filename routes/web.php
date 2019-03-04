@@ -25,6 +25,10 @@ Route::get('/_notice_privacy/', function(){
 	return view('sweet.notice_privacy');
 });
 
+Route::get('/terms/', function(){
+	return view('sweet.terms');
+});
+
 // STARTS:ROUTE HOOK PAYMENTS CONFIRMATION
 Route::post('/confirmed_oxxo','PaymentController@confirmation')->name('conekta_webhook');
 Route::post('/confirmed_paypal','PaymentController@confirmation_paypal')->name('paypal_webhook');
