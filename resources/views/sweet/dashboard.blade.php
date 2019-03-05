@@ -12,7 +12,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div class="total">Total a repartir esta semana: <span class="number">{{$total}}</span></div>
+				<div class="total">Total ganancias: <span class="number">{{$total}}</span></div>
 			</div>
 		</div>
 		<div class="row">
@@ -27,7 +27,7 @@
 										{{$payment->order_id}}
 									</span>
 									<span class="author">
-										${{$payment->total}}
+										${{$payment->total}} (${{get_share('admin',$payment->method,$payment->total)}})
 									</span>
 								</div>
 								<div class="col-sm-4 text-right">

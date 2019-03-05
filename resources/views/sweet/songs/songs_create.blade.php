@@ -35,7 +35,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<label class="title">Nombre de la canción:</label>
-				<input name="title" required type="text" class="form-control">
+				<input name="title" required type="text" class="form-control" placeholder="Escribe el nombre de la canción">
 				<input type="hidden" name="song_file" class="song-file">
 			</div>
 			<div class="col-md-4">
@@ -57,7 +57,7 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					<label class="title">Nombre de la banda o solista:</label>
-					<input name="author" required type="text" class="form-control">
+					<input name="author" required type="text" class="form-control" placeholder="Escribe el nombre de la banda o solista">
 				</div>
 			</div>
 
@@ -73,7 +73,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<label class="title">Descripción:</label>
-				<textarea required name="description" id="" cols="30" rows="10" class="form-control"></textarea>
+				<textarea required name="description" id="" cols="30" rows="10" class="form-control" placeholder="Describe tus intenciones en la canción y tus dudas con aspectos específicos"></textarea>
 			</div>
 		</div>
 		<div class="row">

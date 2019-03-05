@@ -306,6 +306,7 @@ class PaymentController extends Controller
 		return view('sweet.payment_list',compact(['payments']));
 	}
 
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

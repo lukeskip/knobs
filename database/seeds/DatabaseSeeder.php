@@ -63,16 +63,16 @@ class DatabaseSeeder extends Seeder
 		$user->save();
 		$user->roles()->attach($role_musician->id);
 
-		// $song               = new Song;
-  //       $song->title        = 'Entre Sueños';
-  //       $song->genre        = 'pop';
-  //       $song->link         = 'https://esteesellink.com.mx';
-  //       $song->author       = 'Noche de quiz';
-  //       $song->english      = 1;
-  //       $song->description  = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tortor leo, congue non sagittis sed, sagittis eu sapien. Ut feugiat dapibus suscipit. Ut semper, elit sed ultrices cursus, lorem tellus ultricies dui, ut porta ligula enim a ipsum. Etiam in leo hendrerit, dignissim velit sagittis, vulputate felis.';
-  //       $song->status       = 'paid';
-  //       $song->user_id       = $user->id;
-  //       $song->save();
+		$song               = new Song;
+        $song->title        = 'Entre Sueños';
+        $song->genre        = 'pop';
+        $song->link         = 'https://esteesellink.com.mx';
+        $song->author       = 'Noche de quiz';
+        $song->english      = 1;
+        $song->description  = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tortor leo, congue non sagittis sed, sagittis eu sapien. Ut feugiat dapibus suscipit. Ut semper, elit sed ultrices cursus, lorem tellus ultricies dui, ut porta ligula enim a ipsum. Etiam in leo hendrerit, dignissim velit sagittis, vulputate felis.';
+        $song->status       = 'paid';
+        $song->user_id       = $user->id;
+        $song->save();
         
         // Payment test
 		$payment = new Payment;
@@ -136,7 +136,42 @@ class DatabaseSeeder extends Seeder
 		$option->value = 'thursday';
 		$option->options = 'monday,tuesday,wednesday,thursday,friday,saturday,sunday';
 		$option->labels = 'Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo';
+		$option->save();
 
+		// Creamos el option taxes 
+		$option = new Option;
+		$option->type = 'text';
+		$option->label = 'Impuestos';
+		$option->slug = 'taxes';
+		$option->description = 'Es la cantidad de impuestos que se pagarán por cada transacción en porcentaje';
+		$option->value = '16';
+		$option->save();
+
+		// Creamos el option critic_share 
+		$option = new Option;
+		$option->type = 'text';
+		$option->label = 'Porcentaje Crítico';
+		$option->slug = 'critic_share';
+		$option->description = 'Es el porcentaje de ganancias por cada transacción que se le pagará al crítico';
+		$option->value = '50';
+		$option->save();
+
+		// Creamos el option conekta_commission 
+		$option = new Option;
+		$option->type = 'text';
+		$option->label = 'Comisión Conekta';
+		$option->slug = 'conekta_commission';
+		$option->description = 'Es la cantidad de comisión en pesos que se le paga a Conekta';
+		$option->value = '5';
+		$option->save();
+
+		// Creamos el option paypal_commission 
+		$option = new Option;
+		$option->type = 'text';
+		$option->label = 'Comisión Paypal';
+		$option->slug = 'paypal_commission';
+		$option->description = 'Es la cantidad de comisión en pesos que se le paga a Paypal';
+		$option->value = '5';
 		$option->save();
 
 

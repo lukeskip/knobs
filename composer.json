@@ -46,7 +46,8 @@
         ],
         "files": [
                "app/Helpers/sending_mails.php",
-               "app/Helpers/get_role.php"
+               "app/Helpers/get_role.php",
+               "app/Helpers/get_share.php"
         ]
     },
     "autoload-dev": {

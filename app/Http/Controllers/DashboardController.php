@@ -14,6 +14,7 @@ use Jenssegers\Date\Date;
 
 class DashboardController extends Controller
 {
+    // STARTS: DASHBOARD ADMINS
     public function show(){
     	$option_payment_day = Option::where('slug','payment_day')->first()->value;
         
@@ -26,7 +27,7 @@ class DashboardController extends Controller
     	$payments = Payment::whereBetween('created_at',[$past_payment_day,$next_payment_day])->whereIn('status', ['paid', 'completed', 'processed'])->get();
 
     	foreach ($payments as $payment) {
-    		$total += $payment->total;
+    		$total += get_share('admin',$payment->method,$payment->total);
     	}
 
         $songs = Song::whereBetween('created_at',[$last_week,$today])->where('status','paid')->doesnthave('reviews')->get();
@@ -36,7 +37,9 @@ class DashboardController extends Controller
     	return view('sweet.dashboard',compact('payments','total','songs','reviews'));
 
     }
+    // ENDS: DASHBOARD ADMINS
 
+    // STARTS: DASHBOARD CRITICS
     public function show_critic(){
         
 
@@ -47,7 +50,10 @@ class DashboardController extends Controller
         return view('sweet.dashboard_critic',compact('songs'));
 
     }
+    // ENDS: DASHBOARD CRITICS
 
+
+    // STARTS: DASHBOARD MUSICIANS
     public function show_musician(){
         
         $user = Auth::user();
@@ -56,4 +62,5 @@ class DashboardController extends Controller
         return view('sweet.dashboard_musician',compact('songs'));
 
     }
+    // ENDS: DASHBOARD MUSICIANS
 }

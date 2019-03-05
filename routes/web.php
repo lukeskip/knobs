@@ -88,6 +88,7 @@ Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'
 	Route::get('/users','AdminController@users' );
 	Route::post('/users/role','AdminController@users_role' );
 	Route::get('/songs/','AdminController@songs' );
+	Route::get('/payments/users','AdminController@payment_users' );
 	Route::resource('/options', 'OptionController');
 	Route::resource('/reviews', 'ReviewController');
 	Route::resource('/options', 'OptionController');
