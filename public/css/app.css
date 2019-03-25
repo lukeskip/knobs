@@ -19,7 +19,7 @@ html, body{
 	overflow-x: hidden;
 }
 
-input:-webkit-autofill,
+/*input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus
 textarea:-webkit-autofill,
@@ -34,7 +34,7 @@ select:-webkit-autofill:focus {
   background-color: none!important; 
   border:0;
   color:white;
-}
+}*/
 html, body, .full {
     min-height: 100% !important;
     height: 100%;
@@ -1282,6 +1282,14 @@ footer{
 	padding: 10px;
 	text-align: center;
 	font-family: 'Staatliches', cursive;
+}
+
+footer a{
+	color:white;
+}
+
+footer a:hover{
+	color:white;
 }
 /******************************************
 ENDS:FOOTER

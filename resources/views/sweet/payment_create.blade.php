@@ -52,7 +52,7 @@
 					<div class="col-md-6">
 						
 
-						<form action='{{$options->where("slug","paypal_action")->first()->value}}' method='post'>
+						<form target="_blank" action='{{$options->where("slug","paypal_action")->first()->value}}' method='post'>
 
 
 							<input type='hidden' name='business' value='{{$options->where("slug","paypal_mail")->first()->value}}'>
