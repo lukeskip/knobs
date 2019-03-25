@@ -30,7 +30,7 @@
 				<br><br>
 				<h2>¿Qué es Knobs?</h2>
 				<p>Knobs es una plataforma que muestra tu música a productores de la industria, para que escuchen tus canciones y te den consejos de cómo mejorar tu proyecto.</p>
-				<p>Es una plataforma que busca el intercambio de experiencia, los productores se nutren escuchando la música de nuevas bandas y tu, de sus consejos.</p>
+				<p>Es una plataforma que busca el intercambio de experiencia y el alza en la calidad de la música independiente.</p>
 				<br><br>
 				
 				
