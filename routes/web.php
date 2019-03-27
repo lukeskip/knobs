@@ -81,7 +81,7 @@ Route::group(['middleware' => ['auth','check_profile']], function () {
 // ENDS: ROUTES FOR LOGGED USERS
 
 
-
+ 
 
 // STARTS: ROUTES JUST FOR ADMIN
 Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'], function () {
