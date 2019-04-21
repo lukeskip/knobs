@@ -101,7 +101,7 @@ a:hover{
 }
 
 
-::selection { background: transparent; } ::-moz-selection { background:#A1961D ; color:#FFFFFF; }
+::selection { background:#A1961D ; color:#FFFFFF; } ::-moz-selection { background:#A1961D ; color:#FFFFFF; }
 
 
 h1,h2,h3,h4{
