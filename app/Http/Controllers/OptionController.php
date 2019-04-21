@@ -46,7 +46,7 @@ class OptionController extends Controller
         // Registramos las reglas de validación
         
         foreach ($request->all() as $key => $value) {
-            echo $value;
+           
             if($value != '' AND $key != '_token'){
 
                 $option = Option::where('slug',$key)->first();
@@ -57,7 +57,7 @@ class OptionController extends Controller
             
         }
 
-        return redirect('/admin/options');
+        // return redirect('/admin/options');
     }
 
     /**
