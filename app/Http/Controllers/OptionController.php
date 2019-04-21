@@ -57,7 +57,7 @@ class OptionController extends Controller
             
         }
 
-        return redirect()->route('options');
+        return redirect()->route('options.index');
     }
 
     /**

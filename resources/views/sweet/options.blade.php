@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Configuración General</h1>
-			<form action="/admin/options/" method="POST">
+			<form action="{{ route('options.store') }}" method="POST">
 				{{ csrf_field() }}
 				@foreach($options as $option)
 
