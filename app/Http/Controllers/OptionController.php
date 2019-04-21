@@ -57,7 +57,7 @@ class OptionController extends Controller
             
         }
 
-        return redirect('/admin/options');
+        return redirect()->route('options');
     }
 
     /**

@@ -89,7 +89,7 @@ Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'
 	Route::post('/users/role','AdminController@users_role' );
 	Route::get('/songs/','AdminController@songs' );
 	Route::get('/payments/users','AdminController@payment_users' );
-	Route::resource('/options', 'OptionController');
+	Route::resource('/options', 'OptionController')->name('options');;
 	Route::resource('/reviews', 'ReviewController');
 	Route::resource('/admin_comments', 'AdminCommentController');
 	Route::get('/dashboard', 'DashboardController@show');
