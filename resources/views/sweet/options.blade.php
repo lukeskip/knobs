@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h1>Configuración General</h1>
+			<h1>Configuración GeneralAAA</h1>
 			<form action="/options/" method="POST">
 				{{ csrf_field() }}
 				@foreach($options as $option)
