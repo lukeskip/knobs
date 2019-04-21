@@ -48,9 +48,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 columns-center">
-				<h2>necesitas dirección</h2>
+				<h2>Necesitas Dirección</h2>
 				<p>Spotify y iMusic están llenos de canciones de calidad "demo", pues las bandas independientes las lanzan sin filtros al público, motivados por la emoción del momento, pero sin la destreza y el olfato de un profesional.</p>
-				<p>Lanzar canciones sin la calidad debida retrasará tu proyecto, hacer una fanbase cargando con malas grabaciones o arreglones que no aportan será una tarea difícil.</p>
+				<p>Lanzar canciones sin la calidad debida retrasará tu proyecto, hacer una fanbase cargando con malas grabaciones o arreglos que no aportan, será una tarea difícil.</p>
 				<br><br><br>
 				
 			</div>
