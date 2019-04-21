@@ -91,7 +91,6 @@ Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'
 	Route::get('/payments/users','AdminController@payment_users' );
 	Route::resource('/options', 'OptionController');
 	Route::resource('/reviews', 'ReviewController');
-	Route::resource('/options', 'OptionController');
 	Route::resource('/admin_comments', 'AdminCommentController');
 	Route::get('/dashboard', 'DashboardController@show');
 	Route::get('/payments', 'PaymentController@index');
