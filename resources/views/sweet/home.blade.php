@@ -15,7 +15,7 @@
 					Productores profesionales están ansiosos por escuchar tu música y darte su opinión.
 				</div>
 				<br>
-				<a href="/register" class="btn btn-lg btn-success">Registrate</a>
+				<a href="/register" class="btn btn-lg btn-success">Regístrate</a>
 			</div>
 		</div>
 	</div>
