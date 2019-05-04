@@ -61,11 +61,7 @@ function conection (method,fields,link,handle = false){
 		if(handle){
 			return data;
 		}else{
-			// if(data.success == true){
-			// 	show_message('success','¡Listo!',data.message);
-			// }else{
-			// 	show_message('error','¡Error!',data.message);
-			// }
+			show_message('error','¡Error!',data.message);
 		}	
 	  
 	}).fail(function(jqXHR, exception){

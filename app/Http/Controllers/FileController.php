@@ -28,6 +28,7 @@ class FileController extends Controller
  	}
 
  	public function mp3(Request $request){
+        
         $image 			= $request->file('file');
         $image_orig  	= explode('.',$image->getClientOriginalName());
         $ext 			= 'mp3';
