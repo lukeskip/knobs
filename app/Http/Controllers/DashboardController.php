@@ -30,7 +30,7 @@ class DashboardController extends Controller
     		$total += get_share('admin',$payment->method,$payment->total);
     	}
 
-        $songs = Song::whereBetween('created_at',[$last_week,$today])->where('status','paid')->doesnthave('reviews')->get();
+        $songs = Song::where('status','paid')->doesnthave('reviews')->get();
 
         $reviews = Review::where('status','revision')->get();
 
