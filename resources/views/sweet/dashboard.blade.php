@@ -104,7 +104,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Canciones Pagadas esperando crítica</h2>
+				<h2>Canciones Pagadas esperando críticaa</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -119,7 +119,7 @@
 										{{$song->title}}
 									</span>
 									<span class="author">
-										${{$song->author}}
+										{{$song->author}}
 									</span>
 								</div>
 								<div class="col-sm-4 text-right">
