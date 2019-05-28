@@ -68,7 +68,7 @@
 				</div>
 				<div class="row">
 					@foreach($form_items as $item)
-						<div class="@if($item->importance == 1) col-md-12 @elseif($item->importance == 2) col-md-6 @else col-md-4 @endif">
+						<div class="col-md-12">
 							<div class="text-center"><h3 class="title">{{$item->label}}</h3></div>
 							<p for="" class="text-center">
 								{{$item->instructions}}
