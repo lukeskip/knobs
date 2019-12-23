@@ -19,9 +19,9 @@
                             
                             
 
-                            <div class="col-md-12">
-                                <label for="name">Nombre</label>
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                            <div class="col-md-6">
+                                <label for="name">Nickname</label>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -30,9 +30,9 @@
                                 @endif
                             </div>
                         
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label for="email">Email</label>
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -45,9 +45,9 @@
                         <div class="form-group row">
                             
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label for="password">Contraseña</label>
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -58,10 +58,23 @@
                        
                             
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label for="password-confirm">Confirmar contraseña</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                             </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <div class="col-md-6 columns-center">
+                                    <br>
+                                    {!! Recaptcha::render() !!}
+                                    @if ($errors->has('g-recaptcha-response'))
+                                        <span class="help-block text-danger" role="alert">
+                                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                        </span>
+                                    @endif
+                            </div>
+
                         </div>
 
                         <div class="form-group row mb-0">
@@ -76,13 +89,11 @@
                                     Entrar con facebook
                                 </a >
                             </div>
+                            
                             <div class="col-md-12" style="color:white">
                                     <br>
                                     Al dar click en Registrar aceptas nuestros <a href="/terms" target="_blank">Términos y condiciones</a> y <a href="/notice_privacy" target="_blank">Aviso de Privacidad</a> 
-                                    {!! Recaptcha::render() !!}
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                    </span>
+                                    
                             </div>
                         </div>
                     </form>

@@ -49,12 +49,22 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+        $messages = [
+            'required'  => 'Debes llenar todos los campo',
+            'min'       => 'Debes escribir al menos 8 caracteres',
+            'regex'     => 'Tu contraseña debe contener al menos una mayúscula, una minúscula, un número y un caracter especial',
+            'confirmed' => 'Tus contraseñas no coinciden',
+            'recaptcha' => 'Debes comprobar que no eres un robot',
+            'unique' => 'Este email ya está registrado'
+        ];
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'g-recaptcha-response' => 'required|recaptcha',
-        ]);
+            'g-recaptcha-response' => 'recaptcha',
+        ],$messages);
     }
 
     /**
