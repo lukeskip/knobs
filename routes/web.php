@@ -115,5 +115,10 @@ Route::get('/home', function () {
 	return redirect('/');
 });
 
+// Home
+Route::get('/phpinfo', function () {
+	phpinfo();
+});
+
 Route::get('login/{provider}',          'Auth\SocialAccountController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');

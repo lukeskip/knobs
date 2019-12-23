@@ -98,7 +98,7 @@
 	        url:'/upload/mp3',
 			autoProcessQueue: false,
 	        uploadMultiple: false,
-	        maxFilezise: 10,
+	        maxFilezise: 15,
 	        maxFiles: 1,
 	        acceptedFiles:'audio/mp3',
 	        success: function(file, response){
