@@ -80,6 +80,9 @@
                                     <br>
                                     Al dar click en Registrar aceptas nuestros <a href="/terms" target="_blank">Términos y condiciones</a> y <a href="/notice_privacy" target="_blank">Aviso de Privacidad</a> 
                                     {!! Recaptcha::render() !!}
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
                             </div>
                         </div>
                     </form>
