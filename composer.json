@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
-        "arcanedev/log-viewer": "4.6",
+        "arcanedev/log-viewer": "~4.6.0",
         "braintree/braintree_php": "^3.39",
         "conekta/conekta-php": " dev-master",
         "fideloper/proxy": "^4.0",
@@ -17,7 +17,8 @@
         "laravel/framework": "5.7.*",
         "laravel/socialite": "^4.0",
         "laravel/tinker": "^1.0",
-        "paypal/rest-api-sdk-php": "^1.14"
+        "paypal/rest-api-sdk-php": "^1.14",
+        "greggilbert/recaptcha": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -177,6 +177,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         'Jenssegers\Date\DateServiceProvider',
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
 
 
     ],
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Date' => Jenssegers\Date\Date::class,
+        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
 
 
     ],
