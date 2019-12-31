@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth','check_profile']], function () {
 
 	Route::resource('/payments', 'PaymentController')->except(['show','create']);
+	
 	Route::get('/payments/create/{song}', 'PaymentController@create');
 	Route::get('/payments/{order_id}', 'PaymentController@show');
 	Route::resource('/songs', 'SongController');
@@ -94,6 +95,7 @@ Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'
 	Route::resource('/admin_comments', 'AdminCommentController');
 	Route::get('/dashboard', 'DashboardController@show');
 	Route::get('/payments', 'PaymentController@index');
+	Route::resource('/coupons', 'CouponController',['names' => 'coupons']);
 
 	
 
