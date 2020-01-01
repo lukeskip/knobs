@@ -6,6 +6,7 @@ use App\Payment;
 use App\Option;
 use App\Song;
 use App\User;
+use App\Coupon;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Http\Request;
 use Jenssegers\Date\Date;
@@ -210,6 +211,10 @@ class PaymentController extends Controller
 		$item_number = explode('-',$_POST['item_number']);
 		$song_id = $item_number[0];
 		$user_id = $item_number[1];
+		
+		$coupon = Coupon::find($coupon_id);
+		$coupon->redeemed = $coupon->redeemed +1;
+		$coupon->save();
 
 		if($status == 'completed' || $status == 'pending' || $status == 'processed'){
 						

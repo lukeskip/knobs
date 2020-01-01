@@ -572,6 +572,7 @@ form.dark input,form.dark textarea,form.dark select{
 	color:#999;
 }
 
+
 form.dark input.error,form.dark textarea.error,form.dark select.error{
 	border-bottom:2px solid #A1961D;
 }
@@ -1093,7 +1094,7 @@ ENDS:ANALOG INTERFACE
 }
 
 .checkout .price{
-	text-align: center;
+	/* text-align: center; */
 	font-size: 2em;
 	font-family: 'Staatliches', cursive;
 	line-height: 40px;

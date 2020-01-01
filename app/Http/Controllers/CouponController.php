@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Coupon;
+use App\Option;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+
 
 class CouponController extends Controller
 {
@@ -14,7 +18,8 @@ class CouponController extends Controller
      */
     public function index()
     {
-        //
+        $coupons = Coupon::all();
+        return view('sweet.coupon_list',compact('coupons'));
     }
 
     /**
@@ -40,7 +45,8 @@ class CouponController extends Controller
             'discount'      => 'required',
             'starts'        => 'required|date', 
             'ends'          => 'required|date',
-            'limit'         => 'required',    
+            'limit'         => 'required', 
+            'code'          => 'required',    
         );
 
         // Validamos todos los campos
@@ -51,17 +57,17 @@ class CouponController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         }
 
-        $song               = new Song;
-        $song->title        = $request->title;
-        $song->genre        = $request->genre;
-        $song->link         = $request->link;
-        $song->file         = $request->song_file;
-        $song->author       = $request->author;
-        $song->english      = $request->english;
-        $song->description  = $request->description;
-        $song->status       = 'pending';
+        $coupon                 = new Coupon;
+        $coupon->label          = $request->label;
+        $coupon->code          = $request->code;
+        $coupon->discount       = $request->discount;
+        $coupon->starts         = $request->starts;
+        $coupon->ends           = $request->ends;
+        $coupon->limit          = $request->limit;
+        
+        $coupon->save();
 
-       
+        return redirect()->route('coupons.index');
 
         
     }
@@ -98,6 +104,24 @@ class CouponController extends Controller
     public function update(Request $request, Coupon $coupon)
     {
         //
+    }
+
+    public function redeem(Request $request)
+    {
+        $coupon = Coupon::where('code',$request->code)->first();
+        if($coupon){
+            if($coupon->redeemed < $coupon->limit){
+                $price = Option::where("slug","price")->first()->value;
+                $discount = $price * ($coupon->discount * .01);
+                $discount_final  = $price - $discount;
+                return redirect()->back()->with('discount_final', $discount_final )->with('coupon_id',$coupon->id);
+            }else{
+                return Redirect::back()->with('message','El cupón ya llegó a su limite'); 
+            }
+            
+        }else{
+            return Redirect::back()->with('message','El cupón no existe'); 
+        }
     }
 
     /**

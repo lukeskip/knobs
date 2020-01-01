@@ -7,7 +7,8 @@
 		<div class="col-md-12">
 			<h1>Registrar nuevo cupón</h1>
 		</div>
-        <form action="{{route('coupons.store')}}">
+        <form action="{{route('coupons.store')}}" method="post">
+            {{csrf_field()}}
             <div class="col-md-12">
                 <label for="">Label</label>
                 <input type="text" name="label" class="label">
@@ -15,6 +16,16 @@
                 @if ($errors->has('label'))
                     <span class="error" role="alert">
                         <strong>{{ $errors->first('label') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="col-md-12">
+                <label for="">Código</label>
+                <input type="text" name="code" class="code">
+                
+                @if ($errors->has('code'))
+                    <span class="error" role="alert">
+                        <strong>{{ $errors->first('code') }}</strong>
                     </span>
                 @endif
             </div>

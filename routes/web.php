@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth','check_profile']], function () {
 	Route::resource('/comments', 'CommentController');
 	Route::resource('/ratings', 'RatingController');
 	Route::resource('/guests', 'GuestController');
+	Route::post('/redimir', 'CouponController@redeem')->name('redeem');
 	
 
 	//Payment Oxxo Post
@@ -96,6 +97,7 @@ Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'
 	Route::get('/dashboard', 'DashboardController@show');
 	Route::get('/payments', 'PaymentController@index');
 	Route::resource('/coupons', 'CouponController',['names' => 'coupons']);
+	
 
 	
 
