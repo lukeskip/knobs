@@ -10,7 +10,11 @@
 			<h2>Cupones</h2>
 		</div>
 	</div>
-	
+	<div class="row">
+		<div class="col-md-12">
+			<a href="{{route('coupons.create')}}" class="btn btn-success btn-large">Crear Cupón</a>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="list-group">
@@ -37,11 +41,13 @@
 								</span>
 								
 							</div>
-							<div class="col-sm-2 text-right">
-								editar
-					  		</div>
-							<div class="col-md-2 text-right">
-								eliminar
+							
+							<div class="col-md-4 text-right">
+							<form action="{{route('coupons.destroy',$coupon->id)}}" method="POST">
+								@csrf
+								{{ method_field('DELETE') }}
+								<button type="submit" class="btn btn-success btn-small"> Eliminar</button>
+							</form>
 							</div>
 							
 						</div>

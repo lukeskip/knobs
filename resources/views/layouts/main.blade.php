@@ -50,6 +50,7 @@
 					<li><a href='/admin/options'>Opciones</a></li>
 					<li><a href='/admin/users'>Usuarios</a></li>
 					<li><a href='/admin/songs'>Canciones registradas</a></li>
+					<li><a href='/admin/coupons'>Cupones</a></li>
 					<li><a href='/admin/payments'>Pagos</a></li>
 					<li><a href='/admin/payments/users'>Pagos a Usuarios</a></li>
 					<li><a href='/log-viewer' target="_blank">Errores</a></li>
