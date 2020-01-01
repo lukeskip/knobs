@@ -212,9 +212,12 @@ class PaymentController extends Controller
 		$song_id = $item_number[0];
 		$user_id = $item_number[1];
 		
-		$coupon = Coupon::find($_POST['custom']);
-		$coupon->redeemed = $coupon->redeemed +1;
-		$coupon->save();
+		if(isset($_POST['custom'])){
+			$coupon = Coupon::find($_POST['custom']);
+			$coupon->redeemed = $coupon->redeemed +1;
+			$coupon->save();
+		}
+		
 
 		if($status == 'completed' || $status == 'pending' || $status == 'processed'){
 						
@@ -227,13 +230,16 @@ class PaymentController extends Controller
 				$payment                    = new Payment;
 				$payment->order_id          = $_POST['txn_id'];
 				$payment->amount            = $_POST['mc_gross'];
-				$payment->total             = $_POST['mc_gross'];;
+				$payment->total             = $_POST['mc_gross'];
 				$payment->method            = 'paypal';
 				$payment->reference         = $_POST['txn_id'];
 				$payment->expires_at        = 'not applies';
 				$payment->status            = $status;
 				$payment->song_id           = $item_number[0];
 				$payment->user_id           = $item_number[1];
+				if(isset($_POST['custom']))){
+					$payment->coupon  = $_POST['custom'];
+				}
 				$payment->save();
 
 				return response()->json(['success' => true,'message'=>'Pago fue creado exitosamente ']);

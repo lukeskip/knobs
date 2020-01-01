@@ -21,10 +21,11 @@ class CreatePaymentsTable extends Migration
             $table->string('method');
             $table->string('reference')->nullable();
             $table->string('expires_at')->nullable();
-            $table->integer('review_id')->nullable();;
+            $table->integer('review_id')->nullable();
             $table->integer('song_id');
             $table->integer('user_id');
             $table->string('status');
+            $table->integer('coupon_id')->nullable();
             $table->timestamps();
         });
     }
