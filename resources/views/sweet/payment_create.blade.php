@@ -90,7 +90,7 @@
 							<input type='hidden' name='currency_code' value='MXN'>
 
 							<input type="hidden" name="item_number" value="{{$song->id}}-{{$user_id}}">
-							<input type="hidden" name="coupon" value="{{Session::get('coupon_id')}}">
+							<input type="hidden" name="custom" value="{{Session::get('coupon_id')}}">
 							
 							<input type="hidden" name="return" value="https://knobs.reydecibel.com.mx/songs">
 							<input type="hidden" name="notify_url" value="https://knobs.reydecibel.com.mx/confirmed_paypal">
