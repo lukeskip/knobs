@@ -238,7 +238,7 @@ class PaymentController extends Controller
 				$payment->song_id           = $item_number[0];
 				$payment->user_id           = $item_number[1];
 				if(isset($_POST['custom'])){
-					$payment->coupon  = $_POST['custom'];
+					$payment->coupon_id  = $_POST['custom'];
 				}
 				$payment->save();
 
