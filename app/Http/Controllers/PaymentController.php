@@ -212,7 +212,7 @@ class PaymentController extends Controller
 		$song_id = $item_number[0];
 		$user_id = $item_number[1];
 		
-		if(isset($_POST['custom'])){
+		if(isset($_POST['custom']) && $_POST['custom'] != ''){
 			$coupon = Coupon::find($_POST['custom']);
 			$coupon->redeemed = $coupon->redeemed +1;
 			$coupon->save();
