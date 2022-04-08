@@ -23,7 +23,7 @@
 	<meta property="og:image" content="{{asset('img/facebook_ok.png')}}" />
 
 </head>
-<body class="fixed {{ !empty($body_class) ? $body_class : '' }}">
+<body class="{{ !empty($body_class) ? $body_class : '' }}">
 	@yield('logo')
 	<div class="loader">
 		<div class="loader_icon">
@@ -105,9 +105,11 @@
 		
 	
 	<footer>
-		<div class="row">
-			<div class="col-md-12">
-				Todos los derechos reservados, 2018. Idea Creativa, Diseño y Desarrollo por Malechor Lab. <a href="/terms" target="_blank">Terminos y condiciones</a> y <a href="/notice_privacy" target="_blank">Aviso de privacidad</a>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					Todos los derechos reservados, 2018. Idea Creativa, Diseño y Desarrollo por Malechor Lab. <a href="/terms" target="_blank">Terminos y condiciones</a> y <a href="/notice_privacy" target="_blank">Aviso de privacidad</a>
+				</div>
 			</div>
 		</div>
 		

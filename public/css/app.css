@@ -15,9 +15,7 @@ ENDS:VALORES GENERALES
 STARTS:GENERALES
 ******************************************/
 * { padding: 0; margin: 0; }
-html, body{
-	overflow-x: hidden;
-}
+
 
 /*input:-webkit-autofill,
 input:-webkit-autofill:hover, 
@@ -36,11 +34,6 @@ select:-webkit-autofill:focus {
   color:white;
 }*/
 
-html, body, .full {
-    min-height: 100% !important;
-    height: 100%;
-
-}
 
 body p{
 	font-size: 1.2em;
