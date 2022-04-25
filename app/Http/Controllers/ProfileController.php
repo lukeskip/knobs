@@ -64,6 +64,7 @@ class ProfileController extends Controller
         $profile->user_id   = $user->id;
         $profile->phone     = $request->phone;
         $profile->paypal    = $request->paypal;
+        $profile->pricing   = $request->pricing;
         $profile->save();
 
         return response()->json(['success' => true,'message'=>'Tu perfil ha sido guardado','redirect' => '/critic/dashboard']);
