@@ -3,8 +3,6 @@
 <link rel="stylesheet" href="{{asset('/plugins/dropzone/dropzone.css')}}">
 @endsection
 @section('content')
-
-
 	
 <div class="form-items">
 	<div class="container ">
@@ -74,6 +72,20 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
+					<label for="">Selecciona tu precio crítica</label>
+					<select class="form-control" name="pricing" id="">
+						<option value="600">$600 MXN</option>
+						<option value="800">$800 MXN</option>
+						<option value="800">$1,000 MXN</option>
+						<option value="800">$,1200 MXN</option>
+						<option value="800">$1,500 MXN</option>
+						<option value="800">$1,800 MXN</option>
+						<option value="800">$2,000 MXN</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
 					<h2>Datos de deposito</h2>
 				</div>
 			</div>
@@ -82,8 +94,6 @@
 					<label for="">Cuenta de Paypal </label>
 					<input class="form-control" type="bank" name="paypal">
 				</div>
-
-
 			</div>
 		
 			<div class="row">

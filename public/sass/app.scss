@@ -73,6 +73,7 @@ a:hover{
 
 .container{
 	padding-top: 40px;
+	min-height: 90vh;
 	
 }
 
@@ -1279,7 +1280,8 @@ footer{
 	font-family: 'Staatliches', cursive;
   
   .container{
-    height: 100px;
+	min-height: auto;
+	padding:10px
   }
   a{
 	  color:white;
