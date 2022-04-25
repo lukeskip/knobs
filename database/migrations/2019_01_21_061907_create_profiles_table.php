@@ -23,6 +23,7 @@ class CreateProfilesTable extends Migration
 			$table->string('genre');
 			$table->integer('user_id');
 			$table->string('paypal')->nullable();
+			$table->string('pricing')->nullable();
 			$table->timestamps();
 		});
 	}
