@@ -82,7 +82,7 @@
 						
 					<li><a href='/songs/create'>Registrar Canción</a></li>
 					<li><a href='/songs'>Mis canciones</a></li>
-					<li><a href='{{route('profiles.create')}}'>Registrarme como Crítico</a></li>
+					<li><a href='{{route("profiles.create")}}'>Registrarme como Crítico</a></li>
 					
 				@endif
 				<!-- ENDS: MENU FOR ADMIN -->
