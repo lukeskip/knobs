@@ -38,7 +38,7 @@
 				<li><a href='/'>Knobs</a></li>
 				@if(Auth::guest())
 					<li><a href='/register'>Regístrate</a></li>
-					<li><a href='{{route("profiles.create")}}'>Regístrate como productor</a></li>
+					<li><a href='{{route("critic-landing")}}'>Regístrate como productor</a></li>
 					<li><a href='/login'>Entrar</a></li>
 				@endif
 				
