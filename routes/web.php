@@ -53,13 +53,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 	// REDIRECTS BY ROLES
 	Route::get('/redirects', function () {
-		if(get_role() == 'admin'){
-			return redirect('/admin/dashboard');
-		}elseif(get_role() == 'critic'){
-			return redirect('/critic/dashboard');
-		}elseif(get_role() == 'musician'){
-			return redirect('/songs');
-		}
+		// if(get_role() == 'admin'){
+		// 	return redirect('/admin/dashboard');
+		// }elseif(get_role() == 'critic'){
+		// 	return redirect('/critic/dashboard');
+		// }elseif(get_role() == 'musician'){
+		// 	return redirect('/songs');
+		// }
+		return redirect()->intended();
 	});
 });
 
