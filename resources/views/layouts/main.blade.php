@@ -109,7 +109,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					Todos los derechos reservados, 2018. Idea Creativa, Diseño y Desarrollo por Malechor Lab. <a href="/terms" target="_blank">Terminos y condiciones</a> y <a href="/notice_privacy" target="_blank">Aviso de privacidad</a>
+					Todos los derechos reservados, 2020. Idea Creativa, Diseño y Desarrollo por Rey Decibel. <a href="/terms" target="_blank">Terminos y condiciones</a> y <a href="/notice_privacy" target="_blank">Aviso de privacidad</a>
 				</div>
 			</div>
 		</div>
@@ -144,7 +144,6 @@
 	<script src="{{asset('/js/app.js')}}"></script>
 	@yield('knobs')
 	@yield('scripts')
-	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156447738-1"></script>
 	<script>

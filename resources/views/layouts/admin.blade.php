@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Promociona tu música</title>
+	<title>Bienvenido a Knobs</title>
 	<link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('/plugins/menu/menu.css')}}">
 	<link rel="stylesheet" href="{{asset('/plugins/owl-carousel/assets/owl.carousel.min.css')}}">
