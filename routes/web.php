@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/registrate-como-productor', function () {
-    return view('sweet.home_critic')->with('price',$price);
+    return view('sweet.home_critic');
 })->name('critic-landing');
 
 Route::get('/reviews/{review}', 'ReviewController@show');
