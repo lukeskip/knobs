@@ -19,6 +19,11 @@ Route::get('/', function () {
     return view('sweet.home')->with('price',$price);
 });
 
+Route::get('/registrate-como-productor', function () {
+	$price = App\Option::where('slug','price')->first()->value;
+    return view('sweet.home_critic')->with('price',$price);
+});
+
 Route::get('/reviews/{review}', 'ReviewController@show');
 
 Route::get('/notice_privacy/', function(){

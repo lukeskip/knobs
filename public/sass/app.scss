@@ -74,7 +74,6 @@ a:hover{
 .container{
 	padding-top: 40px;
 	min-height: 90vh;
-	
 }
 
 .box{
@@ -155,6 +154,12 @@ h2.author{
 	box-shadow: none;
 }
 
+.landing{
+	.container{
+		min-height: 500px;
+	}
+}
+
 button:focus {outline:0;}
 input::placeholder { color: #eeeeee}
 .loader{
@@ -203,6 +208,14 @@ STARTS:LEVELS
 	min-height: 500px;
 }
 
+.landing-critic{
+	.first-level{
+		background: url(../img/back-6.jpg);
+		background-position: center center;
+		
+	}
+}
+
 .first-level h1{
 	font-size: 2em;
 	color:#A1961D;
@@ -223,6 +236,13 @@ STARTS:LEVELS
 @media only screen and (max-width: 768px) {
 	.second-level{
 		background-image: url(../img/back_3_rot.jpg);
+	}
+}
+
+.landing-critic{
+	.third-level{
+		background: url(../img/back-5.jpg);
+		
 	}
 }
 
@@ -1275,12 +1295,12 @@ STARTS:FOOTER
 footer{
 	background: #A1961D;
 	color: #0c0c0c;
-	padding: 10px;
 	text-align: center;
 	font-family: 'Staatliches', cursive;
+	height:60px;
   
   .container{
-	min-height: auto;
+	min-height: 60px!important;
 	padding:10px
   }
   a{
