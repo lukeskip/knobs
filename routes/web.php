@@ -53,16 +53,17 @@ Route::group(['middleware' => ['auth']], function () {
 
 	// REDIRECTS BY ROLES
 	Route::get('/redirects', function () {
-		// if(get_role() == 'admin'){
-		// 	return redirect('/admin/dashboard');
-		// }elseif(get_role() == 'critic'){
-		// 	return redirect('/critic/dashboard');
-		// }elseif(get_role() == 'musician'){
-		// 	return redirect()->intended();
-		// 	return redirect('/songs');
-		// }
-
-		echo redirect()->intended()->getTargetUrl();
+		if(get_role() == 'admin'){
+			return redirect('/admin/dashboard');
+		}elseif(get_role() == 'critic'){
+			return redirect('/critic/dashboard');
+		}elseif(get_role() == 'musician'){
+			if(redirect()->intended()->getTargetUrl() == route('profiles.create')){
+				return redirect()->intended();
+			}else{
+				return redirect('/songs');
+			}
+		}
 		
 	});
 });
