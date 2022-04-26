@@ -58,9 +58,12 @@ Route::group(['middleware' => ['auth']], function () {
 		// }elseif(get_role() == 'critic'){
 		// 	return redirect('/critic/dashboard');
 		// }elseif(get_role() == 'musician'){
+		// 	return redirect()->intended();
 		// 	return redirect('/songs');
 		// }
-		return redirect()->intended();
+
+		echo redirect()->intended()->getTargetUrl();
+		
 	});
 });
 
