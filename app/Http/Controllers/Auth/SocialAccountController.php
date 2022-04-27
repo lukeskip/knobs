@@ -38,7 +38,7 @@ class SocialAccountController extends Controller
 
         auth()->login($authUser, true);
 
-        if($_GET['producer']){
+        if(isset($_GET['producer'])){
             return 'hola';
         }else{
             return redirect()->to('/redirects');
