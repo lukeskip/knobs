@@ -89,7 +89,7 @@
 
                             <div class="col-md-6">
                                 @if(!isset($_GET['producer'])){
-                                    <a href="/login/facebook?producer=1" class="btn btn-lg btn-block facebook">
+                                    <a href="/login/facebook" class="btn btn-lg btn-block facebook">
                                         Entrar con facebook</a >
                                 @endif
                             </div>
