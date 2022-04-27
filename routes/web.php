@@ -25,7 +25,12 @@ Route::get('/registrate-como-productor', function () {
 
 Route::get('/reviews/{review}', 'ReviewController@show');
 
+
 Route::get('/notice_privacy/', function(){
+	return view('sweet.notice_privacy');
+});
+
+Route::get('/eliminacion/', function(){
 	return view('sweet.notice_privacy');
 });
 
@@ -59,14 +64,11 @@ Route::group(['middleware' => ['auth']], function () {
 			return redirect('/critic/dashboard');
 		}elseif(get_role() == 'musician'){
 			if(redirect()->intended()->getTargetUrl() == route('profiles.create')){
-				return "debería ir a intended";
 				return redirect()->intended();
 			}else{
 				return redirect('/songs');
 			}
 		}
-
-		
 	});
 });
 
