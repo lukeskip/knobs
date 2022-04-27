@@ -30,6 +30,7 @@ Route::get('/notice_privacy/', function(){
 	return view('sweet.notice_privacy');
 });
 
+
 Route::get('/eliminacion/', function(){
 	return view('sweet.notice_privacy');
 });
