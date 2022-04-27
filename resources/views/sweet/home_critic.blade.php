@@ -15,7 +15,11 @@
 					Hay muchos músicos independientes buscando la opinión y la orientación de un experto, ayúdalos a llegar más allá con tu experiencia, y gana dinero con ello.
 				</div>
 				<br>
-				<a href="{{route('profiles.create')}}" class="btn btn-lg btn-success">Regístrate</a>
+				@if(!Auth::guest())
+					<a href="{{route('profiles.create')}}" class="btn btn-lg btn-success">Regístrate</a>
+				@else
+					<a href="{{route('register',['producer' => 1])}}" class="btn btn-lg btn-success">Regístrate</a>
+				@endif
 			</div>
 		</div>
 	</div>

@@ -36,4 +36,18 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if(get_role() == 'admin'){
+			return redirect('/admin/dashboard');
+		}elseif(get_role() == 'critic'){
+			return redirect('/critic/dashboard');
+		}elseif(get_role() == 'musician'){
+            if($request->producer){
+                return redirect()->route('profiles.create');
+            }			
+			return redirect('/songs');
+		}
+    }
 }

@@ -14,11 +14,14 @@
                     </div>
                     <form method="POST" action="{{ route('register') }}" class="dark">
                         @csrf
+                        @if(isset($_GET['producer']) && $_GET['producer'])
+                            <input type="hidden" name="producer" value=1>
+                        @endif
 
                         <div class="form-group row">
                             
                             
-
+                            
                             <div class="col-md-6">
                                 <label for="name">Nickname</label>
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" autofocus>

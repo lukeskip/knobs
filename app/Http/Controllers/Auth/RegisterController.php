@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use \Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -83,10 +84,24 @@ class RegisterController extends Controller
         ]);
 
         $role = Role::where('name','musician')->first();
+        
         $user->roles()->attach($role->id);
 
         return $user;
+    }
 
-
+    protected function registered(Request $request, $user)
+    {   
+        
+        if(get_role() == 'admin'){
+			return redirect('/admin/dashboard');
+		}elseif(get_role() == 'critic'){
+			return redirect('/critic/dashboard');
+		}elseif(get_role() == 'musician'){
+            if($request->producer){
+                return redirect()->route('profiles.create');
+            }			
+			return redirect('/songs');
+		}
     }
 }
