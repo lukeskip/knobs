@@ -9,7 +9,9 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" class="dark">
                         @csrf
-
+                        @if(isset($_GET['producer']) && $_GET['producer'])
+                            <input type="hidden" name="producer" value=1>
+                        @endif
                         <div class="form-group row">
                             <div class="col-md-12"><label for="email" class="">Email</label></div>
 
