@@ -59,11 +59,13 @@ Route::group(['middleware' => ['auth']], function () {
 			return redirect('/critic/dashboard');
 		}elseif(get_role() == 'musician'){
 			if(redirect()->intended()->getTargetUrl() == route('profiles.create')){
+				return "debería ir a intended";
 				return redirect()->intended();
 			}else{
 				return redirect('/songs');
 			}
 		}
+
 		
 	});
 });
