@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Caveat|Staatliches');
+@import 'variables.scss';
 
 /******************************************
 STARTS:VALORES GENERALES
@@ -114,11 +115,11 @@ h1{
 }
 
 h2.author{
-	font-family: 'Caveat', cursive;
+	font-family: $handwriting;
 }
 
 .handwriting{
-	font-family: 'Caveat', cursive;
+	font-family: $handwriting;
 }
 
 .special-font{
@@ -315,7 +316,7 @@ ENDS:LEVELS
 }
 
 .critic-profile .expertice{
-	font-family: 'Caveat', cursive;
+	font-family: $handwriting;;
 	text-transform: capitalize; 
 	font-size: 2em;
 }
@@ -777,7 +778,7 @@ STARTS:ANALOG INTERFACE
 }
 
 label {
-	 font-family: 'Caveat', cursive;
+	 font-family: $handwriting;
 	 font-size: 1.5em;
 }
 
@@ -791,7 +792,7 @@ form.dark label.title{
 	font-size: 1.7em;
 	z-index: 3;
 	background: #D1C699;
-	font-family: 'Caveat', cursive;
+	font-family: $handwriting;
 	line-height: 40px;
 	position: relative;
 	padding: 0px 10px;
@@ -1243,7 +1244,7 @@ STARTS:DASHBOARD
 ******************************************/
 .dashboard .total{
 	font-size: 2em;
-	font-family: 'Caveat', cursive;
+	font-family: $handwriting;
 	padding: 30px;
 	border-radius: 5px;
 	border: 2px dotted #333;
@@ -1253,7 +1254,7 @@ STARTS:DASHBOARD
 
 .dashboard .subtotal{
 	font-size: 2em;
-	font-family: 'Caveat', cursive;
+	font-family: $handwriting;
 }
 
 .dashboard .total .number{

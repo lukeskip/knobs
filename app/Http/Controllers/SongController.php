@@ -58,9 +58,9 @@ class SongController extends Controller
     {
         $token               = Str::random(10);
         $song_file_name      = 'song_'.Auth::user()->id.'_'.$token;
-        $producers           = Profile::where('status','approved')->get();
+        $profiles           = Profile::where('status','approved')->get();
 
-        return view('sweet.songs.songs_create',compact(['song_file_name','producers']));
+        return view('sweet.songs.songs_create',compact(['song_file_name','profiles']));
     }
 
     /**
@@ -98,6 +98,7 @@ class SongController extends Controller
         $song->author       = $request->author;
         $song->english      = $request->english;
         $song->description  = $request->description;
+        $song->profile      = $request->profile;
         $song->status       = 'pending';
 
        if(!Auth::guest()){

@@ -11,9 +11,10 @@
 	<link rel="stylesheet" href="{{asset('/plugins/jquery_ui/jquery-ui.structure.min.css')}}">
 	<link rel="stylesheet" href="{{asset('/plugins/round_slider/roundslider.min.css')}}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<link rel="stylesheet" href="{{asset('/plugins/menu/menu.css')}}">
 	@yield('styles')
+	<link rel="stylesheet" href="{{asset('/plugins/menu/menu.css')}}">
 	<link rel="stylesheet" href="{{asset('./css/app.css')}}">
+	
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="shortcut icon" type="favicon/png" href="{{asset('img/favicon.png')}}"/>
 

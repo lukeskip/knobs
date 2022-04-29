@@ -50,11 +50,22 @@ Dropzone.autoDiscover = false;
     		
 		});
 
+		$("body").on('click', '.profile', function(e) {
+			e.preventDefault();
+			$('.profile').each(function(){
+				$(this).removeClass('selected');
+			});
+
+    		$('.profile-selection').val($(this).data('id'));
+			$(this).addClass('selected');
+    		
+		});
+
 		$('.owl-carousel').owlCarousel({
 			loop:true,
 			margin:10,
 			nav:false,
-			items:1,
+			items:4,
 			autoplay:true,
 			autoplayTimeout:5000
 		});

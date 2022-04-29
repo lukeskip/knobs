@@ -10,4 +10,8 @@ class Profile extends Model
     {
         return $this->belongsTo('App\User','user_id');
     }
+
+    public function getImageUrlAttribute(){
+        return env('APP_URL').'/storage/profile_images/'.$this->picture;
+    }
 }

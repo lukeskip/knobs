@@ -1,6 +1,7 @@
 @extends('layouts.main',['body_class' => 'song-create'])
 @section('styles')
 <link rel="stylesheet" href="{{asset('/plugins/dropzone/dropzone.css')}}">
+<link rel="stylesheet" href="{{asset('/css/profiles.css')}}">
 @endsection
 @section('content')
 
@@ -31,7 +32,7 @@
 		</div>
 	</div>
 	<form id="fields" action="" class="dark">
-		
+		<input type="hidden" name="profile" class="profile-selection">
 		<div class="row">
 			<div class="col-md-8">
 				<label class="title">Nombre de la canción:</label>
@@ -79,15 +80,19 @@
 		<div class="row">
 			<div class="col-md-12">
 				<label class="title">Elige al productor que más se acerque a tus necesidades:</label>
-				@if($producers)
-					<div class="owl-carousel owl-theme producer-list">
-						@foreach($producers as $producer)
-						<div class="item">
-							<h3 class="text-center">{{$producer->name}}</h3>
-							<img src="{{$producer->image_url}}" alt="">
+				@if($profiles)
+					<div class="owl-carousel owl-theme profiles-list">
+						@foreach($profiles as $profile)
+						<div class="item profile" data-id="{{$profile->id}}">
+							<h3 class="text-center">{{$profile->name}}</h3>
+							<img class="image" src="{{$profile->image_url}}" alt="">
+							<h4 class="text-center">{{$profile->genre}}</h4>
 							<p>
-								{{$producer->summary}}
+								{{$profile->summary}}
 							</p>
+							<div class="pricing">
+								costo: ${{$profile->pricing}}
+							</div>
 
 						</div>
 						@endforeach
