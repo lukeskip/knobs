@@ -42,7 +42,7 @@ class RatingController extends Controller
         $role = $user->roles->first()->name;
 
 
-        if($role == 'critic'){
+        if($role == 'critic' || $role =='admin'){
            return response()->json(['success' => false,'message'=>'No puedes calificar los Knobs porque eres un crítico']); 
         }
 

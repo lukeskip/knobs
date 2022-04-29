@@ -1,10 +1,10 @@
-@extends('layouts.main',['body_class' => 'review'])
+@extends('layouts.main',['body_class' => 'review landing'])
 
 @section('content')
 
 	<!-- <img src="{{asset('img/logo_rey.png')}}" alt="" class="logo d-lg-block" width="150"> -->
 	<div class="song-profile {{$song->genre}}">
-		<div class="container ">
+		<div class="container">
 			<div class="row ">
 				<div class="col-md-8">
 					<h1>{{$song->title}}</h1>

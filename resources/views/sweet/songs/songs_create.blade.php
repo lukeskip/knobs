@@ -100,7 +100,7 @@
 	        uploadMultiple: false,
 	        maxFilezise: 15,
 	        maxFiles: 1,
-	        acceptedFiles:'audio/mp3',
+	        acceptedFiles:'.mp3',
 	        success: function(file, response){
                 $('.song-file').val(response.file);
                 register();

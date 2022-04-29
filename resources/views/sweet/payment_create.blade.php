@@ -62,10 +62,10 @@
 					
 				</div>
 				<div class="row">	
-					<!-- <div class="col-md-6">
+					<div class="col-md-6">
 						<button  class="oxxo_button btn btn-success btn-lg btn-block oxxo" data-toggle="modal" data-target="#oxxo-modal">Pagar en Oxxo</button>
 						
-					</div> -->
+					</div>
 					<div class="col-md-6">
 						
 
