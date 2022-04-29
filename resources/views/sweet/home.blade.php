@@ -115,7 +115,7 @@
 				<ol class="handwriting process-list">
 					<li>Te registras con un click</li>
 					<li>Registras tu canción</li>
-					<li>Cubres el costo de ${{$price}} MXN por canción registrada, en OXXO o Paypal </li>
+					<li>Cubres el costo desde ${{$price}} MXN por canción registrada, en OXXO o Paypal </li>
 					<li>En menos de 48hrs. recibirás tu Knob</li>
 				</ol>
 				<br>
