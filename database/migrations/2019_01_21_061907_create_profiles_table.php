@@ -24,6 +24,7 @@ class CreateProfilesTable extends Migration
 			$table->integer('user_id');
 			$table->string('paypal')->nullable();
 			$table->string('pricing')->nullable();
+			$table->string('status')->default('pending');
 			$table->timestamps();
 		});
 	}

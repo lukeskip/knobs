@@ -77,6 +77,28 @@
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-md-12">
+				<label class="title">Elige al productor que más se acerque a tus necesidades:</label>
+				@if($producers)
+					<div class="owl-carousel owl-theme producer-list">
+						@foreach($producers as $producer)
+						<div class="item">
+							<h3 class="text-center">{{$producer->name}}</h3>
+							<img src="{{$producer->image_url}}" alt="">
+							<p>
+								{{$producer->summary}}
+							</p>
+
+						</div>
+						@endforeach
+						
+					</div>
+				@endif
+
+
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-12 text-center">
 				<br>
 				<button class="btn btn-success btn-lg submit">Registrar Canción</button>
@@ -90,70 +112,6 @@
 
 @section('scripts')
 <script src="{{asset('/plugins/dropzone/dropzone.js')}}"></script>
-<script>
-	Dropzone.autoDiscover = false;
-	$(document).ready(function(){
+<script src="{{asset('/js/songs_create_functions.js')}}"></script>
 
-		$('#upload-files').dropzone({	
-	        url:'/upload/mp3',
-			autoProcessQueue: false,
-	        uploadMultiple: false,
-	        maxFilezise: 15,
-	        maxFiles: 1,
-	        acceptedFiles:'.mp3',
-	        success: function(file, response){
-                $('.song-file').val(response.file);
-                register();
-                
-            },
-
-
-	        init: function () {       
-	            this.on("maxfilesexceeded", function(file) {
-		            this.removeAllFiles();
-		            this.addFile(file);
-	      		});
-				
-	        }
-		});
-
-		$('#fields').validate({
-			ignore:".hidden",
-			invalidHandler: function(form, validator) {
-				show_message('error','¡Error!','Tienes que llenar todos los campos');
-			},
-			submitHandler: function(form) {
-				
-				var myDropzone = Dropzone.forElement(".dropzone");
-				if (myDropzone.getQueuedFiles().length === 0) {
-					show_message('error','¡Error!','Tienes que agregar un archivo');
-				}else{
-					$('.loader').css('display','block');
-					myDropzone.processQueue();
-				}
-					
-				
-				
-			}
-		});
-		
-		$("body").on('click', '.submit', function(e) {
-			e.preventDefault();
-    		$('#fields').submit();
-    		
-		});
-
-
-		function register(){
-			conection('POST', $('#fields').serialize(),'/songs',true).then(function(data){
-				if(data.success == 1){
-					show_message('success','¡Listo!','Tu canción fue registrada',data.redirect);
-				}else{
-					show_message('error','Error!',data.message);
-				}
-			});
-		}
-
-	});
-</script>
 @endsection

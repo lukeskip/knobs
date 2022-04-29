@@ -17,7 +17,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        // sending_mails();
+        $profiles = Profile::paginate(20);
+        return view('sweet.admin.profiles', compact(['profiles']));
     }
 
     /**
@@ -135,6 +136,12 @@ class ProfileController extends Controller
         $profile->save();
 
         return response()->json(['success' => true,'message'=>'Tu perfil ha sido guardado','redirect' => '/critic/dashboard']);
+    }
+
+    public function edit_status(Request $request, Profile $profile){
+        $profile->status = $request->status;
+        $profile->save();
+        return redirect()->back();
     }
 
     /**

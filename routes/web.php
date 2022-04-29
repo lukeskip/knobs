@@ -47,7 +47,9 @@ Route::post('/confirmed_paypal','PaymentController@confirmation_paypal')->name('
 Route::group(['middleware' => ['auth']], function () {
 	Route::post('/upload/image', 'FileController@image');
 	Route::post('/upload/mp3', 'FileController@mp3');
-	Route::resource('/profiles', 'ProfileController');
+	Route::resource('/profiles', 'ProfileController')->except([
+		'index','destroy'
+	]);
 	
 	Route::get('/dashboard', 'DashboardController@show_musician');
 	
@@ -111,9 +113,8 @@ Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'
 	Route::get('/dashboard', 'DashboardController@show');
 	Route::get('/payments', 'PaymentController@index');
 	Route::resource('/coupons', 'CouponController',['names' => 'coupons']);
-	
-
-	
+	Route::resource('/profiles', 'ProfileController');
+	Route::post('/profile-update-status/{profile}', 'ProfileController@edit_status')->name('update-status');
 
 });
 // ENDS: ROUTES JUST FOR ADMIN

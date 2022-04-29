@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Song;
 use App\User;
+use App\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth as Auth;
@@ -57,7 +58,9 @@ class SongController extends Controller
     {
         $token               = Str::random(10);
         $song_file_name      = 'song_'.Auth::user()->id.'_'.$token;
-        return view('sweet.songs.songs_create')->with('song_file_name',$song_file_name);
+        $producers           = Profile::where('status','approved')->get();
+
+        return view('sweet.songs.songs_create',compact(['song_file_name','producers']));
     }
 
     /**
@@ -79,6 +82,8 @@ class SongController extends Controller
 
         // Validamos todos los campos
         $validator = Validator::make($request->all(), $rules);
+
+        
 
         // Si la validación falla, nos detenemos y mandamos false
         if ($validator->fails()) {
