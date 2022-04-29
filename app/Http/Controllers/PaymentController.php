@@ -97,9 +97,6 @@ class PaymentController extends Controller
 				$line_type = $line['metadata']['type'];  
 				$pQ  = $line->quantity;
 				$pUP = $line->unit_price / 100;
-
-				
-				
 			}
 
 			$pA = (($pUP * $pQ)+($pUPP * $pQP));//cargo sin contar la comision
@@ -171,10 +168,6 @@ class PaymentController extends Controller
 					$user_email = $payment->users->email;
 					$this->email_notification($user_email,$order_id);
 				}
-				
-
-
-				
 		
 			}       
 			
