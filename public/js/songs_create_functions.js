@@ -64,7 +64,7 @@ Dropzone.autoDiscover = false;
 		$('.owl-carousel').owlCarousel({
 			loop:true,
 			margin:10,
-			nav:false,
+			nav:true,
 			items:4,
 			autoplay:true,
 			autoplayTimeout:5000

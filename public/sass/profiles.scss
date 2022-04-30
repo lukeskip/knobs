@@ -1,6 +1,6 @@
 @import 'variables.scss';
 .profiles-list{
-    margin-top:20px;
+    margin: 40px auto;
     .item{
         text-align: center;
         cursor: pointer;
@@ -20,6 +20,7 @@
         h4{
             font-family: $handwriting;
             color:white;
+            text-transform: capitalize;
         }
         .image{
             width:100px;
@@ -29,8 +30,12 @@
             display: inline-block;
             margin-bottom: 10px;
         }
+        .pricing{
+            font-size: 1.2em;
+        }
         p{
             opacity: .5;
+            margin-bottom: 0;
         }
     }
 }

@@ -91,7 +91,7 @@
 								{{$profile->summary}}
 							</p>
 							<div class="pricing">
-								costo: ${{$profile->pricing}}
+								Costo: ${{$profile->pricing}}
 							</div>
 
 						</div>
