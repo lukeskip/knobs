@@ -465,6 +465,11 @@ body.error_404{
 	background-attachment: fixed;
 }
 
+body.not_available{
+	background: url('../img/not_available.jpg') bottom center;
+	background-attachment: fixed;
+}
+
 .login{
 	color:black;
 }

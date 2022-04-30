@@ -79,7 +79,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        //
+        return view('sweet.general.not_available');
     }
 
     /**
