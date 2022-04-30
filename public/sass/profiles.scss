@@ -23,8 +23,8 @@
             text-transform: capitalize;
         }
         .image{
-            width:100px;
-            height: 100px;
+            width:140px;
+            height: 140px;
             border-radius: 100%;
             overflow: hidden;
             display: inline-block;
@@ -33,9 +33,9 @@
         .pricing{
             font-size: 1.2em;
         }
-        p{
+        .summary{
             opacity: .5;
-            margin-bottom: 0;
+            margin-bottom: 10px;
         }
     }
 }

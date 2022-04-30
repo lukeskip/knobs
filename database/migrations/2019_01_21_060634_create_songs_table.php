@@ -23,6 +23,7 @@ class CreateSongsTable extends Migration
             $table->longText('description');
             $table->boolean('english');
             $table->integer('user_id');
+            $table->integer('profile_id');
             $table->enum('status', ['paid', 'pending','cancel','critized']);
             $table->timestamps();
         });

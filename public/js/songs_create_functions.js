@@ -50,19 +50,21 @@ Dropzone.autoDiscover = false;
     		
 		});
 
-		$("body").on('click', '.profile', function(e) {
+		$("body").on('click', '.select', function(e) {
 			e.preventDefault();
+			target = $(this).closest('.profile');
+			console.log(target);
 			$('.profile').each(function(){
 				$(this).removeClass('selected');
 			});
 
-    		$('.profile-selection').val($(this).data('id'));
-			$(this).addClass('selected');
+    		$('.profile-selection').val(target.data('id'));
+			target.addClass('selected');
     		
 		});
 
 		$('.owl-carousel').owlCarousel({
-			loop:true,
+			loop:false,
 			margin:10,
 			nav:true,
 			items:4,

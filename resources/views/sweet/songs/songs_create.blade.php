@@ -84,16 +84,19 @@
 					<div class="owl-carousel owl-theme profiles-list">
 						@foreach($profiles as $profile)
 						<div class="item profile" data-id="{{$profile->id}}">
-							<h3 class="text-center">{{$profile->name}}</h3>
-							<img class="image" src="{{$profile->image_url}}" alt="">
-							<h4 class="text-center">{{$profile->genre}}</h4>
-							<p>
-								{{$profile->summary}}
-							</p>
+							<a href="{{route('profiles.show',$profile->id)}}" target="_blank">
+								<h3 class="text-center">{{$profile->name}}</h3>
+								<img class="image" src="{{$profile->image_url}}" alt="">
+							</a>
+							<h4 class="text-center">{{$profile->expertice}} / {{$profile->genre}} </h4>
 							<div class="pricing">
 								Costo: ${{$profile->pricing}}
 							</div>
-
+							<p class="summary">
+								{{$profile->summary_limited}}
+							</p>
+							
+							<a href="" class="btn btn-success btn-sm select">Seleccionar</a>
 						</div>
 						@endforeach
 						

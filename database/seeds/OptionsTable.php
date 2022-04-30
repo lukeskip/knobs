@@ -99,6 +99,15 @@ class OptionsTable extends Seeder
 		$option->value = '24';
 		$option->save();
 
+		// Creamos el option comission
+		$option = new Option;
+		$option->type = 'text';
+		$option->label = 'Porcentaje de comisión';
+		$option->slug = 'comission';
+		$option->description = 'Comisión que cobras por knob, escribe un decimal';
+		$option->value = '.20';
+		$option->save();
+
 
     }
 }

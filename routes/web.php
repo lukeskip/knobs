@@ -113,7 +113,7 @@ Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'
 	Route::get('/dashboard', 'DashboardController@show');
 	Route::get('/payments', 'PaymentController@index');
 	Route::resource('/coupons', 'CouponController',['names' => 'coupons']);
-	Route::resource('/profiles', 'ProfileController');
+	Route::resource('/profiles', 'ProfileController')->only(['index','destroy']);
 	Route::post('/profile-update-status/{profile}', 'ProfileController@edit_status')->name('update-status');
 
 });
