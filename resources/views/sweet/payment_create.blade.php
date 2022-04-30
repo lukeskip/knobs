@@ -1,5 +1,8 @@
 @extends('layouts.main',['body_class' => 'checkout'])
 
+@section('styles')
+<link rel="stylesheet" href="{{asset('/css/profiles.css')}}">
+@endsection
 @section('content')
 
 <div class="container">
@@ -24,25 +27,41 @@
 			</div>
 			<div class="col-md-12">
 				
+					
 				<ul class="list-group">
-				
+
 					<li class="list-group-item  clearfix song-item">
 						<div class="row">
 							<div class="col-sm-8">
-									<div class="detail">
-											1 Knob de un experto para {{$song->title}}
+									<div class="profiles-list horizontal">
+										<div class="item profile" data-id="{{$song->profiles()->first()->id}}">
+											<h3 class="text-center">{{$song->profiles->first()->name}}</h3>
+											<img class="image" src="{{$song->profiles->first()->image_url}}" alt="">
+											<h4 class="text-center">{{$song->profiles->first()->expertice}} / {{$song->profiles()->first()->genre}} </h4>
+											<div class="pricing">
+												Costo: ${{$song->profiles->first()->pricing}}
+											</div>
+											<p class="summary">
+												{{$song->profiles->first()->summary_limited}}
+											</p>
+										</div>
 									</div>
-									<div class="price">
-									@if(\Session::has('discount_final'))
-										${{ Session::get('discount_final')}} MXN	
-									@else
-										${{$options->where("slug","price")->first()->value}} MXN
-										
-									@endif
 
-										
-										
-									</div> 
+									<div class="detail">
+											1 Knob de Carlos Vera para {{$song->title}}
+									</div>
+									@if(isset($discount) && $discount > 0)
+										<div class="old-price">
+											${{$song->profiles->first()->pricing}} MXN									
+										</div>
+										<div class="price">
+											descuento aplicado: ${{$price}} MXN									
+										</div>
+									@else
+										<div class="price">
+											${{$price}} MXN									
+										</div>
+									@endif
 								 
 							</div>
 							
@@ -69,10 +88,10 @@
 					<div class="col-md-6">
 						
 
-						<form target="_blank" action='{{$options->where("slug","paypal_action")->first()->value}}' method='post'>
+						<form target="_blank" action='{{get_option("paypal_action")}}' method='post'>
 
 							
-							<input type='hidden' name='business' value='{{$options->where("slug","paypal_mail")->first()->value}}'>
+							<input type='hidden' name='business' value='{{get_option("paypal_mail")}}'>
 
 
 							<input type='hidden' name='cmd' value='_xclick'>
@@ -81,11 +100,7 @@
 							<input type='hidden' name='item_name' value='Knobs: Knob de un experto en música'>
 							
 							
-							@if(\Session::has('discount_final'))
-								<input type='hidden' name='amount' value="{{ Session::get('discount_final')}}">	
-							@else
-								<input type='hidden' name='amount' value='{{$options->where("slug","price")->first()->value}}'>
-							@endif
+							<input type='hidden' name='amount' value="{{$price}}">	
 							
 							<input type='hidden' name='currency_code' value='MXN'>
 

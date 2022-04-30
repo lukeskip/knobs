@@ -20,4 +20,9 @@ class Song extends Model
 	{
 		return $this->hasOne('App\Payment');
 	}
+
+	public function profiles()
+	{
+		return $this->belongsTo('App\Profile','profile_id');
+	}
 }

@@ -111,10 +111,7 @@ class CouponController extends Controller
         $coupon = Coupon::where('code',$request->code)->first();
         if($coupon){
             if($coupon->redeemed < $coupon->limit){
-                $price = Option::where("slug","price")->first()->value;
-                $discount = $price * ($coupon->discount * .01);
-                $discount_final  = $price - $discount;
-                return redirect()->back()->with('discount_final', $discount_final )->with('coupon_id',$coupon->id);
+                return redirect()->back()->with('discount_final', $coupon->discount )->with('coupon_id',$coupon->id);
             }else{
                 return Redirect::back()->with('message','El cupón ya llegó a su limite'); 
             }

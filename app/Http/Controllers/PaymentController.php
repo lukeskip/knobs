@@ -7,6 +7,7 @@ use App\Option;
 use App\Song;
 use App\User;
 use App\Coupon;
+use Session;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Http\Request;
 use Jenssegers\Date\Date;
@@ -318,13 +319,26 @@ class PaymentController extends Controller
 	 */
 	public function create(Song $song)
 	{	
-		$user_id = Auth::user()->id;
-		$options = Option::all();
-
+		$user_id 	= Auth::user()->id;
+		$discount 	= 0;
+		
 		if($song->payments){
 			return redirect('/payments/'.$song->payments->order_id);
 		}
-		return view('sweet.payment_create')->with('song',$song)->with('user_id',$user_id)->with('options',$options);
+
+		if(\Session::has('discount_final')){
+	
+			$price 		= $song->profiles->pricing - ($song->profiles->pricing * (Session::get('discount_final') * .01));
+			$discount 	= Session::get('discount_final');
+			$price 		= round($price);
+
+			
+		}else{
+			$price = $song->profiles->first()->pricing;
+		}
+				
+		return view('sweet.payment_create',compact(['song','user_id','price','discount']));
+		
 	}
 
 	/**
