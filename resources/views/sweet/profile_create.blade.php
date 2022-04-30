@@ -42,7 +42,7 @@
 						<option value="">Selecciona...</option>
 						<option value="production">Productor</option>
 						<option value="engineering">Ingenieria en audio</option>
-						<option value="production">Músico de Estudio</option>
+						<option value="musician">Músico de Estudio</option>
 						<option value="composition">Compositor</option>
 					</select>
 				</div>
