@@ -102,7 +102,7 @@
 
 
 										<input type='hidden' name='item_name' value='Knobs: Knob de un experto en música'>
-										<input type='hidden' name='amount' value='{{$options->where("slug","price")->first()->value}}'>
+										<input type='hidden' name='amount' value='{{$payment->amount}}'>
 										<input type='hidden' name='currency_code' value='MXN'>
 
 										<input type="hidden" name="order_id" value="{{$payment->order_id}}">
