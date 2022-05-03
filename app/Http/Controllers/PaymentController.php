@@ -216,7 +216,7 @@ class PaymentController extends Controller
 		if($status == 'completed' || $status == 'pending' || $status == 'processed'){
 						
 			$song = Song::find($song_id);
-			if($song->payments){
+			if($song->payments()->exists()){
 				$payment = Payment::find($song->payments->id);
 				$payment->update(['status' => $status, 'order_id' => $_POST['txn_id'],'method' => 'paypal']);
 				return response()->json(['success' => true,'message'=>'Pago fue actualizado exitosamente ']);
