@@ -44,10 +44,11 @@ class DashboardController extends Controller
     // STARTS: DASHBOARD CRITICS
     public function show_critic(){
         
-
-        $songs =  Song::whereHas('payments', function($query){
+        $user       =  Auth::user();
+        $profile    =  $user->profiles->first();
+        $songs      =  Song::whereHas('payments', function($query){
               $query->where('status', 'paid')->orWhere('status', 'completed')->orWhere('status', 'processed');
-           })->doesnthave('reviews')->get();
+           })->where('profile_id',$profile->id)->doesnthave('reviews')->get();
 
         return view('sweet.dashboard_critic',compact('songs'));
 
