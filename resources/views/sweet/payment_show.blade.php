@@ -36,7 +36,7 @@
 							</div>
 							<div class="col-sm-4 text-center">
 								<span class="price">
-									${{$options->where("slug","price")->first()->value}} MXN
+									${{$payment->amount}} MXN
 								</span> 
 							</div>
 						</div>

@@ -366,24 +366,27 @@ class PaymentController extends Controller
             return abort(403, 'Unauthorized action.');
         }
 	
-
 		$options = Option::all();
 		$user_id = $user->id;
 		$payment['finish'] = false;
-		$expiration = Date::createFromTimestamp($payment->expires_at);
-		$expired    =  false;
+		if(is_int($payment->expires_at)){
+			$expiration = Date::createFromTimestamp($payment->expires_at);
+			$expired    =  false;
+			$now 		= Date::now();
 
-		
-		$now 		= Date::now();
+			if($expiration < $now){
+				$expired    =  true;
+			}
 
-		if($expiration < $now){
-			$expired    =  true;
+			$expiration = $expiration->diffForHumans();
+		}else{
+			$expired    =  false;
+			$expiration = $payment->expires_at;
 		}
-
-		$expiration = $expiration->diffForHumans();
 		
 
-		if($payment->status == 'paid' || $payment->status == 'processed' || $payment->status == 'complete'){
+
+		if($payment->status == 'paid' || $payment->status == 'processed' || $payment->status == 'completed'){
 			$title = 'Tu pago fue recibido correctamente';
 			$payment['finish'] = true;
 		}elseif($payment->status == 'pending'){
