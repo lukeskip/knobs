@@ -17,7 +17,7 @@ class CheckProfile
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        $role = $user->roles->first()->name;
+        $role = get_role();
         if($role == 'critic'){
             if($user->profiles){
                 return $next($request); 
