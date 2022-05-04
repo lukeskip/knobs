@@ -1,4 +1,7 @@
 @extends('layouts.main',['body_class' => 'landing fixed'])
+@section('styles')
+<link rel="stylesheet" href="{{asset('/css/profiles.css')}}">
+@endsection
 @section('menu-items-first')
 <li><a href='#about'>Qué es Knobs</a></li>
 <li><a href='#process'>Cómo funciona</a></li>
@@ -12,7 +15,7 @@
 					Te conectamos con la industria
 				</h1>
 				<div class="handwriting">
-					Productores profesionales están ansiosos por escuchar tu música y darte su opinión.
+					Expertos en la industria están ansiosos por escuchar tu música y darte su opinión.
 				</div>
 				<br>
 				<a href="/register" class="btn btn-lg btn-success">Regístrate</a>
@@ -29,7 +32,7 @@
 				
 				<br><br>
 				<h2>¿Qué es Knobs?</h2>
-				<p>Knobs es una plataforma que muestra tu música a productores de la industria, para que escuchen tus canciones y te den consejos de cómo mejorar tu proyecto.</p>
+				<p>Knobs es una plataforma que muestra tu música a expertos de la industria (productores, músicos, managers, disqueras), para que escuchen tus canciones y te den consejos de cómo mejorar tu proyecto.</p>
 				<p>Es una plataforma que busca el intercambio de experiencia y el alza en la calidad de la música independiente.</p>
 				<br><br>
 				
@@ -98,7 +101,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h2>Productores de todo el mundo</h2>
+				<h2>Expertos de todo el mundo</h2>
 				<p>Músicos de alto nivel podrán escuchar tus canciones y compartir toda la experiencia que han obtenido con los años en la industria nacional e internacional.</p>
 				<p>Podrás tener una opinión certera que te permita subir tu música a plataformas digitales con la confianza de estar ofreciendo un producto de calidad.</p>
 				<br>
@@ -109,6 +112,28 @@
 </div>
 <div id="process" class="fifth-level level process">
 	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<label class="title" class="text-center">Ellos son algunos de los expertos que podrás escoger para que te den su opinión:</label>
+				@if($profiles)
+					<div class="owl-carousel profiles-carousel owl-theme profiles-list">
+						@foreach($profiles as $profile)
+						<div class="item profile" data-id="{{$profile->id}}">
+							<a href="{{route('profiles.show',$profile->id)}}" target="_blank">
+								<h3 class="text-center">{{$profile->name}}</h3>
+								<img class="image" src="{{$profile->image_url}}" alt="">
+							</a>
+							<h4 class="text-center">{{$profile->expertice}} / {{$profile->genre}} </h4>
+							
+						</div>
+						@endforeach
+						
+					</div>
+				@endif
+
+
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-md-6 columns-center">
 				<h2 class="text-center">Como funciona</h2>
@@ -139,5 +164,6 @@
 	var mode = 'show';
 </script>
 <script src="{{asset('/js/knobs.js')}}"></script>
+<script src="{{asset('/js/profiles-carousel.js')}}"></script>
 
 @endsection

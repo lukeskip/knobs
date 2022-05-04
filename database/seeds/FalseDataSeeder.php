@@ -22,7 +22,8 @@ class FalseDataSeeder extends Seeder
                 'genre'  => 'rock',
                 'user_id'  => '1',
                 'pricing'  => '800',
-                'status'=>'approved'
+                'status'=>'approved',
+                'vip'=>true
 			],
 			[
 				'name' => 'Ericka Chávez',
@@ -33,7 +34,8 @@ class FalseDataSeeder extends Seeder
                 'genre'  => 'pop',
                 'user_id'  => '2',
                 'pricing'  => '1200',
-                'status'=>'approved'
+                'status'=>'approved',
+                'vip'=>true
 			],
             [
 				'name' => 'Carlos Vera',
@@ -44,7 +46,8 @@ class FalseDataSeeder extends Seeder
                 'genre'  => 'metal',
                 'user_id'  => '2',
                 'pricing'  => '600',
-                'status'=>'approved'
+                'status'=>'approved',
+                'vip'=>true
 			],
             [
 				'name' => 'David Reyes',
@@ -55,7 +58,8 @@ class FalseDataSeeder extends Seeder
                 'genre'  => 'latin',
                 'user_id'  => '2',
                 'pricing'  => '1000',
-                'status'=>'approved'
+                'status'=>'approved',
+                'vip'=>true
 			],
 
 		]);

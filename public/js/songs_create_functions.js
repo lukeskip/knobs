@@ -63,16 +63,6 @@ Dropzone.autoDiscover = false;
     		
 		});
 
-		$('.owl-carousel').owlCarousel({
-			loop:false,
-			margin:10,
-			nav:true,
-			items:4,
-			autoplay:true,
-			autoplayTimeout:5000
-		});
-
-
 		function register(){
 			conection('POST', $('#fields').serialize(),'/songs',true).then(function(data){
 				if(data.success == 1){

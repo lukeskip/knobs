@@ -1,0 +1,10 @@
+$(document).ready(function(){
+    $('.profiles-carousel').owlCarousel({
+        loop:false,
+        margin:10,
+        nav:true,
+        items:4,
+        autoplay:true,
+        autoplayTimeout:5000
+    });
+});

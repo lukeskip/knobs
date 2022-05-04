@@ -81,7 +81,7 @@
 			<div class="col-md-12">
 				<label class="title">Elige al productor que más se acerque a tus necesidades:</label>
 				@if($profiles)
-					<div class="owl-carousel owl-theme profiles-list">
+					<div class="owl-carousel profiles-carousel owl-theme profiles-list">
 						@foreach($profiles as $profile)
 						<div class="item profile" data-id="{{$profile->id}}">
 							<a href="{{route('profiles.show',$profile->id)}}" target="_blank">
@@ -121,5 +121,6 @@
 @section('scripts')
 <script src="{{asset('/plugins/dropzone/dropzone.js')}}"></script>
 <script src="{{asset('/js/songs_create_functions.js')}}"></script>
+<script src="{{asset('/js/profiles-carousel.js')}}"></script>
 
 @endsection

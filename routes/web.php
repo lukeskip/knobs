@@ -14,10 +14,7 @@
 Auth::routes();
 
 // LANDING PAGE
-Route::get('/', function () {
-	$price = App\Option::where('slug','price')->first()->value;
-    return view('sweet.home')->with('price',$price);
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/registrate-como-productor', function () {
     return view('sweet.home_critic');
