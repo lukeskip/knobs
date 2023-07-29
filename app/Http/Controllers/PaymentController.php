@@ -109,33 +109,21 @@ class PaymentController extends Controller
 		
 			if(!$song->payments){
 				$payment                    = new Payment;
-				$payment->order_id          = $pI;
-				$payment->amount            = $pA;
-				$payment->total             = $pT;
-				$payment->method            = $pM;
-				$payment->status            = $pS;
-				$payment->reference         = $pR;
-				$payment->expires_at        = $pE;
-				$payment->status            = 'pending';
-				$payment->song_id           = $song_id;
-				$payment->user_id           = $user_id;
-				$payment->save();
-				
 			}else{
 				$payment                    = Payment::where('order_id',$song->payments->order_id)->first();
-				$payment->order_id          = $pI;
-				$payment->amount            = $pA;
-				$payment->total             = $pT;
-				$payment->method            = $pM;
-				$payment->status            = $pS;
-				$payment->reference         = $pR;
-				$payment->expires_at        = $pE;
-				$payment->status            = 'pending';
-				$payment->song_id           = $song_id;
-				$payment->user_id           = $user_id;
-				$payment->save();
-				
 			}
+
+			$payment->order_id          = $pI;
+			$payment->amount            = $pA;
+			$payment->total             = $pT;
+			$payment->method            = $pM;
+			$payment->status            = $pS;
+			$payment->reference         = $pR;
+			$payment->expires_at        = $pE;
+			$payment->status            = 'pending';
+			$payment->song_id           = $song_id;
+			$payment->user_id           = $user_id;
+			$payment->save();
 
 			return redirect('/payments/'.$payment->order_id);
 			
