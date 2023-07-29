@@ -127,7 +127,6 @@ class PaymentController extends Controller
 
 			return redirect('/payments/'.$payment->order_id);
 			
-
 		} catch (\Conekta\ProcessingError $e){ 
 			return $this->Response(0,$e);
 		} catch (\Conekta\ParameterValidationError $e){
@@ -309,20 +308,16 @@ class PaymentController extends Controller
 	{	
 		$user_id 	= Auth::user()->id;
 		$discount 	= 0;
+		$price 		= Option::where('slug','price')->first()->value;
 		
 		if($song->payments){
 			return redirect('/payments/'.$song->payments->order_id);
 		}
 
 		if(\Session::has('discount_final')){
-	
-			$price 		= $song->profiles->pricing - ($song->profiles->pricing * (Session::get('discount_final') * .01));
+			$price 		= $price - ($price * (Session::get('discount_final') * .01));
 			$discount 	= Session::get('discount_final');
 			$price 		= round($price);
-
-			
-		}else{
-			$price = 100;
 		}
 				
 		return view('sweet.payment_create',compact(['song','user_id','price','discount']));
