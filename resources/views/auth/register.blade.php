@@ -87,12 +87,12 @@
                                 </button>
                             </div>
 
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 @if(!isset($_GET['producer']))
                                     <a href="/login/facebook" class="btn btn-lg btn-block facebook">
                                         Entrar con facebook</a >
                                 @endif
-                            </div>
+                            </div> -->
                             
                             <div class="col-md-12" style="color:white">
                                     <br>

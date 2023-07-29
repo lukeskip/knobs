@@ -98,7 +98,6 @@ class SongController extends Controller
         $song->author       = $request->author;
         $song->english      = $request->english;
         $song->description  = $request->description;
-        $song->profile_id   = $request->profile;
         $song->status       = 'pending';
 
        if(!Auth::guest()){

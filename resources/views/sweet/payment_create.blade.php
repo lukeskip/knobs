@@ -33,19 +33,7 @@
 					<li class="list-group-item  clearfix song-item">
 						<div class="row">
 							<div class="col-sm-8">
-									<div class="profiles-list horizontal">
-										<div class="item profile" data-id="{{$song->profiles()->first()->id}}">
-											<h3 class="text-center">{{$song->profiles->first()->name}}</h3>
-											<img class="image" src="{{$song->profiles->first()->image_url}}" alt="">
-											<h4 class="text-center">{{$song->profiles->first()->expertice}} / {{$song->profiles()->first()->genre}} </h4>
-											<div class="pricing">
-												Costo: ${{$song->profiles->first()->pricing}}
-											</div>
-											<p class="summary">
-												{{$song->profiles->first()->summary_limited}}
-											</p>
-										</div>
-									</div>
+									
 
 									<div class="detail">
 											1 Knob de Carlos Vera para {{$song->title}}

@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	<form id="fields" action="" class="dark">
-		<input type="hidden" name="profile" class="profile-selection">
+		
 		<div class="row">
 			<div class="col-md-8">
 				<label class="title">Nombre de la canción:</label>
@@ -77,7 +77,7 @@
 				<textarea required name="description" id="" cols="30" rows="10" class="form-control" placeholder="Describe tus intenciones en la canción y tus dudas con aspectos específicos"></textarea>
 			</div>
 		</div>
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-md-12">
 				<label class="title">Elige al productor que más se acerque a tus necesidades:</label>
 				@if($profiles)
@@ -105,7 +105,7 @@
 
 
 			</div>
-		</div>
+		</div> -->
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<br>

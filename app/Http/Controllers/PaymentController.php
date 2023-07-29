@@ -334,7 +334,7 @@ class PaymentController extends Controller
 
 			
 		}else{
-			$price = $song->profiles->first()->pricing;
+			$price = 100;
 		}
 				
 		return view('sweet.payment_create',compact(['song','user_id','price','discount']));
