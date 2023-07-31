@@ -7,44 +7,31 @@
 <li><a href='#process'>Cómo funciona</a></li>
 @endsection
 @section('content')
-<div id="level" class="image-level level image_1 first-level">
+<div id="level" class="image-level level image_1 first-level landing">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
 				<h1>
-					Te conectamos con la industria
+					Conoce tu verdadero nivel
 				</h1>
 				<div class="handwriting">
-					Expertos en la industria están ansiosos por escuchar tu música y darte su opinión.
+					Conoce la opinión sincera de un experto sobre tu proyecto musical
 				</div>
 				<br>
 				<a href="/register" class="btn btn-lg btn-success">Regístrate</a>
-			</div>
-		</div>
 	</div>
 	
 	
 </div>
 <div id="about" class="fourth-level level">
-	<div class="container">
+<div class="container">
 		<div class="row">
 			<div class="col-md-10 columns-center">
-				
-				<br><br>
+		
 				<h2>¿Qué es Knobs?</h2>
-				<p>Knobs es una plataforma que muestra tu música a expertos de la industria (productores, músicos, managers, disqueras), para que escuchen tus canciones y te den consejos de cómo mejorar tu proyecto.</p>
+				<p>Knobs es una plataforma que muestra tu música a expertos de  Rey Decibel, para que escuchen tus canciones y te den consejos de cómo mejorar tu proyecto.</p>
 				<p>Es una plataforma que busca el intercambio de experiencia y el alza en la calidad de la música independiente.</p>
 				<br><br>
-				
-				
 			</div>
-			<div class="col-md-12">
-				<div class="text-center image">
-					<img src="{{asset('img/back_3_rot.png')}}" alt="">
-				</div>
-			</div>
-		</div>
-		
+		</div>	
 	</div>
 </div>
 <div class="second-level level">
@@ -60,7 +47,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h2 class="text-center">Ellos califican tu...</h2>
+				<h2 class="text-center">Calificamos tu...</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -97,19 +84,7 @@
 		</div>
 	</div>
 </div>
-<div class="third-level level">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<h2>Expertos de todo el mundo</h2>
-				<p>Músicos de alto nivel podrán escuchar tus canciones y compartir toda la experiencia que han obtenido con los años en la industria nacional e internacional.</p>
-				<p>Podrás tener una opinión certera que te permita subir tu música a plataformas digitales con la confianza de estar ofreciendo un producto de calidad.</p>
-				<br>
-			</div>
-		</div>
-		
-	</div>
-</div>
+
 <div id="process" class="fifth-level level process">
 	<div class="container">
 		

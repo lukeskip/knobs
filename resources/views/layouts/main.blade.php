@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="{{asset('/plugins/notie/notie.min.css')}}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	@yield('styles')
-	<link rel="stylesheet" href="{{asset('/plugins/menu/menu.css')}}">
+	<link rel="stylesheet" href="{{asset('/css/menu.css')}}">
 	<link rel="stylesheet" href="{{asset('./css/app.css')}}">
 	
 	<meta name="csrf-token" content="{{ csrf_token() }}">
