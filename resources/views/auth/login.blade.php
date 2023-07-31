@@ -66,11 +66,11 @@
 
                                 <a class="btn btn-link" href="/register">¿No tienes cuenta?, regístrate!</a>
                             </div>
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <a href="/login/facebook" class="btn btn-primary btn-lg btn-block facebook">
                                     Entrar con facebook
                                 </a >
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>
