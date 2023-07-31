@@ -1,4 +1,4 @@
-@extends('layouts.no_menu')
+@extends('layouts.no_menu',['body_class'=>'login'])
 
 @section('content')
 <div class="container">

@@ -1,4 +1,5 @@
-@extends('layouts.no_menu')
+@extends('layouts.no_menu',['body_class' => 'login'])
+
 
 @section('content')
 <div class="container">
@@ -7,6 +8,7 @@
             <div class="card">
 
                 <div class="card-body">
+                    <h1 class="text-center">Conoce tu verdadero nivel</h1>
                     <form method="POST" action="{{ route('login') }}" class="dark">
                         @csrf
                         @if(isset($_GET['producer']) && $_GET['producer'])
@@ -53,18 +55,18 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">
                                     Entrar
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="" href="{{ route('password.request') }}">
                                         ¿Olvidaste tu password?
                                     </a>
                                 @endif
 
-                                <a class="btn btn-link" href="/register">¿No tienes cuenta?, regístrate!</a>
+                                <a class="" href="/register">¿No tienes cuenta?, regístrate!</a>
                             </div>
                             <!-- <div class="col-md-6">
                                 <a href="/login/facebook" class="btn btn-primary btn-lg btn-block facebook">

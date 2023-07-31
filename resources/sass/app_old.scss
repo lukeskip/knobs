@@ -419,6 +419,14 @@ body {
     color: white;
     background: url("../img/music-back_3.jpg");
     background-attachment: fixed;
+    &.login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        label {
+            color: black;
+        }
+    }
 }
 
 body.error_404 {
