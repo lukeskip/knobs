@@ -56,7 +56,7 @@ a {
 }
 
 a:hover {
-    color: #736b15;
+    color: $primary_dark;
 }
 
 .btn {
@@ -149,8 +149,8 @@ h2.author {
 }
 
 .btn-success:hover {
-    background: #736b15;
-    border-color: #736b15;
+    background: $primary_dark;
+    border-color: $primary_dark;
 }
 
 .btn-success.focus,
