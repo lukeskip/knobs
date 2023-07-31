@@ -112,28 +112,7 @@
 </div>
 <div id="process" class="fifth-level level process">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<label class="title" class="text-center">Ellos son algunos de los expertos que podrás escoger para que te den su opinión:</label>
-				@if($profiles)
-					<div class="owl-carousel profiles-carousel owl-theme profiles-list">
-						@foreach($profiles as $profile)
-						<div class="item profile" data-id="{{$profile->id}}">
-							<a href="{{route('profiles.show',$profile->id)}}" target="_blank">
-								<h3 class="text-center">{{$profile->name}}</h3>
-								<img class="image" src="{{$profile->image_url}}" alt="">
-							</a>
-							<h4 class="text-center">{{$profile->expertice}} / {{$profile->genre}} </h4>
-							
-						</div>
-						@endforeach
-						
-					</div>
-				@endif
-
-
-			</div>
-		</div>
+		
 		<div class="row">
 			<div class="col-md-6 columns-center">
 				<h2 class="text-center">Como funciona</h2>

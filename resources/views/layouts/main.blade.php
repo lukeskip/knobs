@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="{{asset('/plugins/jquery_ui/jquery-ui.min.css')}}">
 	<link rel="stylesheet" href="{{asset('/plugins/jquery_ui/jquery-ui.structure.min.css')}}">
 	<link rel="stylesheet" href="{{asset('/plugins/round_slider/roundslider.min.css')}}">
+	<link rel="stylesheet" href="{{asset('/plugins/notie/notie.min.css')}}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	@yield('styles')
 	<link rel="stylesheet" href="{{asset('/plugins/menu/menu.css')}}">
@@ -61,6 +62,7 @@
 	<script src="{{asset('/plugins/jquery_ui/jquery-ui.min.js')}}"></script>
 	<script src="{{asset('/plugins/round_slider/roundslider.min.js')}}"></script>
 	<script src="{{asset('/plugins/copytoclipboard/clipboard.min.js')}}"></script>
+	<script src="{{asset('/plugins/notie/notie.min.js')}}"></script>
 	<script async src="https://www.youtube.com/iframe_api"></script>
 	<script src="{{asset('plugins/videoback/src/jquery.youtubebackground.js')}}"></script>
 
@@ -70,6 +72,14 @@
 	<script type="text/javascript">
 		let user_id = "{{Auth::user()->id}}";
 		let role = "{{get_role()}}";
+	</script>
+	@endif
+
+	@if (\Session::has('message'))
+	<script type="text/javascript">
+		notie.alert({
+			text: '{!! \Session::get('message') !!}',
+		})
 	</script>
 	@endif
 
