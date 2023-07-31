@@ -49,54 +49,7 @@ class DatabaseSeeder extends Seeder
 		$user->save();
 		$user->roles()->attach($role_admin->id);
 
-		// $user = new User;
-		// $user->name = 'Carlos';
-		// $user->email = 'critico@correo.com';
-		// $user->password = bcrypt('secret');
-		// $user->save();
-		// $user->roles()->attach($role_critic->id);
-
-		// $user = new User;
-		// $user->name = 'Perengano';
-		// $user->email = 'musico@correo.com';
-		// $user->password = bcrypt('secret');
-		// $user->save();
-		// $user->roles()->attach($role_musician->id);
-
-		// $song               = new Song;
-        // $song->title        = 'Entre Sueños';
-        // $song->genre        = 'pop';
-        // $song->link         = 'https://esteesellink.com.mx';
-        // $song->author       = 'Noche de quiz';
-        // $song->english      = 1;
-        // $song->description  = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tortor leo, congue non sagittis sed, sagittis eu sapien. Ut feugiat dapibus suscipit. Ut semper, elit sed ultrices cursus, lorem tellus ultricies dui, ut porta ligula enim a ipsum. Etiam in leo hendrerit, dignissim velit sagittis, vulputate felis.';
-        // $song->status       = 'paid';
-        // $song->user_id       = $user->id;
-        // $song->save();
-        
-        // // Payment test
-		// $payment = new Payment;
-		// $payment->order_id = '29384129319';
-		// $payment->amount = '200';
-		// $payment->total = '200';
-		// $payment->method = 'paypal';
-		// $payment->review_id = '1';
-		// $payment->user_id = '1';
-		// $payment->song_id = '1';
-		// $payment->status = 'paid';
-		// $payment->save();
-
-		// // Payment test
-		// $payment = new Payment;
-		// $payment->order_id = '29323349319';
-		// $payment->amount = '300';
-		// $payment->total = '300';
-		// $payment->method = 'paypal';
-		// $payment->review_id = '1';
-		// $payment->user_id = '1';
-		// $payment->song_id = '1';
-		// $payment->status = 'paid';
-		// $payment->save();
+	
 
         DB::table('categories')->insert([
 
@@ -212,6 +165,85 @@ class DatabaseSeeder extends Seeder
 					'importance'=> 1,
 					'subject' => 'music',	
 				],
+
+		]);
+
+		DB::table('options')->insert([
+
+			[
+				'label' => 'Precio por Knob',
+				'description' => 'Es el precio por cada knob que se le cobra al usuario',
+				'type'=>'number',
+				'slug'=>'price',
+				'value'=>'220',
+			],
+			[
+				'label' => 'Cuenta de Paypal',
+				'description' => 'Es el precio por cada knob que se le cobra al usuario',
+				'type'=>'email',
+				'slug'=>'paypal_mail',
+				'value'=>'contacto-facilitator@chekogarcia.com.mx',
+			],
+			[
+				'label' => 'Form Action paypal',
+				'description' => 'Es la dirección de paypal a la que se hará el post del pago',
+				'type'=>'text',
+				'slug'=>'paypal_action',
+				'value'=>'https://www.sandbox.paypal.com/cgi-bin/webscr',
+			],
+			[
+				'label' => 'Día de Pago',
+				'description' => 'Es el día en el que se hace el corte de pagos a críticos',
+				'type'=>'select',
+				'slug'=>'payment_day',
+				'value'=>'thursday',
+				'options'=>'monday,tuesday,wednesday,thursday,friday,saturday,sunday',
+				'label'=>'Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo'
+
+			],
+			[
+				'label' => 'Impuestos',
+				'description' => 'Es la cantidad de impuestos que se pagarán por cada transacción en porcentaje',
+				'type'=>'number',
+				'slug'=>'taxes',
+				'value'=>'16',
+			],
+			[
+				'label' => 'Porcentaje Crítico',
+				'description' => 'Es el porcentaje de ganancias por cada transacción que se le pagará al crítico',
+				'type'=>'number',
+				'slug'=>'critic_share',
+				'value'=>'50',
+			],
+			[
+				'label' => 'Comisión Conekta',
+				'description' => 'Es la cantidad de comisión en pesos que se le paga a Conekta',
+				'type'=>'number',
+				'slug'=>'conekta_commission',
+				'value'=>'5',
+			],
+			[
+				'label' => 'Comisión Paypal',
+				'description' => 'Es la cantidad de comisión en pesos que se le paga a Paypal',
+				'type'=>'number',
+				'slug'=>'paypal_commission',
+				'value'=>'5',
+			],
+			[
+				'label' => 'Tiempo de caducidad Oxxo',
+				'description' => 'Tiempo en el que expira el pago de conekta',
+				'type'=>'number',
+				'slug'=>'oxxo_expiration',
+				'value'=>'24',
+			],
+			[
+				'label' => 'Porcentaje de comisión',
+				'description' => 'Comisión que cobras por knob, escribe un decimal',
+				'type'=>'number',
+				'slug'=>'comission',
+				'value'=>'.20',
+			],
+			
 
 		]);
     }
