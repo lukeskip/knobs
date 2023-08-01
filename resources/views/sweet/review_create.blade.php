@@ -78,7 +78,7 @@
 					@endforeach
 				</div>
 				
-				<!-- <div class="row">
+				<div class="row">
 					<div class="col-md-6 col-centered">
 						<div class="status-group">
 							<select name="status" id="" class="form-control group-item status">
@@ -90,7 +90,7 @@
 						</div>
 					</div>
 					
-				</div> -->
+				</div>
 				
 
 			</div>
