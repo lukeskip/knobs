@@ -2,14 +2,13 @@ Dropzone.autoDiscover = false;
 $(document).ready(function () {
     $("#upload-files").dropzone({
         url: "/upload/mp3",
-        autoProcessQueue: false,
+        autoProcessQueue: true,
         uploadMultiple: false,
         maxFilezise: 15,
         maxFiles: 1,
         acceptedFiles: ".mp3",
         success: function (file, response) {
-            $(".song-file").val(response.file);
-            register();
+            $("#song_file").val(response.file);
         },
 
         init: function () {
@@ -21,26 +20,33 @@ $(document).ready(function () {
     });
 
     $("#fields").validate({
-        ignore: ".hidden",
+        ignore: ".ignore",
+        rules: {
+            link: {
+                required: function (element) {
+                    return $("#song_file").val() == "";
+                },
+            },
+            song_file: {
+                required: function (element) {
+                    return $("#link").val() == "";
+                },
+            },
+        },
         invalidHandler: function (form, validator) {
             show_message(
                 "error",
                 "¡Error!",
-                "Tienes que llenar todos los campos"
+                "Tienes que llenar todos los campos señalados"
             );
+
+            //validator.errorMap is an object mapping input names -> error messages
+            for (var i in validator.errorMap) {
+                console.log(i, ":", validator.errorMap[i]);
+            }
         },
         submitHandler: function (form) {
-            var myDropzone = Dropzone.forElement(".dropzone");
-            if (myDropzone.getQueuedFiles().length === 0) {
-                show_message(
-                    "error",
-                    "¡Error!",
-                    "Tienes que agregar un archivo"
-                );
-            } else {
-                $(".loader").css("display", "block");
-                myDropzone.processQueue();
-            }
+            register();
         },
     });
 
@@ -65,7 +71,7 @@ $(document).ready(function () {
     function register() {
         conection("POST", $("#fields").serialize(), "/songs", true).then(
             function (data) {
-                if (data.success == 1) {
+                if (data.success) {
                     show_message(
                         "success",
                         "¡Listo!",

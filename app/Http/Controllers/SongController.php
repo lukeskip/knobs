@@ -43,6 +43,7 @@ class SongController extends Controller
                 
             }
         }
+
         
         return view('sweet.song_list')->with('songs',$songs);
         
@@ -58,9 +59,7 @@ class SongController extends Controller
     {
         $token               = Str::random(10);
         $song_file_name      = 'song_'.Auth::user()->id.'_'.$token;
-        $profiles           = Profile::where('status','approved')->get();
-
-        return view('sweet.songs.songs_create',compact(['song_file_name','profiles']));
+        return view('sweet.songs.songs_create',compact(['song_file_name']));
     }
 
     /**
@@ -74,7 +73,8 @@ class SongController extends Controller
         $rules = array(
             'title'         => 'required|max:255',
             'genre'         => 'required',
-            'song_file'     => 'required', 
+            'link'          => 'required_without:song_file',
+            'song_file'     => 'required_without:link', 
             'author'        => 'required|max:255',
             'english'       => 'required|boolean', 
             'description'   => 'required'     
@@ -171,8 +171,7 @@ class SongController extends Controller
             return response()->json(['success' => false,'message'=>'Hay campos con información inválida, recuerda que todos los campos son obligatorios']);
         }
 
-        $request->song_file;
-
+        $song->song_file    = $request->song_file;
         $song->title        = $request->title;
         $song->genre        = $request->genre;
         $song->link         = $request->link;

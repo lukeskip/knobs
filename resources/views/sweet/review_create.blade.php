@@ -10,8 +10,13 @@
 					<h1>{{$song->title}}</h1>
 					<h2 class="author">{{$song->author}}</h2>
 					<p>{{$song->description}}</p>
-
-					<audio src="{{asset('storage/song_files/'.$song->file)}}" controls></audio>
+					@if($song->file)
+						<audio src="{{asset('storage/song_files/'.$song->file)}}" controls></audio>
+					@else
+					<a href="{{$song->link}}" class="btn btn-lg">
+						Escuchar en spotify
+					</a>
+					@endif
 				</div>
 				<div class="col-md-4 button_box ">
 					

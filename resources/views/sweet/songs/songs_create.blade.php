@@ -11,7 +11,7 @@
 		<div class="col-md-12">
 			<h1 class="text-center">Registra tu canción</h1>
 			<p class="text-center">
-				Un productor experto te dirá su opinión, lo que está bien y lo que está mal, además de consejos de hacia donde deberías de ir para conseguir tu objetivo. Todos los campos son requeridos.
+				Un productor experto te dirá su opinión, lo que está bien y lo que está mal, además de consejos de hacia donde deberías de ir para conseguir tu objetivo.
 			</p>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 					</label>
 					<h4 >Arrastra o da click</h4>
 					</div>
-					<input type="hidden" name="song_file_name" value="{{$song_file_name}}">
+					<input  name="song_file_name" type="hidden" value="{{$song_file_name}}" class="ignore">
 
 			</form>
 		</div>
@@ -34,14 +34,19 @@
 	<form id="fields" action="" class="dark">
 		
 		<div class="row">
+			<div class="col-md-12">
+				<label class="title">Link de spotify:</label>
+				<input name="link" id="link"  type="text" class="form-control" placeholder="Si no subes un archivo mp3, pega el link de spotify">
+			</div>
 			<div class="col-md-8">
 				<label class="title">Nombre de la canción:</label>
 				<input name="title" required type="text" class="form-control" placeholder="Escribe el nombre de la canción">
-				<input type="hidden" name="song_file" class="song-file">
+				<input name="song_file" type="hidden"  id="song_file" class="song_file">
 			</div>
 			<div class="col-md-4">
 				<label class="title">Género:</label>
 				<select name="genre" required id="" class="form-control">
+					<option value="">Selecciona...</option>
 					<option value="rock">Rock</option>
 					<option value="pop">Pop</option>
 					<option value="metal">Metal</option>
@@ -64,7 +69,7 @@
 
 			<div class="col-md-6">
 				<label class="title">Aceptas críticas en inglés:</label>
-				<select name="english" id="" class="form-control required">
+				<select name="english" id="" required class="form-control ">
 					<option value="">Selecciona...</option>
 					<option value="1">Sí</option>
 					<option value="0">No</option>
@@ -74,38 +79,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<label class="title">Descripción:</label>
-				<textarea required name="description" id="" cols="30" rows="10" class="form-control" placeholder="Describe tus intenciones en la canción y tus dudas con aspectos específicos"></textarea>
+				<textarea name="description"  required id="" cols="30" rows="10" class="form-control" placeholder="Describe tus intenciones en la canción y tus dudas con aspectos específicos"></textarea>
 			</div>
 		</div>
-		<!-- <div class="row">
-			<div class="col-md-12">
-				<label class="title">Elige al productor que más se acerque a tus necesidades:</label>
-				@if($profiles)
-					<div class="owl-carousel profiles-carousel owl-theme profiles-list">
-						@foreach($profiles as $profile)
-						<div class="item profile" data-id="{{$profile->id}}">
-							<a href="{{route('profiles.show',$profile->id)}}" target="_blank">
-								<h3 class="text-center">{{$profile->name}}</h3>
-								<img class="image" src="{{$profile->image_url}}" alt="">
-							</a>
-							<h4 class="text-center">{{$profile->expertice}} / {{$profile->genre}} </h4>
-							<div class="pricing">
-								Costo: ${{$profile->pricing}}
-							</div>
-							<p class="summary">
-								{{$profile->summary_limited}}
-							</p>
-							
-							<a href="" class="btn btn-success btn-sm select">Seleccionar</a>
-						</div>
-						@endforeach
-						
-					</div>
-				@endif
-
-
-			</div>
-		</div> -->
+		
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<br>
