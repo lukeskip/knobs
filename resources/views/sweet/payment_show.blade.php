@@ -51,7 +51,7 @@
 						<div class="alert alert-light" role="alert">
 							<h3>Tu código de OxxoPay es</h3>
 							<div class="order_id">
-								{{$payment->order_id}}
+								{{$payment->reference}}
 							</div>
 							<div class="instructions">
 								Acude a tu tienda oxxo más cercana, pide un pago OxxoPay y proporciona este número.
