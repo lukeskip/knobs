@@ -15,7 +15,7 @@
 			</p>
 		</div>
 	</div>
-
+	@if(!isset($_GET['song']))
 	<div class="row">
 		<div class="col-md-12">
 			<form id="upload-files" class="dropzone box" class="dark">
@@ -31,12 +31,15 @@
 			</form>
 		</div>
 	</div>
+	@endif
 	<form id="fields" action="" class="dark">
 		
 		<div class="row">
 			<div class="col-md-12">
 				<label class="title">Link de spotify:</label>
-				<input name="link" id="link"  type="text" class="form-control" placeholder="Si no subes un archivo mp3, pega el link de spotify">
+				<input name="link" id="link"  type="text" class="form-control" placeholder="Si no subes un archivo mp3, pega el link de spotify"
+				@if(!isset($_GET['song'])) value="{{$_GET['song'])}}" @endif
+				>
 			</div>
 			<div class="col-md-8">
 				<label class="title">Nombre de la canción:</label>
