@@ -38,7 +38,7 @@
 			<div class="col-md-12">
 				<label class="title">Link de spotify:</label>
 				<input name="link" id="link"  type="text" class="form-control" placeholder="Si no subes un archivo mp3, pega el link de spotify"
-				@if(!isset($_GET['song'])) value="{{$_GET['song'])}}" @endif
+				@if(!isset($_GET['song'])) value="{{$_GET['song']}}" @endif
 				>
 			</div>
 			<div class="col-md-8">
