@@ -75,7 +75,7 @@
 					</div>
 					<div class="col-md-6">
 						
-
+						<h1>{{$song->id}}-{{$user_id}}</h1>
 						<form target="_blank" action='{{get_option("paypal_action")}}' method='post'>
 
 							
