@@ -25,12 +25,10 @@ class SongController extends Controller
         $user = Auth::user();
         if(get_role() == 'musician'){
             $songs =  $user->songs;
-        }elseif(get_role()  == 'critic'){
+        }elseif(get_role()  != 'musician'){
             $songs =  Song::whereHas('payments', function($query){
               $query->where('status', 'paid')->orWhere('status', 'completed')->orWhere('status', 'processed');
            })->doesnthave('reviews')->get();
-        }elseif(get_role()  == 'admin'){
-            $songs =  Song::all();
         }
 
         foreach ($songs as $song) {
