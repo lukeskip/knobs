@@ -131,9 +131,14 @@ Route::get('/home', function () {
 	return redirect('/');
 });
 
-// Home
+// phpinfo
 Route::get('/phpinfo', function () {
 	phpinfo();
+});
+
+// text mail
+Route::get('/test-mail', function () {
+	sending_mails('contacto@chekogarcia.com.mx', $subject = 'Tu recibo de pago Knobs',array('title' => 'Tu recibo de pago','link' => 'payments/','message_str' => 'Tu pago se llevó a cabo correctamente puedes revisarlo en cualquier momento desde tu dashboard o dando click en el siguiente enlace'), $template = 'receipt');
 });
 
 Route::get('login/{provider}',          'Auth\SocialAccountController@redirectToProvider');

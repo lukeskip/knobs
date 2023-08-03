@@ -13,12 +13,13 @@
         "braintree/braintree_php": "^3.39",
         "conekta/conekta-php": " dev-master",
         "fideloper/proxy": "^4.0",
+        "greggilbert/recaptcha": "dev-master",
+        "guzzlehttp/guzzle": "^6.5",
         "jenssegers/date": "^3.4",
         "laravel/framework": "5.7.*",
         "laravel/socialite": "^4.0",
         "laravel/tinker": "^1.0",
-        "paypal/rest-api-sdk-php": "^1.14",
-        "greggilbert/recaptcha": "dev-master"
+        "paypal/rest-api-sdk-php": "^1.14"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

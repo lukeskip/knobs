@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => 'mandrill',
+    'driver' => 'mailgun',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => 'smtp.mandrillapp.com',
+    'host' => 'smtp.mailgun.org',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => 'no_replay@reydecibel.com.mx',
+        'address' => 'postmaster@knobs.reydecibel.com.mx',
         'name' => 'Knobs de Rey Decibel',
     ],
 
@@ -132,5 +132,10 @@ return [
     */
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
+
+    'mailgun' => [
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
+    ],
 
 ];
