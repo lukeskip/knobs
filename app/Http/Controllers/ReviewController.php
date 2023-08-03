@@ -200,7 +200,7 @@ class ReviewController extends Controller
 		}
 		
 		
-		return view('sweet.review_edit')->with('review',$review)->with('knobs',$knobs)->with('form_items',$form_items);
+		return view('sweet.review_edit')->compact(['review','knobs','form_items']);
 	}
 
 	/**

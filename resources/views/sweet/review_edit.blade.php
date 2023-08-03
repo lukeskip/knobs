@@ -20,10 +20,10 @@
 					<h2 class="author">{{$review->songs->author}}</h2>
 					<p>{{$review->songs->description}}</p>
 					
-					@if($song->file)
-						<audio src="{{asset('storage/song_files/'.$song->file)}}" controls></audio>
+					@if($review->songs->file)
+						<audio src="{{asset('storage/song_files/'.$review->songs->file)}}" controls></audio>
 					@else
-						<a href="{{$song->link}}" class="btn btn-lg">
+						<a href="{{$review->songs->link}}" class="btn btn-lg">
 							Escuchar en spotify
 						</a>
 					@endif
