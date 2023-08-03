@@ -73,7 +73,7 @@
 									@if(get_role() == 'musician')
 										<a href="/songs/{{$song->id}}/edit" class="btn btn-success hastooltip" title="Edita los datos de tu canción	"><i class="fas fa-edit"></i></a>
 									@else
-									 @if($song->reviews->exists)
+									 @if($song->reviews)
 									 <a href="/reviews/{{$song->reviews->token}}/edit" class="btn btn-success hastooltip" title="Editar Crítica"><i class="fas fa-edit"></i></a>
 									 @else
 									 <a href="/reviews/create/{{$song->id}}" class="btn btn-success hastooltip" title="Hacer una crítica"><i class="fas fa-plus-circle"></i></a>
