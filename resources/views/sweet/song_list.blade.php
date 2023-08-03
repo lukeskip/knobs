@@ -95,9 +95,11 @@
 					</li>
 					
 				@endif
+				@if(get_role()=='musician')
 				<li class="list-group-item clearfix song-item">		
 					<a href="/songs/create" class="btn btn-success btn-lg">Registra una canción</a>
 				</li>
+				@endif
 			</ul>
 		</div>
 	</div>
