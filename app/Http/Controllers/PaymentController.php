@@ -352,7 +352,9 @@ class PaymentController extends Controller
 		$options = Option::all();
 		$user_id = $user->id;
 		$payment['finish'] = false;
-		if(is_int($payment->expires_at)){
+	
+		if($payment->method == 'oxxo'){
+			
 			$expiration = Date::createFromTimestamp($payment->expires_at);
 			$expired    =  false;
 			$now 		= Date::now();
