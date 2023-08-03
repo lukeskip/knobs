@@ -378,6 +378,14 @@ class PaymentController extends Controller
 			$title = 'Tu pago falló, intenta con otra forma de pago';
 		}
 
+		$str = $payment->reference;
+		$a = substr($str, 0,4);
+		$b = substr($str,4, 4);
+		$c = substr($str, 8,4);
+		$last = substr($str, -2);
+
+		$payment['reference_show'] = $a.'-'.$b.'-'.$c.'-'.$last;
+
 		return view('sweet.payment_show',compact('payment','options','user_id','title','expiration','expired'));
 	}
 
