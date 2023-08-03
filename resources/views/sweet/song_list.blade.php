@@ -87,21 +87,17 @@
 					</li>
 				  @endforeach
 				@else
-					@if(get_role() != 'musician' )
-						<li class="list-group-item clearfix song-item">
-							<span class="title">
-								No hay canciones registradas
-							</span>
-						</li>
-					@else
-						<li class="list-group-item clearfix song-item">
-							
-							<a href="/songs/create" class="btn btn-success btn-lg">Registra tu primera canción</a>
-							
-						</li>
-					@endif
+					
+					<li class="list-group-item clearfix song-item">
+						<span class="title">
+							No hay canciones registradas
+						</span>
+					</li>
+					
 				@endif
-			  
+				<li class="list-group-item clearfix song-item">		
+					<a href="/songs/create" class="btn btn-success btn-lg">Registra tu primera canción</a>
+				</li>
 			</ul>
 		</div>
 	</div>
