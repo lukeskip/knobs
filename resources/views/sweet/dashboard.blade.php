@@ -113,19 +113,46 @@
 					@if($songs->count() > 0)
 						@foreach($songs as $song)
 						<li class="list-group-item clearfix song-item">
-							<div class="row">
-								<div class="col-sm-8">
-									<span class="song-name title">
-										{{$song->title}}
-									</span>
-									<span class="author">
-										{{$song->author}}
-									</span>
-								</div>
-								<div class="col-sm-4 text-right">
-									{{$song->created_at}}
-						  		</div>
+						<div class="row">
+							<div class="col-sm-8">
+								<span class="song-name title">
+									{{$song->title}}
+								</span>
+								<span class="author">
+									{{$song->author}}
+								</span>
 							</div>
+							<div class="col-sm-4 text-right">
+								
+								<div class="btn-group" role="group" >
+									
+									@if($song->payments)
+										@if($song->payments->status == 'paid' || $song->payments->status == 'completed' || $song->payments->status == 'processed')
+											<a href="/payments/{{$song->payments->order_id}}" class="btn btn-success hastooltip" title="Estatus pagado"><i class="fas fa-check-circle  paid" ></i></a>
+										@elseif($song->payments->status == 'pending')
+											<a href="/payments/{{$song->payments->order_id}}" class=" hastooltip btn btn-success" title="Pago pendiente"><i class="fas fa-clock  pending" ></i></a>
+										@elseif($song->payments->status == 'expired')
+											<a href="/payments/create/{{$song->id}}" class="btn btn-success hastooltip" title="Pago expirado, da click para generar una nueva forma de pago"><i class="fas fa-times-circle expired "  ></i></a>
+										@endif
+									@else
+										<a href="/payments/create/{{$song->id}}" class=" hastooltip btn btn-success" title="Pago pendiente"><i class="fas fa-clock  pending" ></i></a>
+									@endif
+									
+									@if(isset($song->knob))
+										<a href="{{$song->knob}}" class="btn btn-secondary hastooltip" title="Ver Knob"><img src="{{asset('img/knob_icon.png')}}" alt=""></a>
+									@endif
+									
+									 @if($song->reviews)
+									 <a href="/reviews/{{$song->reviews->token}}/edit" class="btn btn-success hastooltip" title="Editar Crítica"><i class="fas fa-edit"></i></a>
+									 @else
+									 <a href="/reviews/create/{{$song->id}}" class="btn btn-success hastooltip" title="Hacer una crítica"><i class="fas fa-plus-circle"></i></a>
+									 @endif
+										
+									@endif
+								</div>
+								
+					  		</div>
+						</div>
 						</li>
 					  @endforeach
 					@else
