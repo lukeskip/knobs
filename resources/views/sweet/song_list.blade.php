@@ -96,7 +96,7 @@
 					
 				@endif
 				<li class="list-group-item clearfix song-item">		
-					<a href="/songs/create" class="btn btn-success btn-lg">Registra tu primera canción</a>
+					<a href="/songs/create" class="btn btn-success btn-lg">Registra una canción</a>
 				</li>
 			</ul>
 		</div>
