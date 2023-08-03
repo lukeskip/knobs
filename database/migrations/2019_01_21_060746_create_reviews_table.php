@@ -17,6 +17,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->enum('status', ['publish', 'revision', 'rejected','draft']);
             $table->integer('song_id');
+            $table->string('token');
             $table->integer('user_id');
             $table->timestamps();
         });

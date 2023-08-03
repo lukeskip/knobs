@@ -19,7 +19,7 @@
 	<p>
 		
 		@if(isset($link))
-		<a href="{{url('/').'/'.$link}}" style="background: #2FAB31;color:white;padding: 15px; text-align: center; border-radius: 10px; text-decoration: none;font-size: 20px;">
+		<a href="{{$link}}" style="background: #2FAB31;color:white;padding: 15px; text-align: center; border-radius: 10px; text-decoration: none;font-size: 20px;">
 				@if(isset($link_label))
 					{{$link_label}}	
 				@endif

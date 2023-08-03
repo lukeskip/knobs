@@ -23,7 +23,7 @@
 					@if($review->songs->file)
 						<audio src="{{asset('storage/song_files/'.$review->songs->file)}}" controls></audio>
 					@else
-						<a href="{{$review->songs->link}}" class="btn btn-lg">
+						<a href="{{$review->songs->link}}" class="btn btn-lg btn-success">
 							Escuchar en spotify
 						</a>
 					@endif
@@ -229,7 +229,7 @@
 
 
 		function publish(){
-			conection('PUT', $('form#review').serialize(),'/reviews/{{$review->id}}',true).then(function(data){
+			conection('PUT', $('form#review').serialize(),'/reviews/{{$review->token}}',true).then(function(data){
 				if(data.success == 1){
 					show_message('success','¡Listo!',data.message,data.redirect);
 				}else{

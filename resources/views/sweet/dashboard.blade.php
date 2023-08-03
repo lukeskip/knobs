@@ -80,7 +80,7 @@
 									</span>
 								</div>
 								<div class="col-sm-4 text-right">
-									<a href="/reviews/{{$review->id}}/edit" class="btn btn-success hastooltip" title="Revisar y editar">
+									<a href="/reviews/{{$review->token}}/edit" class="btn btn-success hastooltip" title="Revisar y editar">
 										<i class="fas fa-edit"></i>
 									</a>
 						  		</div>

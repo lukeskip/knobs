@@ -49,6 +49,13 @@ class DatabaseSeeder extends Seeder
 		$user->save();
 		$user->roles()->attach($role_admin->id);
 
+		$user = new User;
+		$user->name = 'Cesar';
+		$user->email = 'curador@reydecibel.com.mx';
+		$user->password = bcrypt('KnbsAntonio23!#');
+		$user->save();
+		$user->roles()->attach($role_admin->id);
+
 	
 
         DB::table('categories')->insert([

@@ -62,6 +62,7 @@ class ReviewController extends Controller
 	{
 		$review          = new Review;
 		$review->user_id = Auth::user()->id;
+		$review->token   = get_token();
 		$fields          = array_merge($request->all());
 		$scores_ids      = array();
 		
@@ -115,8 +116,9 @@ class ReviewController extends Controller
 	 * @param  \App\Review  $review
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show(Review $review)
-	{
+	public function show($token)
+	{	
+		$review = Review::where('token',$token)->first();
 		
 		if(!Auth::guest() || !isset($_GET['token']) || $review->status == 'draft'){
 			$user = Auth::user();
@@ -168,8 +170,9 @@ class ReviewController extends Controller
 	 * @param  \App\Review  $review
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Review $review)
+	public function edit($token)
 	{
+		$review = Review::where('token',$token)->first();
 		if(get_role() != 'admin' &&  ($review->status != 'draft' && $review->status != 'rejected')){
 			return redirect('/reviews');
 		}
@@ -210,9 +213,9 @@ class ReviewController extends Controller
 	 * @param  \App\Review  $review
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, Review $review)
+	public function update(Request $request, $token)
 	{
-
+		$review = Review::where('token',$token)->first();
 		$fields  = array_merge($request->all());
 		
 		foreach ($fields as $key => $field) {
@@ -234,13 +237,17 @@ class ReviewController extends Controller
 				$query->where('name','admin');
 			})->get();
 			foreach ($admins as $admin) {
-				sending_mails($admin->email, $subject = 'Hay una crítica esperando aprobación',array('title' => 'hay una crítica esperando aprobación','message_str' => 'Recuerda que la velocidad y calidad son importante para la experiencia de usuario','link' => 'admin/dashboard','link_label'=>'Ir a dashboard'), $template = 'default');
+				// We send notification to the admins
+				sending_mails($admin->email, $subject = 'Hay una crítica esperando aprobación',array('title' => 'hay una crítica esperando aprobación','message_str' => 'Recuerda que la velocidad y calidad son importante para la experiencia de usuario','link' => route('admin-dashboard'),'link_label'=>'Ir a dashboard'), $template = 'default');
 			}
 			
+		}else if($review->status == 'publish'){
+			// We send notification to the song owner
+			sending_mails($review->songs->users->email, $subject = 'La crítica de tu canción está lista',array('title' => 'Hemos escuchado tu canción...','message_str' => 'Para poder revisar la crítica da click en el siguiente botón, esperamos que le puedas sacar el mayor provecho.','link' => route('review-show',$review->token),'link_label'=>'Ir a dashboard'), $template = 'default');
 		}
 		
 
-		return response()->json(['message'=>'Tu knob se guardó correctamente','success'=>true,'redirect'=>'/reviews'], 200);
+		return response()->json(['message'=>'Tu knob se guardó correctamente','success'=>true,'redirect'=>'/admin/songs'], 200);
 	}
 
 	/**

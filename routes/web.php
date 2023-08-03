@@ -20,7 +20,7 @@ Route::get('/registrate-como-productor', function () {
     return view('sweet.home_critic');
 })->name('critic-landing');
 
-Route::get('/reviews/{review}', 'ReviewController@show');
+Route::get('/reviews/{token}', 'ReviewController@show')->name('review-show');
 
 
 Route::get('/notice_privacy/', function(){
@@ -73,13 +73,14 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
-// STARTS: ROUTES FOR LOGGED USERS AND CHECK FOR CRITICS FOR PROFILES
-Route::group(['middleware' => ['auth','check_profile']], function () {
+// STARTS: ROUTES FOR LOGGED USERS
+Route::group(['middleware' => ['auth']], function () {
 
 	Route::resource('/payments', 'PaymentController')->except(['show','create']);
 	
 	Route::get('/payments/create/{song}', 'PaymentController@create');
-	Route::get('/payments/{order_id}', 'PaymentController@show');
+	Route::get('/payments/{order_id}', 'PaymentController@show')->name('payment-show');
+	Route::get('/reviews/{token}', 'ReviewController@show')->name('review-show');
 	Route::resource('/songs', 'SongController');
 	Route::resource('/payments', 'PaymentController')->except(['index']);
 	Route::resource('/comments', 'CommentController');
@@ -105,21 +106,23 @@ Route::group(['middleware' => ['auth','admin','check_profile'],'prefix'=>'admin'
 	Route::get('/songs/','AdminController@songs' );
 	Route::get('/payments/users','AdminController@payment_users' );
 	Route::resource('/options', 'OptionController');
-	Route::resource('/reviews', 'ReviewController');
 	Route::resource('/admin_comments', 'AdminCommentController');
-	Route::get('/dashboard', 'DashboardController@show');
+	Route::get('/dashboard', 'DashboardController@show')->name('admin-dashboard');
 	Route::get('/payments', 'PaymentController@index');
 	Route::resource('/coupons', 'CouponController',['names' => 'coupons']);
 	Route::resource('/profiles', 'ProfileController')->only(['index','destroy']);
 	Route::post('/profile-update-status/{profile}', 'ProfileController@edit_status')->name('update-status');
+	Route::resource('/reviews', 'ReviewController',['only' => ['index']]);
 
 });
 // ENDS: ROUTES JUST FOR ADMIN
 
 
 // STARTS: ROUTES JUST FOR CRITICS AND ADMIN
-Route::group(['middleware' => ['auth','critic','check_profile']],function () {
-	Route::resource('/reviews', 'ReviewController',['except' => ['show','create']]);
+Route::group(['middleware' => ['auth','critic']],function () {
+	Route::resource('/reviews', 'ReviewController',['only' => ['create']]);
+	Route::get('/reviews/{token}/edit', 'ReviewController@edit');
+	Route::put('/reviews/{token}', 'ReviewController@update');
 	Route::get('/critic/dashboard', 'DashboardController@show_critic');
 	Route::get('/reviews/create/{song}', 'ReviewController@create');
 });

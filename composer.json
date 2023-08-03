@@ -54,7 +54,8 @@
                "app/Helpers/sending_mails.php",
                "app/Helpers/get_role.php",
                "app/Helpers/get_option.php",
-               "app/Helpers/get_share.php"
+               "app/Helpers/get_share.php",
+               "app/Helpers/get_token.php"
         ]
     },
     "autoload-dev": {
