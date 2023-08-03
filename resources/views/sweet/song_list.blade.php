@@ -39,6 +39,11 @@
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="list-group">
+				@if(get_role()=='musician')
+				<li class="list-group-item clearfix song-item">		
+					<a href="/songs/create" class="btn btn-success btn-lg">Registra una canción</a>
+				</li>
+				@endif
 				@if($songs->count() > 0)
 					@foreach($songs as $song)
 					<li class="list-group-item clearfix song-item">
@@ -95,11 +100,7 @@
 					</li>
 					
 				@endif
-				@if(get_role()=='musician')
-				<li class="list-group-item clearfix song-item">		
-					<a href="/songs/create" class="btn btn-success btn-lg">Registra una canción</a>
-				</li>
-				@endif
+				
 			</ul>
 		</div>
 	</div>
