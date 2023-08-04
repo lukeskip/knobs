@@ -148,7 +148,7 @@
 									 <a href="/reviews/create/{{$song->id}}" class="btn btn-success hastooltip" title="Hacer una crítica"><i class="fas fa-plus-circle"></i></a>
 									 @endif
 										
-									@endif
+			
 								</div>
 								
 					  		</div>
